@@ -20,6 +20,7 @@ import Flutter
       self.receiveCurrentFlavor(result: result)
     })
 
+    GMSServices.provideAPIKey("YOUR KEY HERE")
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }

@@ -72,7 +72,7 @@ android {
 
     defaultConfig {
         applicationId "tsurkan.maps.app"
-        minSdkVersion 18
+        minSdkVersion 20
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
