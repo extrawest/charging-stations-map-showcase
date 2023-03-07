@@ -5,8 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_project_starter/common/router.dart';
 import 'package:flutter_bloc_project_starter/common/services/credentials_loader.dart';
 import 'package:flutter_bloc_project_starter/common/utils/app_utils.dart';
-import 'package:flutter_bloc_project_starter/features/posts/repositories/posts_repository.dart';
-import 'package:flutter_bloc_project_starter/features/posts/services/services.dart';
 import 'package:flutter_bloc_project_starter/features/theme/bloc/theme_bloc.dart';
 import 'package:flutter_bloc_project_starter/features/theme/theme_info.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -66,13 +64,6 @@ class _RepositoriesHolder extends StatelessWidget {
     // put your common repositories and services here
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(
-          create: (context) => PostsRepositoryImpl(
-            postsApiService: PostsApiServiceImpl(
-              ApiClientImpl(apiDomain: credentials.apiDomain),
-            ),
-          ),
-        ),
         RepositoryProvider.value(
           value: ApiClientImpl(apiDomain: credentials.apiDomain),
         ),

@@ -1,0 +1,4 @@
+enum StationStatus {
+  available,
+  budy,
+}

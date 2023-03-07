@@ -11,7 +11,8 @@ class APIException implements Exception {
 }
 
 class FetchDataException extends APIException {
-  FetchDataException([String? message]) : super(message, 'Error During Communication: ');
+  FetchDataException([String? message])
+      : super(message, 'Error During Communication: ');
 }
 
 class BadRequestException extends APIException {
