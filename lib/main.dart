@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc_project_starter/common/di/injector_module.dart';
+
 import '../common/configuration/configuration.dart';
+import '../common/di/injector_module.dart';
 import '../common/utils/utils.dart';
 import 'app.dart';
 
@@ -15,5 +17,12 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  runApp(const App());
+  runApp(
+    EasyLocalization(
+      supportedLocales: AppLocalization.supportedLocales,
+      path: AppLocalization.translationsFolderPath,
+      fallbackLocale: AppLocalization.englishLocale,
+      child: const App(),
+    ),
+  );
 }
