@@ -25,6 +25,7 @@ mixin _$StationModel {
   String get chargePointId => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
   double get latitude => throw _privateConstructorUsedError;
+  @JsonKey(defaultValue: StationStatus.empty)
   StationStatus get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +46,7 @@ abstract class $StationModelCopyWith<$Res> {
       String chargePointId,
       double longitude,
       double latitude,
-      StationStatus status});
+      @JsonKey(defaultValue: StationStatus.empty) StationStatus status});
 }
 
 /// @nodoc
@@ -111,7 +112,7 @@ abstract class _$$_StationModelCopyWith<$Res>
       String chargePointId,
       double longitude,
       double latitude,
-      StationStatus status});
+      @JsonKey(defaultValue: StationStatus.empty) StationStatus status});
 }
 
 /// @nodoc
@@ -163,14 +164,15 @@ class __$$_StationModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_StationModel implements _StationModel {
+class _$_StationModel extends _StationModel {
   const _$_StationModel(
       {required this.stationId,
       required this.tenantId,
       required this.chargePointId,
       required this.longitude,
       required this.latitude,
-      required this.status});
+      @JsonKey(defaultValue: StationStatus.empty) required this.status})
+      : super._();
 
   factory _$_StationModel.fromJson(Map<String, dynamic> json) =>
       _$$_StationModelFromJson(json);
@@ -186,6 +188,7 @@ class _$_StationModel implements _StationModel {
   @override
   final double latitude;
   @override
+  @JsonKey(defaultValue: StationStatus.empty)
   final StationStatus status;
 
   @override
@@ -230,14 +233,16 @@ class _$_StationModel implements _StationModel {
   }
 }
 
-abstract class _StationModel implements StationModel {
+abstract class _StationModel extends StationModel {
   const factory _StationModel(
       {required final String stationId,
       required final String tenantId,
       required final String chargePointId,
       required final double longitude,
       required final double latitude,
-      required final StationStatus status}) = _$_StationModel;
+      @JsonKey(defaultValue: StationStatus.empty)
+          required final StationStatus status}) = _$_StationModel;
+  const _StationModel._() : super._();
 
   factory _StationModel.fromJson(Map<String, dynamic> json) =
       _$_StationModel.fromJson;
@@ -253,6 +258,7 @@ abstract class _StationModel implements StationModel {
   @override
   double get latitude;
   @override
+  @JsonKey(defaultValue: StationStatus.empty)
   StationStatus get status;
   @override
   @JsonKey(ignore: true)

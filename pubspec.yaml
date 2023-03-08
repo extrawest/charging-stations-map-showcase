@@ -51,6 +51,8 @@ dependencies:
   retrofit: ^4.0.1
   fpdart: ^0.5.0
   get_it: ^7.2.0
+  collection: ^1.17.0
+  flutter_svg: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -61,6 +63,7 @@ dev_dependencies:
   freezed: ^2.3.2
   json_serializable: ^6.6.1
   build_runner: ^2.3.3
+  flutter_gen_runner: ^5.2.0
 
 flutter:
   uses-material-design: true
@@ -68,4 +71,14 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/marker/
+    - assets/images/bottom_nav_bar/
     - assets/i18n/
+
+flutter_gen:
+  output: lib/generated/
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+    rive: true
+    lottie: true 

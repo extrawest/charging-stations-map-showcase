@@ -32,7 +32,7 @@ class _StationsApiService implements StationsApiService {
     )
             .compose(
               _dio.options,
-              'chargestations',
+              '/chargestations',
               queryParameters: queryParameters,
               data: _data,
             )

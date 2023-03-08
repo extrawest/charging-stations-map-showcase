@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import '../common/configuration/configuration.dart';
 import '../common/di/injector_module.dart';
@@ -16,6 +17,7 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
+  // setPathUrlStrategy();
 
   runApp(
     EasyLocalization(

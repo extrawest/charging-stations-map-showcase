@@ -17,5 +17,6 @@ class APIFailure extends Failure {
     required super.message,
   });
 
-  APIFailure.fromDioError(DioError error) : super(message: error.message);
+  APIFailure.fromDioError(DioError error)
+      : super(message: error.message ?? error.error.toString());
 }

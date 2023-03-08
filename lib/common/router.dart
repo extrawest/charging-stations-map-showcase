@@ -1,19 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_project_starter/common/widgets/page_widget.dart';
 import 'package:go_router/go_router.dart';
 
-import 'widgets/page_widget.dart';
+import '../features/features.dart';
 
 const String homeRoute = '/home';
 
 final goRouter = GoRouter(
   initialLocation: homeRoute,
+  debugLogDiagnostics: true,
   routes: [
-    GoRoute(
-      path: homeRoute,
-      pageBuilder: (context, state) => _TransitionPage(
+    ShellRoute(
+      builder: (context, state, child) => DashboardScreen(
         key: state.pageKey,
-        child: const PageWidget(),
+        pages: const ['/home', '/test1', '/test2', '/test3', '/test4'],
+        child: child,
       ),
+      routes: [
+        GoRoute(
+          path: homeRoute,
+          pageBuilder: (context, state) => _TransitionPage(
+            key: state.pageKey,
+            child: const MapsScreen(),
+          ),
+        ),
+        GoRoute(
+          path: '/test1',
+          pageBuilder: (context, state) => _TransitionPage(
+            key: state.pageKey,
+            child: const PageWidget(),
+          ),
+        ),
+        GoRoute(
+          path: '/test2',
+          pageBuilder: (context, state) => _TransitionPage(
+            key: state.pageKey,
+            child: const PageWidget(),
+          ),
+        ),
+        GoRoute(
+          path: '/test3',
+          pageBuilder: (context, state) => _TransitionPage(
+            key: state.pageKey,
+            child: const PageWidget(),
+          ),
+        ),
+        GoRoute(
+          path: '/test4',
+          pageBuilder: (context, state) => _TransitionPage(
+            key: state.pageKey,
+            child: const PageWidget(),
+          ),
+        ),
+      ],
     ),
   ],
 );

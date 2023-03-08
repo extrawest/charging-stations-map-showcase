@@ -8,6 +8,6 @@ part 'stations_api_service.g.dart';
 @RestApi()
 abstract class StationsApiService {
   factory StationsApiService(Dio dio) = _StationsApiService;
-  @GET('chargestations')
+  @GET('/chargestations')
   Future<List<StationModel>> getAllStations();
 }
