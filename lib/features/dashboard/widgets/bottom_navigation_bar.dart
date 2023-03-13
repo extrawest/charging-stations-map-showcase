@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import '../../../common/extensions/build_context_x.dart';
 import 'bottom_navigation_bar_item_widget.dart';
 
 class BottomNavigationBar extends StatelessWidget {
@@ -17,25 +16,28 @@ class BottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      shape: const CircularNotchedRectangle(),
-      notchMargin: 8.0,
-      clipBehavior: Clip.antiAlias,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        height: 80,
-        color: context.color.background,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: items
-              .mapIndexed(
-                (index, item) => BottomNavigationBarItemWidget(
-                  isSelected: index == selectedItemIndex,
-                  onPressed: () => onIndexChanged(index),
-                  item: item,
-                ),
-              )
-              .toList(),
+    return Theme(
+      data: ThemeData(textTheme: Theme.of(context).textTheme),
+      child: BottomAppBar(
+        color: Colors.white,
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 8.0,
+        height: 120,
+        clipBehavior: Clip.antiAlias,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: items
+                .mapIndexed(
+                  (index, item) => BottomNavigationBarItemWidget(
+                    isSelected: index == selectedItemIndex,
+                    onPressed: () => onIndexChanged(index),
+                    item: item,
+                  ),
+                )
+                .toList(),
+          ),
         ),
       ),
     );

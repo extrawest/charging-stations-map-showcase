@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../common/extensions/build_context_x.dart';
 import '../../../generated/assets.gen.dart';
 
 class NavigationFloatingButton extends StatelessWidget {
@@ -17,7 +16,6 @@ class NavigationFloatingButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: FloatingActionButton(
-        backgroundColor: context.color.background,
         onPressed: onPressed,
         child: Opacity(
           opacity: isActive ? 1 : 0.6,

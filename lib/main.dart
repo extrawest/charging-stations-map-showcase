@@ -1,11 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:url_strategy/url_strategy.dart';
-
 import '../common/configuration/configuration.dart';
 import '../common/di/injector_module.dart';
+import 'common/services/theme_box.dart';
 import '../common/utils/utils.dart';
+import '../common/widgets/global_blocs_provider.dart';
+
 import 'app.dart';
 
 Future<void> main() async {
@@ -17,14 +18,18 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
     DeviceOrientation.portraitUp,
   ]);
-  // setPathUrlStrategy();
+
+  final themeBox = await ThemeBox.init();
 
   runApp(
     EasyLocalization(
       supportedLocales: AppLocalization.supportedLocales,
       path: AppLocalization.translationsFolderPath,
       fallbackLocale: AppLocalization.englishLocale,
-      child: const App(),
+      child: GlobalBlocProvider(
+        themeBox: themeBox,
+        child: const App(),
+      ),
     ),
   );
 }
