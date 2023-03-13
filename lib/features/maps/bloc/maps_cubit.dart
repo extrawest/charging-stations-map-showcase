@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_project_starter/features/features.dart';
+import 'package:maps_app/features/features.dart';
 
 import 'maps_state.dart';
 

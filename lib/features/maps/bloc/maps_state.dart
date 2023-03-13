@@ -1,4 +1,4 @@
-import 'package:flutter_bloc_project_starter/common/failure/failure.dart';
+import 'package:maps_app/common/failure/failure.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../models/station_model.dart';

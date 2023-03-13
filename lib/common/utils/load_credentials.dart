@@ -1,4 +1,4 @@
-import 'package:flutter_bloc_project_starter/common/configuration/configuration.dart';
+import 'package:maps_app/common/configuration/configuration.dart';
 import '../services/credentials_loader.dart';
 import 'get_flavor.dart';
 import 'logger.dart';

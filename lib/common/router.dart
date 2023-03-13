@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_project_starter/common/widgets/page_widget.dart';
+import 'package:maps_app/common/widgets/page_widget.dart';
 import 'package:go_router/go_router.dart';
 
 import '../features/features.dart';

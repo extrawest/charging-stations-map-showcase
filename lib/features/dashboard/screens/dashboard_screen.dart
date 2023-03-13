@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart'
     hide BottomNavigationBar, BottomNavigationBarItem;
-import 'package:flutter_bloc_project_starter/generated/assets.gen.dart';
+import 'package:maps_app/generated/assets.gen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../widgets/bottom_navigation_bar.dart';
