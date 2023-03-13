@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:maps_app/features/theme/styles/app_colors.dart';
+
 import '../../../generated/assets.gen.dart';
 
 enum StationStatus {
@@ -16,6 +19,19 @@ enum StationStatus {
         return Assets.images.marker.markerRed;
       case StationStatus.empty:
         return Assets.images.marker.markerBlack;
+    }
+  }
+
+  Color color(BuildContext context) {
+    switch (this) {
+      case StationStatus.available:
+        return AppColors.green;
+      case StationStatus.busy:
+        return AppColors.yellow;
+      case StationStatus.offline:
+        return AppColors.red;
+      case StationStatus.empty:
+        return AppColors.black;
     }
   }
 }
