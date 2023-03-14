@@ -19,14 +19,16 @@ class BottomNavigationBar extends StatelessWidget {
     return Theme(
       data: ThemeData(textTheme: Theme.of(context).textTheme),
       child: BottomAppBar(
+        elevation: 0,
+        height: 110,
         color: Colors.white,
         shape: const CircularNotchedRectangle(),
         notchMargin: 8.0,
-        height: 120,
         clipBehavior: Clip.antiAlias,
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: items
                 .mapIndexed(

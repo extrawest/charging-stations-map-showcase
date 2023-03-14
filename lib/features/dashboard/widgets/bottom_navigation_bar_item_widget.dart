@@ -23,9 +23,9 @@ class BottomNavigationBarItemWidget extends StatelessWidget {
         child: Container(
           color: Colors.transparent,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               item.icon,
-              const SizedBox(height: 10),
               Text(item.label, style: Theme.of(context).textTheme.bodySmall),
             ],
           ),

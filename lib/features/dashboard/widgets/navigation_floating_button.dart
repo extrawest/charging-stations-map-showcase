@@ -13,8 +13,8 @@ class NavigationFloatingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return SizedBox.square(
+      dimension: 68,
       child: FloatingActionButton(
         onPressed: onPressed,
         child: Opacity(
