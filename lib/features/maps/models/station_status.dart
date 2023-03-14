@@ -22,7 +22,7 @@ enum StationStatus {
     }
   }
 
-  Color color(BuildContext context) {
+  Color get color {
     switch (this) {
       case StationStatus.available:
         return AppColors.green;

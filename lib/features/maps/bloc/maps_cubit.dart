@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:maps_app/features/features.dart';
 
 import 'maps_state.dart';
@@ -20,5 +21,9 @@ class MapsCubit extends Cubit<MapsState> {
       ),
     );
     emit(state.copyWith(isLoading: false));
+  }
+
+  void updateMarker(Set<Marker> markers) {
+    emit(state.copyWith(markers: markers));
   }
 }

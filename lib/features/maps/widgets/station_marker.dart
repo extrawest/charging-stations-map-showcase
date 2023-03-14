@@ -31,7 +31,7 @@ class StationMarker extends MarkerComponent {
     final painter = TextPainter(textDirection: TextDirection.ltr);
     painter.text = TextSpan(
       text: count.toString(),
-      style: const TextStyle(fontSize: 48, color: Colors.black),
+      style: TextStyle(fontSize: 48, color: color),
     );
     painter.layout();
 

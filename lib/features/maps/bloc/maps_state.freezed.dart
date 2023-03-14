@@ -19,6 +19,7 @@ mixin _$MapsState {
   bool get isLoading => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
   List<StationModel> get stations => throw _privateConstructorUsedError;
+  Set<Marker> get markers => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MapsStateCopyWith<MapsState> get copyWith =>
@@ -30,7 +31,11 @@ abstract class $MapsStateCopyWith<$Res> {
   factory $MapsStateCopyWith(MapsState value, $Res Function(MapsState) then) =
       _$MapsStateCopyWithImpl<$Res, MapsState>;
   @useResult
-  $Res call({bool isLoading, Failure? failure, List<StationModel> stations});
+  $Res call(
+      {bool isLoading,
+      Failure? failure,
+      List<StationModel> stations,
+      Set<Marker> markers});
 }
 
 /// @nodoc
@@ -49,6 +54,7 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
     Object? isLoading = null,
     Object? failure = freezed,
     Object? stations = null,
+    Object? markers = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -63,6 +69,10 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
           ? _value.stations
           : stations // ignore: cast_nullable_to_non_nullable
               as List<StationModel>,
+      markers: null == markers
+          ? _value.markers
+          : markers // ignore: cast_nullable_to_non_nullable
+              as Set<Marker>,
     ) as $Val);
   }
 }
@@ -74,7 +84,11 @@ abstract class _$$_MapsStateCopyWith<$Res> implements $MapsStateCopyWith<$Res> {
       __$$_MapsStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, Failure? failure, List<StationModel> stations});
+  $Res call(
+      {bool isLoading,
+      Failure? failure,
+      List<StationModel> stations,
+      Set<Marker> markers});
 }
 
 /// @nodoc
@@ -91,6 +105,7 @@ class __$$_MapsStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? failure = freezed,
     Object? stations = null,
+    Object? markers = null,
   }) {
     return _then(_$_MapsState(
       isLoading: null == isLoading
@@ -105,18 +120,25 @@ class __$$_MapsStateCopyWithImpl<$Res>
           ? _value._stations
           : stations // ignore: cast_nullable_to_non_nullable
               as List<StationModel>,
+      markers: null == markers
+          ? _value._markers
+          : markers // ignore: cast_nullable_to_non_nullable
+              as Set<Marker>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_MapsState implements _MapsState {
+class _$_MapsState extends _MapsState {
   const _$_MapsState(
       {required this.isLoading,
       required this.failure,
-      required final List<StationModel> stations})
-      : _stations = stations;
+      required final List<StationModel> stations,
+      required final Set<Marker> markers})
+      : _stations = stations,
+        _markers = markers,
+        super._();
 
   @override
   final bool isLoading;
@@ -130,9 +152,17 @@ class _$_MapsState implements _MapsState {
     return EqualUnmodifiableListView(_stations);
   }
 
+  final Set<Marker> _markers;
+  @override
+  Set<Marker> get markers {
+    if (_markers is EqualUnmodifiableSetView) return _markers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableSetView(_markers);
+  }
+
   @override
   String toString() {
-    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations)';
+    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations, markers: $markers)';
   }
 
   @override
@@ -143,12 +173,17 @@ class _$_MapsState implements _MapsState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.failure, failure) || other.failure == failure) &&
-            const DeepCollectionEquality().equals(other._stations, _stations));
+            const DeepCollectionEquality().equals(other._stations, _stations) &&
+            const DeepCollectionEquality().equals(other._markers, _markers));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, failure,
-      const DeepCollectionEquality().hash(_stations));
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      failure,
+      const DeepCollectionEquality().hash(_stations),
+      const DeepCollectionEquality().hash(_markers));
 
   @JsonKey(ignore: true)
   @override
@@ -157,11 +192,13 @@ class _$_MapsState implements _MapsState {
       __$$_MapsStateCopyWithImpl<_$_MapsState>(this, _$identity);
 }
 
-abstract class _MapsState implements MapsState {
+abstract class _MapsState extends MapsState {
   const factory _MapsState(
       {required final bool isLoading,
       required final Failure? failure,
-      required final List<StationModel> stations}) = _$_MapsState;
+      required final List<StationModel> stations,
+      required final Set<Marker> markers}) = _$_MapsState;
+  const _MapsState._() : super._();
 
   @override
   bool get isLoading;
@@ -169,6 +206,8 @@ abstract class _MapsState implements MapsState {
   Failure? get failure;
   @override
   List<StationModel> get stations;
+  @override
+  Set<Marker> get markers;
   @override
   @JsonKey(ignore: true)
   _$$_MapsStateCopyWith<_$_MapsState> get copyWith =>

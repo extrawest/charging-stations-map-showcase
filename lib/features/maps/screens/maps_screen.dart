@@ -1,10 +1,9 @@
-import 'dart:async';
-
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:maps_app/features/maps/models/station_model.dart';
 import '../../../common/di/injector_module.dart';
 import '../../../features/maps/models/station_cluster_item.dart';
 import '../bloc/maps_cubit.dart';
@@ -33,40 +32,21 @@ class _MapsPage extends StatefulWidget {
 }
 
 class __MapsPageState extends State<_MapsPage> {
+  GoogleMapController? _controller;
+  ClusterManager? _clusterManager;
+
   @override
   void initState() {
     super.initState();
     context.read<MapsCubit>().loadStations();
   }
 
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-
-  ClusterManager? _clusterManager;
-  Set<Marker> _markers = {};
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocConsumer<MapsCubit, MapsState>(
         listener: (context, state) async {
-          if (state.stations.isEmpty) return;
-          final markers = state.stations.map((station) => station.clusterItem);
-          if (_clusterManager != null) {
-            _clusterManager!.setItems(markers.toList());
-            return;
-          }
-          _clusterManager = ClusterManager<StationClusterItem>(
-            markers,
-            (markers) {
-              setState(() {
-                _markers = markers;
-              });
-            },
-            markerBuilder: MarkerBuilder(context),
-          );
-          final controller = await _controller.future;
-          _clusterManager!.setMapId(controller.mapId);
+          _clusterManager?.setItems(state.clusterItems);
         },
         builder: (context, state) {
           if (state.isLoading) {
@@ -75,24 +55,37 @@ class __MapsPageState extends State<_MapsPage> {
           if (state.failure != null) {
             return Center(child: Text(state.failure!.message!));
           }
-          final cameraPositon = state.stations.firstOrNull?.position;
-          return GoogleMap(
-            onLongPress: (_) async {
-              final controller = await _controller.future;
-              controller.animateCamera(CameraUpdate.zoomOut());
-            },
-            mapType: MapType.normal,
-            markers: _markers,
-            initialCameraPosition: CameraPosition(
-              target: cameraPositon ?? const LatLng(0, 0),
-              zoom: 12,
-            ),
-            onMapCreated: _controller.complete,
-            compassEnabled: false,
-            myLocationButtonEnabled: false,
-            onCameraIdle: () => _clusterManager?.updateMap(),
-          );
+          return _buildMap(state.markers, state.stations);
         },
+      ),
+    );
+  }
+
+  Widget _buildMap(
+    Set<Marker> markers,
+    List<StationModel> stations,
+  ) {
+    final cameraPositon = stations.firstOrNull?.position;
+
+    return GoogleMap(
+      onLongPress: (_) => _controller?.animateCamera(CameraUpdate.zoomOut()),
+      mapType: MapType.normal,
+      markers: markers,
+      onMapCreated: (controller) {
+        _controller = controller;
+        _clusterManager = ClusterManager<StationClusterItem>(
+          stations.map((station) => station.clusterItem),
+          context.read<MapsCubit>().updateMarker,
+          markerBuilder: MarkerBuilder(),
+        );
+        _clusterManager?.setMapId(controller.mapId);
+      },
+      compassEnabled: false,
+      myLocationButtonEnabled: false,
+      onCameraIdle: () => _clusterManager?.updateMap(),
+      initialCameraPosition: CameraPosition(
+        target: cameraPositon ?? const LatLng(0, 0),
+        zoom: 12,
       ),
     );
   }
