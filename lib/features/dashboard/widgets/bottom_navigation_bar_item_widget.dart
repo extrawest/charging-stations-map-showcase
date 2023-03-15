@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide BottomNavigationBarItem;
+import 'package:flutter/material.dart';
 
 import 'bottom_navigation_bar.dart';
 
@@ -12,7 +12,7 @@ class BottomNavigationBarItemWidget extends StatelessWidget {
 
   final bool isSelected;
   final VoidCallback onPressed;
-  final BottomNavigationBarItem item;
+  final AppBottomNavigationBarItem item;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +23,9 @@ class BottomNavigationBarItemWidget extends StatelessWidget {
         child: Container(
           color: Colors.transparent,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               item.icon,
+              const SizedBox(height: 10),
               Text(item.label, style: Theme.of(context).textTheme.bodySmall),
             ],
           ),

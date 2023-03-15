@@ -45,6 +45,7 @@ dependencies:
   google_maps_cluster_manager: ^3.0.0+1
   share_plus: ^6.3.1
   image_picker: ^0.8.7
+  geolocator: ^9.0.2
 
 dev_dependencies:
   flutter_test:
@@ -63,8 +64,8 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/images/marker/
     - assets/images/bottom_nav_bar/
+    - assets/images/map_actions/
     - assets/i18n/
 
 flutter_gen:

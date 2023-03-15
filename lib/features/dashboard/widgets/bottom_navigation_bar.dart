@@ -1,18 +1,21 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+
 import 'bottom_navigation_bar_item_widget.dart';
 
-class BottomNavigationBar extends StatelessWidget {
-  const BottomNavigationBar({
+class AppBottomNavigationBar extends StatelessWidget {
+  const AppBottomNavigationBar({
     super.key,
     required this.items,
     required this.selectedItemIndex,
     required this.onIndexChanged,
   });
 
-  final List<BottomNavigationBarItem> items;
+  final List<AppBottomNavigationBarItem> items;
   final int selectedItemIndex;
   final ValueChanged<int> onIndexChanged;
+
+  static const double height = 110;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class BottomNavigationBar extends StatelessWidget {
       data: ThemeData(textTheme: Theme.of(context).textTheme),
       child: BottomAppBar(
         elevation: 0,
-        height: 110,
+        height: height,
         color: Colors.white,
         shape: const CircularNotchedRectangle(),
         notchMargin: 8.0,
@@ -46,16 +49,16 @@ class BottomNavigationBar extends StatelessWidget {
   }
 }
 
-class BottomNavigationBarItem {
+class AppBottomNavigationBarItem {
   final Widget icon;
   final String label;
 
-  const BottomNavigationBarItem({
+  const AppBottomNavigationBarItem({
     required this.icon,
     required this.label,
   });
 
-  const BottomNavigationBarItem.empty()
+  const AppBottomNavigationBarItem.empty()
       : icon = const SizedBox(),
         label = '';
 }

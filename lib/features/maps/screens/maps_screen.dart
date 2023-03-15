@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:maps_app/features/maps/models/station_model.dart';
 import '../../../common/di/injector_module.dart';
 import '../../../features/maps/models/station_cluster_item.dart';
 import '../bloc/maps_cubit.dart';
 import '../bloc/maps_state.dart';
+import '../models/station_model.dart';
+import '../widgets/geolocation_permission_warning.dart';
+import '../widgets/map_actions.dart';
 import '../widgets/marker_builder.dart';
 
 class MapsScreen extends StatelessWidget {
@@ -55,7 +57,11 @@ class __MapsPageState extends State<_MapsPage> {
           if (state.failure != null) {
             return Center(child: Text(state.failure!.message!));
           }
-          return _buildMap(state.markers, state.stations);
+          return _buildMap(
+            state.markers,
+            state.stations,
+            state.showPermissionWarning,
+          );
         },
       ),
     );
@@ -64,28 +70,59 @@ class __MapsPageState extends State<_MapsPage> {
   Widget _buildMap(
     Set<Marker> markers,
     List<StationModel> stations,
+    bool showPermissionWarning,
   ) {
     final cameraPositon = stations.firstOrNull?.position;
 
-    return GoogleMap(
-      onLongPress: (_) => _controller?.animateCamera(CameraUpdate.zoomOut()),
-      mapType: MapType.normal,
-      markers: markers,
-      onMapCreated: (controller) {
-        _controller = controller;
-        _clusterManager = ClusterManager<StationClusterItem>(
-          stations.map((station) => station.clusterItem),
-          context.read<MapsCubit>().updateMarker,
-          markerBuilder: MarkerBuilder(),
-        );
-        _clusterManager?.setMapId(controller.mapId);
-      },
-      compassEnabled: false,
-      myLocationButtonEnabled: false,
-      onCameraIdle: () => _clusterManager?.updateMap(),
-      initialCameraPosition: CameraPosition(
-        target: cameraPositon ?? const LatLng(0, 0),
-        zoom: 12,
+    return Stack(
+      children: [
+        GoogleMap(
+          onLongPress: (_) =>
+              _controller?.animateCamera(CameraUpdate.zoomOut()),
+          mapType: MapType.normal,
+          markers: markers,
+          onMapCreated: (controller) {
+            _controller = controller;
+            _clusterManager = ClusterManager<StationClusterItem>(
+              stations.map((station) => station.clusterItem),
+              context.read<MapsCubit>().updateMarker,
+              markerBuilder: MarkerBuilder(),
+            );
+            _clusterManager?.setMapId(controller.mapId);
+          },
+          compassEnabled: false,
+          onCameraIdle: () => _clusterManager?.updateMap(),
+          initialCameraPosition: CameraPosition(
+            target: cameraPositon ?? const LatLng(0, 0),
+            zoom: 12,
+          ),
+        ),
+        Positioned.fill(
+          child: Align(
+            alignment: Alignment.bottomRight,
+            child: MapActions(onCameraMove: moveCameraTo),
+          ),
+        ),
+        if (showPermissionWarning)
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: GeolocationPermissionWarning(
+                onOpenSettings: context.read<MapsCubit>().openLocationSettings,
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
+  void moveCameraTo(LatLng location) {
+    _controller?.moveCamera(
+      CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: location,
+          zoom: 12,
+        ),
       ),
     );
   }

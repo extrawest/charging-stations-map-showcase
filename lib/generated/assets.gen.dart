@@ -29,7 +29,8 @@ class $AssetsImagesGen {
 
   $AssetsImagesBottomNavBarGen get bottomNavBar =>
       const $AssetsImagesBottomNavBarGen();
-  $AssetsImagesMarkerGen get marker => const $AssetsImagesMarkerGen();
+  $AssetsImagesMapActionsGen get mapActions =>
+      const $AssetsImagesMapActionsGen();
 }
 
 class $AssetsImagesBottomNavBarGen {
@@ -59,28 +60,15 @@ class $AssetsImagesBottomNavBarGen {
   List<SvgGenImage> get values => [favourites, lightning, map, profile, wallet];
 }
 
-class $AssetsImagesMarkerGen {
-  const $AssetsImagesMarkerGen();
+class $AssetsImagesMapActionsGen {
+  const $AssetsImagesMapActionsGen();
 
-  /// File path: assets/images/marker/marker_black.png
-  AssetGenImage get markerBlack =>
-      const AssetGenImage('assets/images/marker/marker_black.png');
-
-  /// File path: assets/images/marker/marker_green.png
-  AssetGenImage get markerGreen =>
-      const AssetGenImage('assets/images/marker/marker_green.png');
-
-  /// File path: assets/images/marker/marker_red.png
-  AssetGenImage get markerRed =>
-      const AssetGenImage('assets/images/marker/marker_red.png');
-
-  /// File path: assets/images/marker/marker_yellow.png
-  AssetGenImage get markerYellow =>
-      const AssetGenImage('assets/images/marker/marker_yellow.png');
+  /// File path: assets/images/map_actions/location.png
+  AssetGenImage get location =>
+      const AssetGenImage('assets/images/map_actions/location.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [markerBlack, markerGreen, markerRed, markerYellow];
+  List<AssetGenImage> get values => [location];
 }
 
 class Assets {

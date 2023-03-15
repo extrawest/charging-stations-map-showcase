@@ -20,3 +20,14 @@ class APIFailure extends Failure {
   APIFailure.fromDioError(DioError error)
       : super(message: error.message ?? error.error.toString());
 }
+
+class GeolocationServiceDisabledFailure extends Failure {
+  const GeolocationServiceDisabledFailure()
+      : super(message: 'Location services are disabled.');
+}
+
+class GeolocationFailure extends Failure {
+  const GeolocationFailure({
+    required super.message,
+  });
+}

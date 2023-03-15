@@ -1,8 +1,6 @@
-import 'package:flutter/material.dart'
-    hide BottomNavigationBar, BottomNavigationBarItem;
-import 'package:maps_app/features/theme/styles/app_colors.dart';
-import 'package:maps_app/generated/assets.gen.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:maps_app/generated/assets.gen.dart';
 
 import '../widgets/bottom_navigation_bar.dart';
 import '../widgets/navigation_floating_button.dart';
@@ -31,7 +29,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       extendBody: true,
       body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: AppBottomNavigationBar(
         onIndexChanged: (index) {
           setState(() => _index = index);
           context.push(widget.pages[index]);
@@ -50,21 +48,21 @@ class _DashboardScreenState extends State<DashboardScreen> {
     );
   }
 
-  List<BottomNavigationBarItem> get _items => [
-        BottomNavigationBarItem(
+  List<AppBottomNavigationBarItem> get _items => [
+        AppBottomNavigationBarItem(
           icon: Assets.images.bottomNavBar.map.svg(),
           label: 'MAP',
         ),
-        BottomNavigationBarItem(
+        AppBottomNavigationBarItem(
           icon: Assets.images.bottomNavBar.favourites.svg(),
           label: 'FAVOURITES',
         ),
-        const BottomNavigationBarItem.empty(),
-        BottomNavigationBarItem(
+        const AppBottomNavigationBarItem.empty(),
+        AppBottomNavigationBarItem(
           icon: Assets.images.bottomNavBar.wallet.svg(),
           label: '\$100.23',
         ),
-        BottomNavigationBarItem(
+        AppBottomNavigationBarItem(
           icon: Assets.images.bottomNavBar.profile.svg(),
           label: 'ACCOUNT',
         ),

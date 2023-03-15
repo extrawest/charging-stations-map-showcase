@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:maps_app/features/theme/styles/app_text_styles.dart';
 import 'styles/app_colors.dart';
 
 class TextStyles {
@@ -32,6 +33,7 @@ ThemeData darkTheme = ThemeData(
 ThemeData lightTheme = ThemeData(
   useMaterial3: true,
   primaryColor: AppColors.background,
+  shadowColor: AppColors.grey,
   colorScheme: const ColorScheme.light(
     primary: AppColors.background,
     background: AppColors.background,
@@ -44,6 +46,7 @@ ThemeData lightTheme = ThemeData(
   ),
   fontFamily: GoogleFonts.roboto().fontFamily,
   textTheme: const TextTheme(
-    bodySmall: TextStyle(fontSize: 10, color: AppColors.grey),
+    bodySmall: AppTextStyles.bodyTextSmall,
+    bodyMedium: AppTextStyles.notifierTextLabel,
   ),
 );
