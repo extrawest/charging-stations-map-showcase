@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maps_app/features/theme/theme.dart';
 
 import 'common/router.dart';
-import 'theme/theme.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

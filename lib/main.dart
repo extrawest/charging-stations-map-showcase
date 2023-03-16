@@ -1,13 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../common/configuration/configuration.dart';
-import '../common/di/injector_module.dart';
-import 'common/services/theme_box.dart';
-import '../common/utils/utils.dart';
-import '../common/widgets/global_blocs_provider.dart';
-
 import 'app.dart';
+import 'common/configuration/configuration.dart';
+import 'common/di/injector_module.dart';
+import 'common/services/theme_box.dart';
+import 'common/utils/logger.dart';
+import 'common/widgets/global_blocs_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

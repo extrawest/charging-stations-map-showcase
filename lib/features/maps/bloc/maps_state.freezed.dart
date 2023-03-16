@@ -20,8 +20,7 @@ mixin _$MapsState {
   Failure? get failure => throw _privateConstructorUsedError;
   List<StationModel> get stations => throw _privateConstructorUsedError;
   Set<Marker> get markers => throw _privateConstructorUsedError;
-  LocationPermission get locationPermission =>
-      throw _privateConstructorUsedError;
+  GeolocationPermission get permission => throw _privateConstructorUsedError;
   LatLng? get location => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -39,7 +38,7 @@ abstract class $MapsStateCopyWith<$Res> {
       Failure? failure,
       List<StationModel> stations,
       Set<Marker> markers,
-      LocationPermission locationPermission,
+      GeolocationPermission permission,
       LatLng? location});
 }
 
@@ -60,7 +59,7 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
     Object? failure = freezed,
     Object? stations = null,
     Object? markers = null,
-    Object? locationPermission = null,
+    Object? permission = null,
     Object? location = freezed,
   }) {
     return _then(_value.copyWith(
@@ -80,10 +79,10 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
           ? _value.markers
           : markers // ignore: cast_nullable_to_non_nullable
               as Set<Marker>,
-      locationPermission: null == locationPermission
-          ? _value.locationPermission
-          : locationPermission // ignore: cast_nullable_to_non_nullable
-              as LocationPermission,
+      permission: null == permission
+          ? _value.permission
+          : permission // ignore: cast_nullable_to_non_nullable
+              as GeolocationPermission,
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -104,7 +103,7 @@ abstract class _$$_MapsStateCopyWith<$Res> implements $MapsStateCopyWith<$Res> {
       Failure? failure,
       List<StationModel> stations,
       Set<Marker> markers,
-      LocationPermission locationPermission,
+      GeolocationPermission permission,
       LatLng? location});
 }
 
@@ -123,7 +122,7 @@ class __$$_MapsStateCopyWithImpl<$Res>
     Object? failure = freezed,
     Object? stations = null,
     Object? markers = null,
-    Object? locationPermission = null,
+    Object? permission = null,
     Object? location = freezed,
   }) {
     return _then(_$_MapsState(
@@ -143,10 +142,10 @@ class __$$_MapsStateCopyWithImpl<$Res>
           ? _value._markers
           : markers // ignore: cast_nullable_to_non_nullable
               as Set<Marker>,
-      locationPermission: null == locationPermission
-          ? _value.locationPermission
-          : locationPermission // ignore: cast_nullable_to_non_nullable
-              as LocationPermission,
+      permission: null == permission
+          ? _value.permission
+          : permission // ignore: cast_nullable_to_non_nullable
+              as GeolocationPermission,
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -163,7 +162,7 @@ class _$_MapsState extends _MapsState {
       required this.failure,
       required final List<StationModel> stations,
       required final Set<Marker> markers,
-      required this.locationPermission,
+      required this.permission,
       required this.location})
       : _stations = stations,
         _markers = markers,
@@ -190,13 +189,13 @@ class _$_MapsState extends _MapsState {
   }
 
   @override
-  final LocationPermission locationPermission;
+  final GeolocationPermission permission;
   @override
   final LatLng? location;
 
   @override
   String toString() {
-    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations, markers: $markers, locationPermission: $locationPermission, location: $location)';
+    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations, markers: $markers, permission: $permission, location: $location)';
   }
 
   @override
@@ -209,8 +208,8 @@ class _$_MapsState extends _MapsState {
             (identical(other.failure, failure) || other.failure == failure) &&
             const DeepCollectionEquality().equals(other._stations, _stations) &&
             const DeepCollectionEquality().equals(other._markers, _markers) &&
-            (identical(other.locationPermission, locationPermission) ||
-                other.locationPermission == locationPermission) &&
+            (identical(other.permission, permission) ||
+                other.permission == permission) &&
             (identical(other.location, location) ||
                 other.location == location));
   }
@@ -222,7 +221,7 @@ class _$_MapsState extends _MapsState {
       failure,
       const DeepCollectionEquality().hash(_stations),
       const DeepCollectionEquality().hash(_markers),
-      locationPermission,
+      permission,
       location);
 
   @JsonKey(ignore: true)
@@ -238,7 +237,7 @@ abstract class _MapsState extends MapsState {
       required final Failure? failure,
       required final List<StationModel> stations,
       required final Set<Marker> markers,
-      required final LocationPermission locationPermission,
+      required final GeolocationPermission permission,
       required final LatLng? location}) = _$_MapsState;
   const _MapsState._() : super._();
 
@@ -251,7 +250,7 @@ abstract class _MapsState extends MapsState {
   @override
   Set<Marker> get markers;
   @override
-  LocationPermission get locationPermission;
+  GeolocationPermission get permission;
   @override
   LatLng? get location;
   @override

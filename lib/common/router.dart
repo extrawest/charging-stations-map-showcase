@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:maps_app/common/widgets/page_widget.dart';
 import 'package:go_router/go_router.dart';
+import 'package:maps_app/common/widgets/page_widget.dart';
 
 import '../features/features.dart';
 

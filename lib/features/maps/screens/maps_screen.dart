@@ -7,6 +7,7 @@ import '../../../common/di/injector_module.dart';
 import '../../../features/maps/models/station_cluster_item.dart';
 import '../bloc/maps_cubit.dart';
 import '../bloc/maps_state.dart';
+import '../models/geolocation_permission.dart';
 import '../models/station_model.dart';
 import '../widgets/geolocation_permission_warning.dart';
 import '../widgets/map_actions.dart';
@@ -20,6 +21,7 @@ class MapsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => MapsCubit(
         stationRepository: InjectorModule.locator(),
+        geolocationService: InjectorModule.locator(),
       ),
       child: const _MapsPage(),
     );
@@ -60,7 +62,7 @@ class __MapsPageState extends State<_MapsPage> {
           return _buildMap(
             state.markers,
             state.stations,
-            state.showPermissionWarning,
+            state.permission == GeolocationPermission.denied,
           );
         },
       ),
