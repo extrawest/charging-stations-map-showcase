@@ -80,4 +80,8 @@ class MapsCubit extends Cubit<MapsState> {
       (failure) => emit(state.copyWith(failure: failure)),
     );
   }
+
+  void setMapType(MapType mapType) {
+    emit(state.copyWith(mapType: mapType));
+  }
 }

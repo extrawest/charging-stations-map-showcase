@@ -13,4 +13,15 @@ abstract class AppTextStyles {
     fontSize: 10,
     color: AppColors.grey,
   );
+
+  static const titleMedium = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    color: Color(0xff222733),
+  );
+
+  static const bodyTextMedium = TextStyle(
+    fontSize: 12,
+    color: Color(0xff000000),
+  );
 }

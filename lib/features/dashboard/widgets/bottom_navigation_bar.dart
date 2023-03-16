@@ -15,7 +15,7 @@ class AppBottomNavigationBar extends StatelessWidget {
   final int selectedItemIndex;
   final ValueChanged<int> onIndexChanged;
 
-  static const double height = 110;
+  static const double height = 115;
 
   @override
   Widget build(BuildContext context) {

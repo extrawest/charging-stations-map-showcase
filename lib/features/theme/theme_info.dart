@@ -34,6 +34,7 @@ ThemeData lightTheme = ThemeData(
   useMaterial3: true,
   primaryColor: AppColors.background,
   shadowColor: AppColors.grey,
+  dividerColor: AppColors.deepGrey,
   colorScheme: const ColorScheme.light(
     primary: AppColors.background,
     background: AppColors.background,
@@ -47,6 +48,8 @@ ThemeData lightTheme = ThemeData(
   fontFamily: GoogleFonts.roboto().fontFamily,
   textTheme: const TextTheme(
     bodySmall: AppTextStyles.bodyTextSmall,
-    bodyMedium: AppTextStyles.notifierTextLabel,
+    bodyMedium: AppTextStyles.bodyTextMedium,
+    titleSmall: AppTextStyles.notifierTextLabel,
+    titleMedium: AppTextStyles.titleMedium,
   ),
 );

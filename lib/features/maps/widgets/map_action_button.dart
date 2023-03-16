@@ -7,6 +7,11 @@ class MapActionButton extends StatelessWidget {
     required this.onPressed,
   }) : icon = Assets.images.mapActions.location.image();
 
+  MapActionButton.settings({
+    super.key,
+    required this.onPressed,
+  }) : icon = Assets.images.mapActions.settings.svg();
+
   final Widget icon;
   final VoidCallback onPressed;
 

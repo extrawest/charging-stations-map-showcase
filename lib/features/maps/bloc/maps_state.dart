@@ -17,6 +17,7 @@ class MapsState with _$MapsState {
     required Set<Marker> markers,
     required GeolocationPermission permission,
     required LatLng? location,
+    required MapType mapType,
   }) = _MapsState;
 
   const MapsState._();
@@ -28,6 +29,7 @@ class MapsState with _$MapsState {
         markers: {},
         permission: GeolocationPermission.unset,
         location: null,
+        mapType: MapType.normal,
       );
 
   List<StationClusterItem> get clusterItems =>

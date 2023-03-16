@@ -22,6 +22,7 @@ mixin _$MapsState {
   Set<Marker> get markers => throw _privateConstructorUsedError;
   GeolocationPermission get permission => throw _privateConstructorUsedError;
   LatLng? get location => throw _privateConstructorUsedError;
+  MapType get mapType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MapsStateCopyWith<MapsState> get copyWith =>
@@ -39,7 +40,8 @@ abstract class $MapsStateCopyWith<$Res> {
       List<StationModel> stations,
       Set<Marker> markers,
       GeolocationPermission permission,
-      LatLng? location});
+      LatLng? location,
+      MapType mapType});
 }
 
 /// @nodoc
@@ -61,6 +63,7 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
     Object? markers = null,
     Object? permission = null,
     Object? location = freezed,
+    Object? mapType = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -87,6 +90,10 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as LatLng?,
+      mapType: null == mapType
+          ? _value.mapType
+          : mapType // ignore: cast_nullable_to_non_nullable
+              as MapType,
     ) as $Val);
   }
 }
@@ -104,7 +111,8 @@ abstract class _$$_MapsStateCopyWith<$Res> implements $MapsStateCopyWith<$Res> {
       List<StationModel> stations,
       Set<Marker> markers,
       GeolocationPermission permission,
-      LatLng? location});
+      LatLng? location,
+      MapType mapType});
 }
 
 /// @nodoc
@@ -124,6 +132,7 @@ class __$$_MapsStateCopyWithImpl<$Res>
     Object? markers = null,
     Object? permission = null,
     Object? location = freezed,
+    Object? mapType = null,
   }) {
     return _then(_$_MapsState(
       isLoading: null == isLoading
@@ -150,6 +159,10 @@ class __$$_MapsStateCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as LatLng?,
+      mapType: null == mapType
+          ? _value.mapType
+          : mapType // ignore: cast_nullable_to_non_nullable
+              as MapType,
     ));
   }
 }
@@ -163,7 +176,8 @@ class _$_MapsState extends _MapsState {
       required final List<StationModel> stations,
       required final Set<Marker> markers,
       required this.permission,
-      required this.location})
+      required this.location,
+      required this.mapType})
       : _stations = stations,
         _markers = markers,
         super._();
@@ -192,10 +206,12 @@ class _$_MapsState extends _MapsState {
   final GeolocationPermission permission;
   @override
   final LatLng? location;
+  @override
+  final MapType mapType;
 
   @override
   String toString() {
-    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations, markers: $markers, permission: $permission, location: $location)';
+    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations, markers: $markers, permission: $permission, location: $location, mapType: $mapType)';
   }
 
   @override
@@ -211,7 +227,8 @@ class _$_MapsState extends _MapsState {
             (identical(other.permission, permission) ||
                 other.permission == permission) &&
             (identical(other.location, location) ||
-                other.location == location));
+                other.location == location) &&
+            (identical(other.mapType, mapType) || other.mapType == mapType));
   }
 
   @override
@@ -222,7 +239,8 @@ class _$_MapsState extends _MapsState {
       const DeepCollectionEquality().hash(_stations),
       const DeepCollectionEquality().hash(_markers),
       permission,
-      location);
+      location,
+      mapType);
 
   @JsonKey(ignore: true)
   @override
@@ -238,7 +256,8 @@ abstract class _MapsState extends MapsState {
       required final List<StationModel> stations,
       required final Set<Marker> markers,
       required final GeolocationPermission permission,
-      required final LatLng? location}) = _$_MapsState;
+      required final LatLng? location,
+      required final MapType mapType}) = _$_MapsState;
   const _MapsState._() : super._();
 
   @override
@@ -253,6 +272,8 @@ abstract class _MapsState extends MapsState {
   GeolocationPermission get permission;
   @override
   LatLng? get location;
+  @override
+  MapType get mapType;
   @override
   @JsonKey(ignore: true)
   _$$_MapsStateCopyWith<_$_MapsState> get copyWith =>

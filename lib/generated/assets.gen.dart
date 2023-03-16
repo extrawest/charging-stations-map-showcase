@@ -31,6 +31,7 @@ class $AssetsImagesGen {
       const $AssetsImagesBottomNavBarGen();
   $AssetsImagesMapActionsGen get mapActions =>
       const $AssetsImagesMapActionsGen();
+  $AssetsImagesMapTypesGen get mapTypes => const $AssetsImagesMapTypesGen();
 }
 
 class $AssetsImagesBottomNavBarGen {
@@ -67,8 +68,27 @@ class $AssetsImagesMapActionsGen {
   AssetGenImage get location =>
       const AssetGenImage('assets/images/map_actions/location.png');
 
+  /// File path: assets/images/map_actions/settings.svg
+  SvgGenImage get settings =>
+      const SvgGenImage('assets/images/map_actions/settings.svg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [location];
+  List<dynamic> get values => [location, settings];
+}
+
+class $AssetsImagesMapTypesGen {
+  const $AssetsImagesMapTypesGen();
+
+  /// File path: assets/images/map_types/normal.png
+  AssetGenImage get normal =>
+      const AssetGenImage('assets/images/map_types/normal.png');
+
+  /// File path: assets/images/map_types/satellite.png
+  AssetGenImage get satellite =>
+      const AssetGenImage('assets/images/map_types/satellite.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [normal, satellite];
 }
 
 class Assets {

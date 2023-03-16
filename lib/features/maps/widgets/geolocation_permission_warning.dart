@@ -31,7 +31,7 @@ class GeolocationPermissionWarning extends StatelessWidget {
         child: Text(
           'You have to give access to geolocation permission. Tap to open settings.',
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
       ),
     );

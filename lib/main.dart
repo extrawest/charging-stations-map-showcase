@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'app.dart';
 import 'common/configuration/configuration.dart';
 import 'common/di/injector_module.dart';
@@ -22,8 +23,8 @@ Future<void> main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: AppLocalization.supportedLocales,
       path: AppLocalization.translationsFolderPath,
+      supportedLocales: AppLocalization.supportedLocales,
       fallbackLocale: AppLocalization.englishLocale,
       child: GlobalBlocProvider(
         themeBox: themeBox,

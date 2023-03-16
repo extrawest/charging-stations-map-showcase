@@ -63,6 +63,7 @@ class __MapsPageState extends State<_MapsPage> {
             state.markers,
             state.stations,
             state.permission == GeolocationPermission.denied,
+            state.mapType,
           );
         },
       ),
@@ -73,6 +74,7 @@ class __MapsPageState extends State<_MapsPage> {
     Set<Marker> markers,
     List<StationModel> stations,
     bool showPermissionWarning,
+    MapType mapType,
   ) {
     final cameraPositon = stations.firstOrNull?.position;
 
@@ -81,7 +83,7 @@ class __MapsPageState extends State<_MapsPage> {
         GoogleMap(
           onLongPress: (_) =>
               _controller?.animateCamera(CameraUpdate.zoomOut()),
-          mapType: MapType.normal,
+          mapType: mapType,
           markers: markers,
           onMapCreated: (controller) {
             _controller = controller;
