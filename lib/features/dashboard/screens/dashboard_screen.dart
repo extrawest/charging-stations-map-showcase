@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:maps_app/generated/assets.gen.dart';
 
+import '../../../generated/assets.gen.dart';
+import '../../../generated/locale_keys.g.dart';
 import '../widgets/bottom_navigation_bar.dart';
 import '../widgets/navigation_floating_button.dart';
 
@@ -51,11 +53,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List<AppBottomNavigationBarItem> get _items => [
         AppBottomNavigationBarItem(
           icon: Assets.images.bottomNavBar.map.svg(),
-          label: 'MAP',
+          label: LocaleKeys.bottom_nav_bar_map.tr(),
         ),
         AppBottomNavigationBarItem(
           icon: Assets.images.bottomNavBar.favourites.svg(),
-          label: 'FAVOURITES',
+          label: LocaleKeys.bottom_nav_bar_favourites.tr(),
         ),
         const AppBottomNavigationBarItem.empty(),
         AppBottomNavigationBarItem(
@@ -64,7 +66,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ),
         AppBottomNavigationBarItem(
           icon: Assets.images.bottomNavBar.profile.svg(),
-          label: 'ACCOUNT',
+          label: LocaleKeys.bottom_nav_bar_account.tr(),
         ),
       ];
 }

@@ -1,26 +1,14 @@
 {
-  "app_bar": {
-    "title": "Welcome to the home page"
+  "bottom_nav_bar": {
+    "map": "MAP",
+    "favourites": "FAVOURITES",
+    "account": "ACCOUNT"
   },
   "button": {
-    "cancel": "Cancel"
+    "apply": "Apply"
   },
-  "language": {
-    "english": "English",
-    "ukrainian": "Ukrainian"
-  },
-  "theme": {
-    "change_theme": "Change theme"
-  },
-  "plural": {
-    "zero": "Please start pushing the 'plus' button.",
-    "one": "You have pushed the button one time.",
-    "other": "You have pushed the button {} times."
-  },
-  "fetch_posts": "Fetch posts",
-
-  "system": "system",
-  "light": "light",
-  "dark": "dark",
-  "resolution_aware_img": "Example of resolution-aware image usage"
+  "map_type": {
+    "normal": "Normal",
+    "satellite": "Satellite"
+  }
 }

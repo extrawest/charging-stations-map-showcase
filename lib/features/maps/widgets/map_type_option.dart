@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:maps_app/features/theme/styles/app_colors.dart';
 import 'package:maps_app/generated/assets.gen.dart';
+import 'package:maps_app/generated/locale_keys.g.dart';
 
 class MapTypeOption extends StatelessWidget {
   MapTypeOption.normal({
@@ -8,14 +10,14 @@ class MapTypeOption extends StatelessWidget {
     required this.isSelected,
     required this.onPressed,
   })  : icon = Assets.images.mapTypes.normal.image(),
-        title = 'Normal';
+        title = LocaleKeys.map_type_normal.tr();
 
   MapTypeOption.satellite({
     super.key,
     required this.isSelected,
     required this.onPressed,
   })  : icon = Assets.images.mapTypes.satellite.image(),
-        title = 'Satellite';
+        title = LocaleKeys.map_type_satellite.tr();
 
   final Widget icon;
   final bool isSelected;

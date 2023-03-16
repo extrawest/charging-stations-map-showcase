@@ -1,20 +1,14 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
 abstract class  LocaleKeys {
-  static const app_bar_title = 'app_bar.title';
-  static const app_bar = 'app_bar';
-  static const button_cancel = 'button.cancel';
+  static const bottom_nav_bar_map = 'bottom_nav_bar.map';
+  static const bottom_nav_bar_favourites = 'bottom_nav_bar.favourites';
+  static const bottom_nav_bar_account = 'bottom_nav_bar.account';
+  static const bottom_nav_bar = 'bottom_nav_bar';
+  static const button_apply = 'button.apply';
   static const button = 'button';
-  static const language_english = 'language.english';
-  static const language_ukrainian = 'language.ukrainian';
-  static const language = 'language';
-  static const theme_change_theme = 'theme.change_theme';
-  static const theme = 'theme';
-  static const plural = 'plural';
-  static const fetch_posts = 'fetch_posts';
-  static const system = 'system';
-  static const light = 'light';
-  static const dark = 'dark';
-  static const resolution_aware_img = 'resolution_aware_img';
+  static const map_type_normal = 'map_type.normal';
+  static const map_type_satellite = 'map_type.satellite';
+  static const map_type = 'map_type';
 
 }
