@@ -10,5 +10,13 @@ abstract class  LocaleKeys {
   static const map_type_normal = 'map_type.normal';
   static const map_type_satellite = 'map_type.satellite';
   static const map_type = 'map_type';
+  static const station_detals_connectors = 'station_detals.connectors';
+  static const station_detals_coordinates = 'station_detals.coordinates';
+  static const station_detals_status = 'station_detals.status';
+  static const station_detals_price_per_kwh = 'station_detals.price_per_kwh';
+  static const station_detals_kWh = 'station_detals.kWh';
+  static const station_detals_charge = 'station_detals.charge';
+  static const station_detals_in_use = 'station_detals.in_use';
+  static const station_detals = 'station_detals';
 
 }

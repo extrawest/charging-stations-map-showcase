@@ -26,5 +26,5 @@ class StationModel with _$StationModel {
 
   LatLng get position => LatLng(latitude, longitude);
 
-  StationClusterItem get clusterItem => StationClusterItem(position, status);
+  StationClusterItem get clusterItem => StationClusterItem(this);
 }

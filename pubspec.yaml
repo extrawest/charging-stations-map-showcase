@@ -67,6 +67,7 @@ flutter:
     - assets/images/bottom_nav_bar/
     - assets/images/map_actions/
     - assets/images/map_types/
+    - assets/images/station_details/
     - assets/i18n/
 
 flutter_gen:

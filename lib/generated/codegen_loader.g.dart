@@ -26,6 +26,15 @@ class CodegenLoader extends AssetLoader{
   "map_type": {
     "normal": "Normal",
     "satellite": "Satellite"
+  },
+  "station_detals": {
+    "connectors": "Connectors",
+    "coordinates": "Coordinates",
+    "status": "Status: {}",
+    "price_per_kwh": "$ {} per kWh",
+    "kWh": "{} kWh",
+    "charge": "Charge",
+    "in_use": "In Use"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US};

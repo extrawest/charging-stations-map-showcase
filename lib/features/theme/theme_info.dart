@@ -19,8 +19,9 @@ ThemeData darkTheme = ThemeData(
     primary: Colors.grey.shade200,
     background: AppColors.blackShade,
   ),
-  floatingActionButtonTheme:
-      const FloatingActionButtonThemeData(foregroundColor: Colors.black),
+  floatingActionButtonTheme: const FloatingActionButtonThemeData(
+    foregroundColor: Colors.black,
+  ),
   dividerColor: Colors.black12,
   fontFamily: GoogleFonts.roboto().fontFamily,
   textTheme: const TextTheme(
@@ -49,7 +50,8 @@ ThemeData lightTheme = ThemeData(
   textTheme: const TextTheme(
     bodySmall: AppTextStyles.bodyTextSmall,
     bodyMedium: AppTextStyles.bodyTextMedium,
-    titleSmall: AppTextStyles.notifierTextLabel,
+    bodyLarge: AppTextStyles.bodyTextLarge,
+    titleSmall: AppTextStyles.titleSmall,
     titleMedium: AppTextStyles.titleMedium,
   ),
 );

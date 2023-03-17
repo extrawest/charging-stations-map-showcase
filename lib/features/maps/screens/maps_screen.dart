@@ -90,7 +90,7 @@ class __MapsPageState extends State<_MapsPage> {
             _clusterManager = ClusterManager<StationClusterItem>(
               stations.map((station) => station.clusterItem),
               context.read<MapsCubit>().updateMarker,
-              markerBuilder: MarkerBuilder(),
+              markerBuilder: MarkerBuilder(context),
             );
             _clusterManager?.setMapId(controller.mapId);
           },

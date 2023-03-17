@@ -19,4 +19,17 @@ enum StationStatus {
         return AppColors.black;
     }
   }
+
+  String get displayName {
+    switch (this) {
+      case StationStatus.available:
+        return 'Available';
+      case StationStatus.busy:
+        return 'Busy';
+      case StationStatus.offline:
+        return 'Offline';
+      case StationStatus.empty:
+        return 'Empty';
+    }
+  }
 }

@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 abstract class AppTextStyles {
-  static const notifierTextLabel = TextStyle(
+  static const titleSmall = TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.w300,
-    color: AppColors.grey,
+    color: Color(0xff222733),
   );
 
   static const bodyTextSmall = TextStyle(
@@ -22,6 +21,10 @@ abstract class AppTextStyles {
 
   static const bodyTextMedium = TextStyle(
     fontSize: 12,
+    color: Color(0xff000000),
+  );
+  static const bodyTextLarge = TextStyle(
+    fontSize: 14,
     color: Color(0xff000000),
   );
 }

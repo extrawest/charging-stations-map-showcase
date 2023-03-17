@@ -29,6 +29,8 @@ class $AssetsImagesGen {
   $AssetsImagesMapActionsGen get mapActions =>
       const $AssetsImagesMapActionsGen();
   $AssetsImagesMapTypesGen get mapTypes => const $AssetsImagesMapTypesGen();
+  $AssetsImagesStationDetailsGen get stationDetails =>
+      const $AssetsImagesStationDetailsGen();
 }
 
 class $AssetsImagesBottomNavBarGen {
@@ -86,6 +88,21 @@ class $AssetsImagesMapTypesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [normal, satellite];
+}
+
+class $AssetsImagesStationDetailsGen {
+  const $AssetsImagesStationDetailsGen();
+
+  /// File path: assets/images/station_details/connector.svg
+  SvgGenImage get connector =>
+      const SvgGenImage('assets/images/station_details/connector.svg');
+
+  /// File path: assets/images/station_details/image.svg
+  SvgGenImage get image =>
+      const SvgGenImage('assets/images/station_details/image.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [connector, image];
 }
 
 class Assets {
