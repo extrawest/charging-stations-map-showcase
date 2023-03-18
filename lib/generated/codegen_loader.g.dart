@@ -14,7 +14,7 @@ class CodegenLoader extends AssetLoader{
     return Future.value(mapLocales[locale.toString()]);
   }
 
-  static const Map<String,dynamic> en_US = {
+  static const Map<String,dynamic> uk_UA = {
   "bottom_nav_bar": {
     "map": "MAP",
     "favourites": "FAVOURITES",
@@ -37,5 +37,28 @@ class CodegenLoader extends AssetLoader{
     "in_use": "In Use"
   }
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"en_US": en_US};
+static const Map<String,dynamic> en_US = {
+  "bottom_nav_bar": {
+    "map": "MAP",
+    "favourites": "FAVOURITES",
+    "account": "ACCOUNT"
+  },
+  "button": {
+    "apply": "Apply"
+  },
+  "map_type": {
+    "normal": "Normal",
+    "satellite": "Satellite"
+  },
+  "station_detals": {
+    "connectors": "Connectors",
+    "coordinates": "Coordinates",
+    "status": "Status: {}",
+    "price_per_kwh": "$ {} per kWh",
+    "kWh": "{} kWh",
+    "charge": "Charge",
+    "in_use": "In Use"
+  }
+};
+static const Map<String, Map<String,dynamic>> mapLocales = {"uk_UA": uk_UA, "en_US": en_US};
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:maps_app/features/maps/widgets/station_details_bottom_details.dart';
 import '../../../common/di/injector_module.dart';
 import '../../../features/maps/models/station_cluster_item.dart';
 import '../bloc/maps_cubit.dart';
@@ -45,6 +46,8 @@ class __MapsPageState extends State<_MapsPage> {
     context.read<MapsCubit>().loadStations();
   }
 
+  Set<Marker> _markers = {};
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +63,6 @@ class __MapsPageState extends State<_MapsPage> {
             return Center(child: Text(state.failure!.message!));
           }
           return _buildMap(
-            state.markers,
             state.stations,
             state.permission == GeolocationPermission.denied,
             state.mapType,
@@ -71,7 +73,6 @@ class __MapsPageState extends State<_MapsPage> {
   }
 
   Widget _buildMap(
-    Set<Marker> markers,
     List<StationModel> stations,
     bool showPermissionWarning,
     MapType mapType,
@@ -84,21 +85,30 @@ class __MapsPageState extends State<_MapsPage> {
           onLongPress: (_) =>
               _controller?.animateCamera(CameraUpdate.zoomOut()),
           mapType: mapType,
-          markers: markers,
+          markers: _markers,
           onMapCreated: (controller) {
             _controller = controller;
             _clusterManager = ClusterManager<StationClusterItem>(
               stations.map((station) => station.clusterItem),
-              context.read<MapsCubit>().updateMarker,
-              markerBuilder: MarkerBuilder(context),
+              (markers) {
+                setState(() {
+                  _markers = markers;
+                });
+              },
+              markerBuilder: MarkerBuilder(
+                onZoom: () => _controller?.moveCamera(CameraUpdate.zoomIn()),
+                onOpenDetails: (station) =>
+                    StationDetailsBottomSheet.show(context, station: station),
+              ),
             );
             _clusterManager?.setMapId(controller.mapId);
           },
           compassEnabled: false,
           onCameraIdle: () => _clusterManager?.updateMap(),
+          onCameraMove: (position) => _clusterManager?.onCameraMove(position),
           initialCameraPosition: CameraPosition(
             target: cameraPositon ?? const LatLng(0, 0),
-            zoom: 12,
+            zoom: 10,
           ),
         ),
         Positioned.fill(

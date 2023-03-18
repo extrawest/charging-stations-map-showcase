@@ -32,10 +32,6 @@ class MapsCubit extends Cubit<MapsState> {
     emit(state.copyWith(isLoading: false));
   }
 
-  void updateMarker(Set<Marker> markers) {
-    emit(state.copyWith(markers: markers));
-  }
-
   Future<void> requestGeolocatorPermission() async {
     final isServiceEnabledResult =
         await _geolocationService.checkIfGeolocationServiceEnabled();

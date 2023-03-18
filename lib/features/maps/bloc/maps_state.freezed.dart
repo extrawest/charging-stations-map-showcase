@@ -19,7 +19,6 @@ mixin _$MapsState {
   bool get isLoading => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
   List<StationModel> get stations => throw _privateConstructorUsedError;
-  Set<Marker> get markers => throw _privateConstructorUsedError;
   GeolocationPermission get permission => throw _privateConstructorUsedError;
   LatLng? get location => throw _privateConstructorUsedError;
   MapType get mapType => throw _privateConstructorUsedError;
@@ -38,7 +37,6 @@ abstract class $MapsStateCopyWith<$Res> {
       {bool isLoading,
       Failure? failure,
       List<StationModel> stations,
-      Set<Marker> markers,
       GeolocationPermission permission,
       LatLng? location,
       MapType mapType});
@@ -60,7 +58,6 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
     Object? isLoading = null,
     Object? failure = freezed,
     Object? stations = null,
-    Object? markers = null,
     Object? permission = null,
     Object? location = freezed,
     Object? mapType = null,
@@ -78,10 +75,6 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
           ? _value.stations
           : stations // ignore: cast_nullable_to_non_nullable
               as List<StationModel>,
-      markers: null == markers
-          ? _value.markers
-          : markers // ignore: cast_nullable_to_non_nullable
-              as Set<Marker>,
       permission: null == permission
           ? _value.permission
           : permission // ignore: cast_nullable_to_non_nullable
@@ -109,7 +102,6 @@ abstract class _$$_MapsStateCopyWith<$Res> implements $MapsStateCopyWith<$Res> {
       {bool isLoading,
       Failure? failure,
       List<StationModel> stations,
-      Set<Marker> markers,
       GeolocationPermission permission,
       LatLng? location,
       MapType mapType});
@@ -129,7 +121,6 @@ class __$$_MapsStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? failure = freezed,
     Object? stations = null,
-    Object? markers = null,
     Object? permission = null,
     Object? location = freezed,
     Object? mapType = null,
@@ -147,10 +138,6 @@ class __$$_MapsStateCopyWithImpl<$Res>
           ? _value._stations
           : stations // ignore: cast_nullable_to_non_nullable
               as List<StationModel>,
-      markers: null == markers
-          ? _value._markers
-          : markers // ignore: cast_nullable_to_non_nullable
-              as Set<Marker>,
       permission: null == permission
           ? _value.permission
           : permission // ignore: cast_nullable_to_non_nullable
@@ -174,12 +161,10 @@ class _$_MapsState extends _MapsState {
       {required this.isLoading,
       required this.failure,
       required final List<StationModel> stations,
-      required final Set<Marker> markers,
       required this.permission,
       required this.location,
       required this.mapType})
       : _stations = stations,
-        _markers = markers,
         super._();
 
   @override
@@ -194,14 +179,6 @@ class _$_MapsState extends _MapsState {
     return EqualUnmodifiableListView(_stations);
   }
 
-  final Set<Marker> _markers;
-  @override
-  Set<Marker> get markers {
-    if (_markers is EqualUnmodifiableSetView) return _markers;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableSetView(_markers);
-  }
-
   @override
   final GeolocationPermission permission;
   @override
@@ -211,7 +188,7 @@ class _$_MapsState extends _MapsState {
 
   @override
   String toString() {
-    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations, markers: $markers, permission: $permission, location: $location, mapType: $mapType)';
+    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations, permission: $permission, location: $location, mapType: $mapType)';
   }
 
   @override
@@ -223,7 +200,6 @@ class _$_MapsState extends _MapsState {
                 other.isLoading == isLoading) &&
             (identical(other.failure, failure) || other.failure == failure) &&
             const DeepCollectionEquality().equals(other._stations, _stations) &&
-            const DeepCollectionEquality().equals(other._markers, _markers) &&
             (identical(other.permission, permission) ||
                 other.permission == permission) &&
             (identical(other.location, location) ||
@@ -237,7 +213,6 @@ class _$_MapsState extends _MapsState {
       isLoading,
       failure,
       const DeepCollectionEquality().hash(_stations),
-      const DeepCollectionEquality().hash(_markers),
       permission,
       location,
       mapType);
@@ -254,7 +229,6 @@ abstract class _MapsState extends MapsState {
       {required final bool isLoading,
       required final Failure? failure,
       required final List<StationModel> stations,
-      required final Set<Marker> markers,
       required final GeolocationPermission permission,
       required final LatLng? location,
       required final MapType mapType}) = _$_MapsState;
@@ -266,8 +240,6 @@ abstract class _MapsState extends MapsState {
   Failure? get failure;
   @override
   List<StationModel> get stations;
-  @override
-  Set<Marker> get markers;
   @override
   GeolocationPermission get permission;
   @override
