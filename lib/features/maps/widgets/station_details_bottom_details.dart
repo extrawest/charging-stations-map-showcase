@@ -5,6 +5,7 @@ import '../models/connector_model.dart';
 import '../models/connector_status.dart';
 import '../models/station_model.dart';
 import 'connector_tile.dart';
+import 'distance_to_station.dart';
 import 'empty_image.dart';
 import 'station_details_coordinates.dart';
 import 'station_details_header.dart';
@@ -13,13 +14,16 @@ class StationDetailsBottomSheet extends StatelessWidget {
   const StationDetailsBottomSheet({
     super.key,
     required this.station,
+    required this.distance,
   });
 
   final StationModel station;
+  final double? distance;
 
   static Future<void> show(
     BuildContext context, {
     required StationModel station,
+    required double? distance,
   }) async {
     await showModalBottomSheet(
       context: context,
@@ -27,7 +31,10 @@ class StationDetailsBottomSheet extends StatelessWidget {
       isScrollControlled: true,
       builder: (_) => Wrap(
         children: [
-          StationDetailsBottomSheet(station: station),
+          StationDetailsBottomSheet(
+            station: station,
+            distance: distance,
+          ),
         ],
       ),
     );
@@ -46,9 +53,12 @@ class StationDetailsBottomSheet extends StatelessWidget {
             status: station.status,
           ),
           const SizedBox(height: 25),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: StationDetailsCoordinated(coordinates: station.position),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              StationDetailsCoordinated(coordinates: station.position),
+              if (distance != null) DistanceToStation(distance: distance!),
+            ],
           ),
           const SizedBox(height: 25),
           const EmptyImage(),
@@ -103,12 +113,12 @@ const _mockConnectors = [
     name: 'CHAdeMO',
     price: 5.00,
     capacity: 200,
-    status: ConnectorStatus.available,
+    status: ConnectorStatus.inUse,
   ),
   ConnectorModel(
     name: 'Type 2(AC)',
     price: 3.00,
     capacity: 22,
-    status: ConnectorStatus.available,
+    status: ConnectorStatus.inUse,
   )
 ];

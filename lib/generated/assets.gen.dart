@@ -100,12 +100,16 @@ class $AssetsImagesStationDetailsGen {
   SvgGenImage get connector =>
       const SvgGenImage('assets/images/station_details/connector.svg');
 
+  /// File path: assets/images/station_details/distance.svg
+  SvgGenImage get distance =>
+      const SvgGenImage('assets/images/station_details/distance.svg');
+
   /// File path: assets/images/station_details/image.svg
   SvgGenImage get image =>
       const SvgGenImage('assets/images/station_details/image.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [connector, image];
+  List<SvgGenImage> get values => [connector, distance, image];
 }
 
 class Assets {

@@ -10,6 +10,8 @@ abstract class GeolocationService {
   Future<Either<Failure, bool>> checkIfGeolocationServiceEnabled();
   Future<Either<Failure, GeolocationPermission>> requestGeolocationPermission();
   Future<Either<Failure, void>> openLocationSettings();
+
+  double calculateDistance(LatLng latLng1, LatLng latLng2);
 }
 
 class GeolocationServiceImpl implements GeolocationService {
@@ -77,5 +79,15 @@ class GeolocationServiceImpl implements GeolocationService {
     } catch (error) {
       return Left(GeolocationFailure(message: error.toString()));
     }
+  }
+
+  @override
+  double calculateDistance(LatLng latLng1, LatLng latLng2) {
+    return Geolocator.distanceBetween(
+      latLng1.latitude,
+      latLng1.longitude,
+      latLng2.latitude,
+      latLng2.longitude,
+    );
   }
 }

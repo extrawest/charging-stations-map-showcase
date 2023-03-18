@@ -63,7 +63,8 @@ class __MapsPageState extends State<_MapsPage> {
             return Center(child: Text(state.failure!.message!));
           }
           return _buildMap(
-            state.stations,
+            state.clusterItems,
+            state.stations.firstOrNull?.position,
             state.permission == GeolocationPermission.denied,
             state.mapType,
           );
@@ -73,12 +74,11 @@ class __MapsPageState extends State<_MapsPage> {
   }
 
   Widget _buildMap(
-    List<StationModel> stations,
+    List<StationClusterItem> stations,
+    LatLng? initialCameraPosition,
     bool showPermissionWarning,
     MapType mapType,
   ) {
-    final cameraPositon = stations.firstOrNull?.position;
-
     return Stack(
       children: [
         GoogleMap(
@@ -89,16 +89,25 @@ class __MapsPageState extends State<_MapsPage> {
           onMapCreated: (controller) {
             _controller = controller;
             _clusterManager = ClusterManager<StationClusterItem>(
-              stations.map((station) => station.clusterItem),
+              stations,
               (markers) {
                 setState(() {
                   _markers = markers;
                 });
               },
               markerBuilder: MarkerBuilder(
-                onZoom: () => _controller?.moveCamera(CameraUpdate.zoomIn()),
-                onOpenDetails: (station) =>
-                    StationDetailsBottomSheet.show(context, station: station),
+                onZoom: (location) async {
+                  final zoom = await _controller?.getZoomLevel() ?? 0;
+                  _controller?.moveCamera(
+                    CameraUpdate.newLatLngZoom(location, zoom + 1),
+                  );
+                },
+                onOpenDetails: (station, distance) =>
+                    StationDetailsBottomSheet.show(
+                  context,
+                  station: station,
+                  distance: distance,
+                ),
               ),
             );
             _clusterManager?.setMapId(controller.mapId);
@@ -107,7 +116,7 @@ class __MapsPageState extends State<_MapsPage> {
           onCameraIdle: () => _clusterManager?.updateMap(),
           onCameraMove: (position) => _clusterManager?.onCameraMove(position),
           initialCameraPosition: CameraPosition(
-            target: cameraPositon ?? const LatLng(0, 0),
+            target: initialCameraPosition ?? const LatLng(0, 0),
             zoom: 10,
           ),
         ),

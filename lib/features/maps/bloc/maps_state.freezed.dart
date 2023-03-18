@@ -17,11 +17,14 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$MapsState {
   bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLocationLoading => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
   List<StationModel> get stations => throw _privateConstructorUsedError;
   GeolocationPermission get permission => throw _privateConstructorUsedError;
   LatLng? get location => throw _privateConstructorUsedError;
   MapType get mapType => throw _privateConstructorUsedError;
+  List<StationClusterItem> get clusterItems =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MapsStateCopyWith<MapsState> get copyWith =>
@@ -35,11 +38,13 @@ abstract class $MapsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      bool isLocationLoading,
       Failure? failure,
       List<StationModel> stations,
       GeolocationPermission permission,
       LatLng? location,
-      MapType mapType});
+      MapType mapType,
+      List<StationClusterItem> clusterItems});
 }
 
 /// @nodoc
@@ -56,16 +61,22 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isLocationLoading = null,
     Object? failure = freezed,
     Object? stations = null,
     Object? permission = null,
     Object? location = freezed,
     Object? mapType = null,
+    Object? clusterItems = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLocationLoading: null == isLocationLoading
+          ? _value.isLocationLoading
+          : isLocationLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       failure: freezed == failure
           ? _value.failure
@@ -87,6 +98,10 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
           ? _value.mapType
           : mapType // ignore: cast_nullable_to_non_nullable
               as MapType,
+      clusterItems: null == clusterItems
+          ? _value.clusterItems
+          : clusterItems // ignore: cast_nullable_to_non_nullable
+              as List<StationClusterItem>,
     ) as $Val);
   }
 }
@@ -100,11 +115,13 @@ abstract class _$$_MapsStateCopyWith<$Res> implements $MapsStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
+      bool isLocationLoading,
       Failure? failure,
       List<StationModel> stations,
       GeolocationPermission permission,
       LatLng? location,
-      MapType mapType});
+      MapType mapType,
+      List<StationClusterItem> clusterItems});
 }
 
 /// @nodoc
@@ -119,16 +136,22 @@ class __$$_MapsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
+    Object? isLocationLoading = null,
     Object? failure = freezed,
     Object? stations = null,
     Object? permission = null,
     Object? location = freezed,
     Object? mapType = null,
+    Object? clusterItems = null,
   }) {
     return _then(_$_MapsState(
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLocationLoading: null == isLocationLoading
+          ? _value.isLocationLoading
+          : isLocationLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       failure: freezed == failure
           ? _value.failure
@@ -150,6 +173,10 @@ class __$$_MapsStateCopyWithImpl<$Res>
           ? _value.mapType
           : mapType // ignore: cast_nullable_to_non_nullable
               as MapType,
+      clusterItems: null == clusterItems
+          ? _value._clusterItems
+          : clusterItems // ignore: cast_nullable_to_non_nullable
+              as List<StationClusterItem>,
     ));
   }
 }
@@ -159,16 +186,21 @@ class __$$_MapsStateCopyWithImpl<$Res>
 class _$_MapsState extends _MapsState {
   const _$_MapsState(
       {required this.isLoading,
+      required this.isLocationLoading,
       required this.failure,
       required final List<StationModel> stations,
       required this.permission,
       required this.location,
-      required this.mapType})
+      required this.mapType,
+      required final List<StationClusterItem> clusterItems})
       : _stations = stations,
+        _clusterItems = clusterItems,
         super._();
 
   @override
   final bool isLoading;
+  @override
+  final bool isLocationLoading;
   @override
   final Failure? failure;
   final List<StationModel> _stations;
@@ -185,10 +217,17 @@ class _$_MapsState extends _MapsState {
   final LatLng? location;
   @override
   final MapType mapType;
+  final List<StationClusterItem> _clusterItems;
+  @override
+  List<StationClusterItem> get clusterItems {
+    if (_clusterItems is EqualUnmodifiableListView) return _clusterItems;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_clusterItems);
+  }
 
   @override
   String toString() {
-    return 'MapsState(isLoading: $isLoading, failure: $failure, stations: $stations, permission: $permission, location: $location, mapType: $mapType)';
+    return 'MapsState(isLoading: $isLoading, isLocationLoading: $isLocationLoading, failure: $failure, stations: $stations, permission: $permission, location: $location, mapType: $mapType, clusterItems: $clusterItems)';
   }
 
   @override
@@ -198,24 +237,30 @@ class _$_MapsState extends _MapsState {
             other is _$_MapsState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
+            (identical(other.isLocationLoading, isLocationLoading) ||
+                other.isLocationLoading == isLocationLoading) &&
             (identical(other.failure, failure) || other.failure == failure) &&
             const DeepCollectionEquality().equals(other._stations, _stations) &&
             (identical(other.permission, permission) ||
                 other.permission == permission) &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            (identical(other.mapType, mapType) || other.mapType == mapType));
+            (identical(other.mapType, mapType) || other.mapType == mapType) &&
+            const DeepCollectionEquality()
+                .equals(other._clusterItems, _clusterItems));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       isLoading,
+      isLocationLoading,
       failure,
       const DeepCollectionEquality().hash(_stations),
       permission,
       location,
-      mapType);
+      mapType,
+      const DeepCollectionEquality().hash(_clusterItems));
 
   @JsonKey(ignore: true)
   @override
@@ -227,15 +272,19 @@ class _$_MapsState extends _MapsState {
 abstract class _MapsState extends MapsState {
   const factory _MapsState(
       {required final bool isLoading,
+      required final bool isLocationLoading,
       required final Failure? failure,
       required final List<StationModel> stations,
       required final GeolocationPermission permission,
       required final LatLng? location,
-      required final MapType mapType}) = _$_MapsState;
+      required final MapType mapType,
+      required final List<StationClusterItem> clusterItems}) = _$_MapsState;
   const _MapsState._() : super._();
 
   @override
   bool get isLoading;
+  @override
+  bool get isLocationLoading;
   @override
   Failure? get failure;
   @override
@@ -246,6 +295,8 @@ abstract class _MapsState extends MapsState {
   LatLng? get location;
   @override
   MapType get mapType;
+  @override
+  List<StationClusterItem> get clusterItems;
   @override
   @JsonKey(ignore: true)
   _$$_MapsStateCopyWith<_$_MapsState> get copyWith =>

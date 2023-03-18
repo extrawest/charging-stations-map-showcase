@@ -1,7 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'marker_component.dart';
-
-// ignore: avoid_classes_with_only_static_members
 
 const _clusterColor = Colors.orange;
 
@@ -10,7 +9,15 @@ class StationMarker extends MarkerComponent {
     required Color color,
     required this.count,
   })  : _color = count > 1 ? _clusterColor : color,
-        super(const Size(30, 18));
+        super(_size);
+
+  static Size get _size {
+    const size = Size(30, 18);
+    if (kIsWeb) {
+      return size / 3;
+    }
+    return size;
+  }
 
   final Color _color;
   final int count;
@@ -18,9 +25,9 @@ class StationMarker extends MarkerComponent {
   @override
   void draw(Canvas canvas) {
     canvas.drawCircle(Offset(size.width * 2.3, size.height * 3.5),
-        size.height * 2.5 + 18, Paint()..color = Colors.white);
+        size.height * 3.5, Paint()..color = Colors.white);
     canvas.drawCircle(Offset(size.width * 2.3, size.height * 3.5),
-        size.height * 2.5 + 12, Paint()..color = _color);
+        size.height * 3.5 - size.height / 3, Paint()..color = _color);
     canvas.drawCircle(Offset(size.width * 2.3, size.height * 3.5),
         size.height * 2.5, Paint()..color = Colors.white);
 
@@ -35,13 +42,13 @@ class StationMarker extends MarkerComponent {
     final painter = TextPainter(textDirection: TextDirection.ltr);
     painter.text = TextSpan(
       text: count.toString(),
-      style: TextStyle(fontSize: 48, color: _color),
+      style: TextStyle(fontSize: size.height + size.width, color: _color),
     );
     painter.layout();
 
     painter.paint(
       canvas,
-      Offset(size.width * 2.3 - painter.width / 2, 32),
+      Offset(size.width * 2.3 - painter.width / 1.9, size.height * 2),
     );
   }
 

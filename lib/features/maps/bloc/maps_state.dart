@@ -12,11 +12,13 @@ part 'maps_state.freezed.dart';
 class MapsState with _$MapsState {
   const factory MapsState({
     required bool isLoading,
+    required bool isLocationLoading,
     required Failure? failure,
     required List<StationModel> stations,
     required GeolocationPermission permission,
     required LatLng? location,
     required MapType mapType,
+    required List<StationClusterItem> clusterItems,
   }) = _MapsState;
 
   const MapsState._();
@@ -24,12 +26,11 @@ class MapsState with _$MapsState {
   factory MapsState.initial() => const MapsState(
         failure: null,
         isLoading: false,
+        isLocationLoading: false,
         stations: [],
         permission: GeolocationPermission.unset,
         location: null,
         mapType: MapType.normal,
+        clusterItems: [],
       );
-
-  List<StationClusterItem> get clusterItems =>
-      stations.map((station) => station.clusterItem).toList();
 }

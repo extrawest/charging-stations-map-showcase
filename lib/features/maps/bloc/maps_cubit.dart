@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fpdart/fpdart.dart';
@@ -29,6 +31,50 @@ class MapsCubit extends Cubit<MapsState> {
         (stations) => state.copyWith(stations: stations),
       ),
     );
+    emit(state.copyWith(isLoading: false));
+    loadClusterItems();
+  }
+
+  Future<void> loadClusterItems() async {
+    emit(state.copyWith(isLocationLoading: true));
+
+    await requestGeolocatorPermission();
+
+    emit(state.copyWith(isLocationLoading: false));
+
+    if (state.permission != GeolocationPermission.allowed) {
+      return emit(
+        state.copyWith(
+          clusterItems: state.stations
+              .map((station) => station.clusterItem(distance: null))
+              .toList(),
+        ),
+      );
+    }
+
+    emit(state.copyWith(isLoading: true));
+
+    final locationResult = await _geolocationService.getCurrentPosition();
+    emit(
+      locationResult.match(
+        (failure) => state.copyWith(failure: failure),
+        (myPosition) {
+          final clusterItems = state.stations
+              .map(
+                (station) => station.clusterItem(
+                  distance: _geolocationService.calculateDistance(
+                    station.position,
+                    myPosition,
+                  ),
+                ),
+              )
+              .toList();
+
+          return state.copyWith(clusterItems: clusterItems);
+        },
+      ),
+    );
+
     emit(state.copyWith(isLoading: false));
   }
 
@@ -62,12 +108,18 @@ class MapsCubit extends Cubit<MapsState> {
   Future<void> locate({
     required ValueSetter<LatLng> onLocate,
   }) async {
+    emit(state.copyWith(isLocationLoading: true));
+
+    await requestGeolocatorPermission();
+
     final locationResult = await _geolocationService.getCurrentPosition();
 
     locationResult.match(
       (failure) => emit(state.copyWith(failure: failure)),
       onLocate,
     );
+
+    emit(state.copyWith(isLocationLoading: false));
   }
 
   Future<void> openLocationSettings() async {

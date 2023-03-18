@@ -91,6 +91,15 @@ class _ActionButton extends StatelessWidget {
     }
   }
 
+  Color get textColor {
+    switch (status) {
+      case ConnectorStatus.available:
+        return AppColors.background;
+      case ConnectorStatus.inUse:
+        return AppColors.textGrey;
+    }
+  }
+
   String get text {
     switch (status) {
       case ConnectorStatus.available:
@@ -110,7 +119,10 @@ class _ActionButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: TextStyle(fontSize: 11, color: Theme.of(context).primaryColor),
+        style: TextStyle(
+          fontSize: 11,
+          color: textColor,
+        ),
       ),
     );
   }

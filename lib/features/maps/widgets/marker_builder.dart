@@ -13,23 +13,29 @@ class MarkerBuilder {
     required this.onZoom,
   });
 
-  final VoidCallback onZoom;
-  final ValueSetter<StationModel> onOpenDetails;
+  final Function(LatLng) onZoom;
+  final Function(StationModel, double?) onOpenDetails;
 
   final Map<StationStatus, Map<int, BitmapDescriptor>> _statusToDescriptor = {};
 
   Future<Marker> call(Cluster<StationClusterItem> cluster) async {
     return Marker(
-      markerId: MarkerId(cluster.getId()),
-      position: cluster.location,
-      icon: await _descriptorForStatus(
-        cluster.items.map((item) => item.status).status,
-        cluster.count,
-      ),
-      onTap: cluster.count > 1
-          ? onZoom
-          : () => onOpenDetails(cluster.items.first.station),
-    );
+        markerId: MarkerId(cluster.getId()),
+        position: cluster.location,
+        icon: await _descriptorForStatus(
+          cluster.items.map((item) => item.status).status,
+          cluster.count,
+        ),
+        onTap: () {
+          if (cluster.count > 1) {
+            onZoom(cluster.location);
+          } else {
+            onOpenDetails(
+              cluster.items.first.station,
+              cluster.items.first.distance,
+            );
+          }
+        });
   }
 
   Future<BitmapDescriptor> _descriptorForStatus(
