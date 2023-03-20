@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:maps_app/common/widgets/page_widget.dart';
+import '../../common/widgets/page_widget.dart';
 
 import '../features/features.dart';
 
 const String homeRoute = '/home';
+const String walletRoute = '/wallet';
 
 final goRouter = GoRouter(
   initialLocation: homeRoute,
@@ -13,7 +14,7 @@ final goRouter = GoRouter(
     ShellRoute(
       builder: (context, state, child) => DashboardScreen(
         key: state.pageKey,
-        pages: const ['/home', '/test1', '/test2', '/test3', '/test4'],
+        pages: const [homeRoute, '/test2', '/test3', walletRoute, '/test4'],
         child: child,
       ),
       routes: [
@@ -22,13 +23,6 @@ final goRouter = GoRouter(
           pageBuilder: (context, state) => _TransitionPage(
             key: state.pageKey,
             child: const MapsScreen(),
-          ),
-        ),
-        GoRoute(
-          path: '/test1',
-          pageBuilder: (context, state) => _TransitionPage(
-            key: state.pageKey,
-            child: const PageWidget(),
           ),
         ),
         GoRoute(
@@ -43,6 +37,13 @@ final goRouter = GoRouter(
           pageBuilder: (context, state) => _TransitionPage(
             key: state.pageKey,
             child: const PageWidget(),
+          ),
+        ),
+        GoRoute(
+          path: walletRoute,
+          pageBuilder: (context, state) => _TransitionPage(
+            key: state.pageKey,
+            child: const WalletScreen(),
           ),
         ),
         GoRoute(

@@ -14,9 +14,9 @@ abstract class InjectorModule {
     locator.registerLazySingleton<StationsApiService>(
       () => StationsApiService(locator()),
     );
-    locator.registerSingleton<GeolocationService>(GeolocationServiceImpl());
-    locator.registerLazySingleton<StationRepository>(
-      () => StationRepositoryImpl(apiService: locator()),
+
+    locator.registerLazySingleton<WalletApiService>(
+      () => WalletApiService(locator()),
     );
   }
 }

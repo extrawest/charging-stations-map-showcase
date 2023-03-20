@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:maps_app/common/widgets/global_repository_provider.dart';
 
 import 'app.dart';
 import 'common/configuration/configuration.dart';
@@ -26,9 +27,11 @@ Future<void> main() async {
       path: AppLocalization.translationsFolderPath,
       supportedLocales: AppLocalization.supportedLocales,
       fallbackLocale: AppLocalization.englishLocale,
-      child: GlobalBlocProvider(
-        themeBox: themeBox,
-        child: const App(),
+      child: GlobalRepositoryProvider(
+        child: GlobalBlocProvider(
+          themeBox: themeBox,
+          child: const App(),
+        ),
       ),
     ),
   );
