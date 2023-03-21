@@ -13,6 +13,7 @@ class WalletHistoryModel with _$WalletHistoryModel {
     required DateTime datetimeFinished,
     required double bill,
     required double consumedKwh,
+    required String stationName,
   }) = _WalletHistoryModel;
 
   const WalletHistoryModel._();

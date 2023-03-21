@@ -53,5 +53,6 @@ ThemeData lightTheme = ThemeData(
     bodyLarge: AppTextStyles.bodyTextLarge,
     titleSmall: AppTextStyles.titleSmall,
     titleMedium: AppTextStyles.titleMedium,
+    titleLarge: AppTextStyles.titleLarge,
   ),
 );

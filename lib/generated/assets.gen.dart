@@ -27,13 +27,25 @@ class $AssetsI18nGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  $AssetsImagesAppBarGen get appBar => const $AssetsImagesAppBarGen();
   $AssetsImagesBottomNavBarGen get bottomNavBar =>
       const $AssetsImagesBottomNavBarGen();
+  $AssetsImagesChargingGen get charging => const $AssetsImagesChargingGen();
   $AssetsImagesMapActionsGen get mapActions =>
       const $AssetsImagesMapActionsGen();
   $AssetsImagesMapTypesGen get mapTypes => const $AssetsImagesMapTypesGen();
   $AssetsImagesStationDetailsGen get stationDetails =>
       const $AssetsImagesStationDetailsGen();
+}
+
+class $AssetsImagesAppBarGen {
+  const $AssetsImagesAppBarGen();
+
+  /// File path: assets/images/app_bar/back.svg
+  SvgGenImage get back => const SvgGenImage('assets/images/app_bar/back.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [back];
 }
 
 class $AssetsImagesBottomNavBarGen {
@@ -61,6 +73,17 @@ class $AssetsImagesBottomNavBarGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [favourites, lightning, map, profile, wallet];
+}
+
+class $AssetsImagesChargingGen {
+  const $AssetsImagesChargingGen();
+
+  /// File path: assets/images/charging/charge.svg
+  SvgGenImage get charge =>
+      const SvgGenImage('assets/images/charging/charge.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [charge];
 }
 
 class $AssetsImagesMapActionsGen {

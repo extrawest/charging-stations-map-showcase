@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:maps_app/common/router.dart';
 
 import '../../../generated/assets.gen.dart';
 import '../../../generated/locale_keys.g.dart';
@@ -33,8 +34,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: widget.child,
       bottomNavigationBar: AppBottomNavigationBar(
         onIndexChanged: (index) {
-          setState(() => _index = index);
-          context.push(widget.pages[index]);
+          if (index != 2) {
+            setState(() => _index = index);
+            context.push(widget.pages[index]);
+          }
         },
         selectedItemIndex: _index,
         items: _items,
@@ -42,10 +45,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       floatingActionButton: NavigationFloatingButton(
-        isActive: _index == 2,
-        onPressed: () => setState(() {
-          _index = 2;
-        }),
+        onPressed: () {
+          context.push(chargingRoute);
+        },
       ),
     );
   }

@@ -13,6 +13,7 @@ _$_WalletHistoryModel _$$_WalletHistoryModelFromJson(
       datetimeFinished: DateTime.parse(json['datetime_finished'] as String),
       bill: (json['bill'] as num).toDouble(),
       consumedKwh: (json['consumed_kwh'] as num).toDouble(),
+      stationName: json['station_name'] as String,
     );
 
 Map<String, dynamic> _$$_WalletHistoryModelToJson(
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$_WalletHistoryModelToJson(
       'datetime_finished': instance.datetimeFinished.toIso8601String(),
       'bill': instance.bill,
       'consumed_kwh': instance.consumedKwh,
+      'station_name': instance.stationName,
     };

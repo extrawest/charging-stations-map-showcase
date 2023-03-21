@@ -24,6 +24,7 @@ mixin _$WalletHistoryModel {
   DateTime get datetimeFinished => throw _privateConstructorUsedError;
   double get bill => throw _privateConstructorUsedError;
   double get consumedKwh => throw _privateConstructorUsedError;
+  String get stationName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +42,8 @@ abstract class $WalletHistoryModelCopyWith<$Res> {
       {DateTime datetimeStarted,
       DateTime datetimeFinished,
       double bill,
-      double consumedKwh});
+      double consumedKwh,
+      String stationName});
 }
 
 /// @nodoc
@@ -61,6 +63,7 @@ class _$WalletHistoryModelCopyWithImpl<$Res, $Val extends WalletHistoryModel>
     Object? datetimeFinished = null,
     Object? bill = null,
     Object? consumedKwh = null,
+    Object? stationName = null,
   }) {
     return _then(_value.copyWith(
       datetimeStarted: null == datetimeStarted
@@ -79,6 +82,10 @@ class _$WalletHistoryModelCopyWithImpl<$Res, $Val extends WalletHistoryModel>
           ? _value.consumedKwh
           : consumedKwh // ignore: cast_nullable_to_non_nullable
               as double,
+      stationName: null == stationName
+          ? _value.stationName
+          : stationName // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -95,7 +102,8 @@ abstract class _$$_WalletHistoryModelCopyWith<$Res>
       {DateTime datetimeStarted,
       DateTime datetimeFinished,
       double bill,
-      double consumedKwh});
+      double consumedKwh,
+      String stationName});
 }
 
 /// @nodoc
@@ -113,6 +121,7 @@ class __$$_WalletHistoryModelCopyWithImpl<$Res>
     Object? datetimeFinished = null,
     Object? bill = null,
     Object? consumedKwh = null,
+    Object? stationName = null,
   }) {
     return _then(_$_WalletHistoryModel(
       datetimeStarted: null == datetimeStarted
@@ -131,6 +140,10 @@ class __$$_WalletHistoryModelCopyWithImpl<$Res>
           ? _value.consumedKwh
           : consumedKwh // ignore: cast_nullable_to_non_nullable
               as double,
+      stationName: null == stationName
+          ? _value.stationName
+          : stationName // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -143,7 +156,8 @@ class _$_WalletHistoryModel extends _WalletHistoryModel {
       {required this.datetimeStarted,
       required this.datetimeFinished,
       required this.bill,
-      required this.consumedKwh})
+      required this.consumedKwh,
+      required this.stationName})
       : super._();
 
   factory _$_WalletHistoryModel.fromJson(Map<String, dynamic> json) =>
@@ -157,10 +171,12 @@ class _$_WalletHistoryModel extends _WalletHistoryModel {
   final double bill;
   @override
   final double consumedKwh;
+  @override
+  final String stationName;
 
   @override
   String toString() {
-    return 'WalletHistoryModel(datetimeStarted: $datetimeStarted, datetimeFinished: $datetimeFinished, bill: $bill, consumedKwh: $consumedKwh)';
+    return 'WalletHistoryModel(datetimeStarted: $datetimeStarted, datetimeFinished: $datetimeFinished, bill: $bill, consumedKwh: $consumedKwh, stationName: $stationName)';
   }
 
   @override
@@ -174,13 +190,15 @@ class _$_WalletHistoryModel extends _WalletHistoryModel {
                 other.datetimeFinished == datetimeFinished) &&
             (identical(other.bill, bill) || other.bill == bill) &&
             (identical(other.consumedKwh, consumedKwh) ||
-                other.consumedKwh == consumedKwh));
+                other.consumedKwh == consumedKwh) &&
+            (identical(other.stationName, stationName) ||
+                other.stationName == stationName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, datetimeStarted, datetimeFinished, bill, consumedKwh);
+  int get hashCode => Object.hash(runtimeType, datetimeStarted,
+      datetimeFinished, bill, consumedKwh, stationName);
 
   @JsonKey(ignore: true)
   @override
@@ -202,7 +220,8 @@ abstract class _WalletHistoryModel extends WalletHistoryModel {
       {required final DateTime datetimeStarted,
       required final DateTime datetimeFinished,
       required final double bill,
-      required final double consumedKwh}) = _$_WalletHistoryModel;
+      required final double consumedKwh,
+      required final String stationName}) = _$_WalletHistoryModel;
   const _WalletHistoryModel._() : super._();
 
   factory _WalletHistoryModel.fromJson(Map<String, dynamic> json) =
@@ -216,6 +235,8 @@ abstract class _WalletHistoryModel extends WalletHistoryModel {
   double get bill;
   @override
   double get consumedKwh;
+  @override
+  String get stationName;
   @override
   @JsonKey(ignore: true)
   _$$_WalletHistoryModelCopyWith<_$_WalletHistoryModel> get copyWith =>

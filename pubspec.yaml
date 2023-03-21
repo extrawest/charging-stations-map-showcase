@@ -68,6 +68,8 @@ flutter:
     - assets/images/map_actions/
     - assets/images/map_types/
     - assets/images/station_details/
+    - assets/images/charging/
+    - assets/images/app_bar/
     - assets/i18n/
 
 flutter_gen:

@@ -6,15 +6,23 @@ import '../features/features.dart';
 
 const String homeRoute = '/home';
 const String walletRoute = '/wallet';
+const String chargingRoute = '/charging';
+
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+    GlobalKey(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey =
+    GlobalKey(debugLabel: 'shell');
 
 final goRouter = GoRouter(
   initialLocation: homeRoute,
+  navigatorKey: _rootNavigatorKey,
   debugLogDiagnostics: true,
   routes: [
     ShellRoute(
+      navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) => DashboardScreen(
         key: state.pageKey,
-        pages: const [homeRoute, '/test2', '/test3', walletRoute, '/test4'],
+        pages: const [homeRoute, '/test2', '', walletRoute, '/test4'],
         child: child,
       ),
       routes: [
@@ -27,13 +35,6 @@ final goRouter = GoRouter(
         ),
         GoRoute(
           path: '/test2',
-          pageBuilder: (context, state) => _TransitionPage(
-            key: state.pageKey,
-            child: const PageWidget(),
-          ),
-        ),
-        GoRoute(
-          path: '/test3',
           pageBuilder: (context, state) => _TransitionPage(
             key: state.pageKey,
             child: const PageWidget(),
@@ -54,6 +55,14 @@ final goRouter = GoRouter(
           ),
         ),
       ],
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: chargingRoute,
+      pageBuilder: (context, state) => _TransitionPage(
+        key: state.pageKey,
+        child: const ChargingScreen(),
+      ),
     ),
   ],
 );

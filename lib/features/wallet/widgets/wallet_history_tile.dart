@@ -23,9 +23,13 @@ class WalletHistoryTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Station name',
-                style: Theme.of(context).textTheme.bodyLarge,
+              Expanded(
+                child: Text(
+                  walletHistoryModel.stationName,
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
               Text(
                 DateFormat('yyyy MMMM dd, hh:mm', 'en').format(
