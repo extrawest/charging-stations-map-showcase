@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../common/failure/failure.dart';
-import '../models/geolocation_permission.dart';
+import '../../geolocation/models/geolocation_permission.dart';
 import '../models/station_cluster_item.dart';
 import '../models/station_model.dart';
 
@@ -15,7 +15,6 @@ class MapsState with _$MapsState {
     required bool isLocationLoading,
     required Failure? failure,
     required List<StationModel> stations,
-    required GeolocationPermission permission,
     required LatLng? location,
     required MapType mapType,
     required List<StationClusterItem> clusterItems,
@@ -23,13 +22,15 @@ class MapsState with _$MapsState {
 
   const MapsState._();
 
-  factory MapsState.initial() => const MapsState(
+  factory MapsState.initial({
+    required LatLng? location,
+  }) =>
+      MapsState(
         failure: null,
         isLoading: false,
         isLocationLoading: false,
         stations: [],
-        permission: GeolocationPermission.unset,
-        location: null,
+        location: location,
         mapType: MapType.normal,
         clusterItems: [],
       );

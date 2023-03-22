@@ -3,33 +3,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:maps_app/features/maps/widgets/station_details_bottom_details.dart';
-import '../../../common/di/injector_module.dart';
-import '../../../features/maps/models/station_cluster_item.dart';
+
+import '../../geolocation/geolocation.dart';
+import '../../search/widgets/search_field.dart';
 import '../bloc/maps_cubit.dart';
 import '../bloc/maps_state.dart';
-import '../models/geolocation_permission.dart';
+import '../models/station_cluster_item.dart';
 import '../widgets/geolocation_permission_warning.dart';
 import '../widgets/map_actions.dart';
 import '../widgets/marker_builder.dart';
+import '../widgets/station_details_bottom_details.dart';
 
 class MapsScreen extends StatelessWidget {
   const MapsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MapsCubit(
-        stationRepository: context.read(),
-        geolocationService: context.read(),
+    return BlocBuilder<GeolocationCubit, GeolocationState>(
+      builder: (context, state) => BlocProvider(
+        key: ValueKey(state),
+        create: (context) => MapsCubit(
+          stationRepository: context.read(),
+          location: state.position,
+        ),
+        child: _MapsPage(showPermissionWarning: state.permission.isDenied),
       ),
-      child: const _MapsPage(),
     );
   }
 }
 
 class _MapsPage extends StatefulWidget {
-  const _MapsPage();
+  const _MapsPage({
+    required this.showPermissionWarning,
+  });
+
+  final bool showPermissionWarning;
 
   @override
   State<_MapsPage> createState() => __MapsPageState();
@@ -64,7 +72,6 @@ class __MapsPageState extends State<_MapsPage> {
           return _buildMap(
             state.clusterItems,
             state.stations.firstOrNull?.position,
-            state.permission == GeolocationPermission.denied,
             state.mapType,
           );
         },
@@ -75,7 +82,6 @@ class __MapsPageState extends State<_MapsPage> {
   Widget _buildMap(
     List<StationClusterItem> stations,
     LatLng? initialCameraPosition,
-    bool showPermissionWarning,
     MapType mapType,
   ) {
     return Stack(
@@ -119,18 +125,30 @@ class __MapsPageState extends State<_MapsPage> {
             zoom: 10,
           ),
         ),
+        const Positioned.fill(
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: SafeArea(
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: SearchField.disabled(),
+              ),
+            ),
+          ),
+        ),
         Positioned.fill(
           child: Align(
             alignment: Alignment.bottomRight,
             child: MapActions(onCameraMove: moveCameraTo),
           ),
         ),
-        if (showPermissionWarning)
+        if (widget.showPermissionWarning)
           Positioned.fill(
             child: Align(
               alignment: Alignment.topCenter,
               child: GeolocationPermissionWarning(
-                onOpenSettings: context.read<MapsCubit>().openLocationSettings,
+                onOpenSettings:
+                    context.read<GeolocationCubit>().openLocationSettings,
               ),
             ),
           ),

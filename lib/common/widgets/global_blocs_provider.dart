@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:maps_app/features/wallet/bloc/wallet_cubit.dart';
 
+import '../../features/geolocation/geolocation.dart';
 import '../../features/theme/theme.dart';
+import '../../features/wallet/bloc/wallet_cubit.dart';
 
 class GlobalBlocProvider extends StatelessWidget {
   const GlobalBlocProvider({
@@ -26,6 +27,11 @@ class GlobalBlocProvider extends StatelessWidget {
           create: (context) => WalletCubit(
             walletRepository: context.read(),
           )..loadWalletModel(),
+        ),
+        BlocProvider<GeolocationCubit>(
+          create: (context) => GeolocationCubit(
+            geolocationService: context.read(),
+          )..init(),
         ),
       ],
       child: child,

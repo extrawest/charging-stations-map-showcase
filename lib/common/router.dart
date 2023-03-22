@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:maps_app/features/search/screens/search_screen.dart';
 import '../../common/widgets/page_widget.dart';
 
 import '../features/features.dart';
@@ -7,6 +8,7 @@ import '../features/features.dart';
 const String homeRoute = '/home';
 const String walletRoute = '/wallet';
 const String chargingRoute = '/charging';
+const String searchRoute = '/search';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey(debugLabel: 'root');
@@ -62,6 +64,14 @@ final goRouter = GoRouter(
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
         child: const ChargingScreen(),
+      ),
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: searchRoute,
+      pageBuilder: (context, state) => _TransitionPage(
+        key: state.pageKey,
+        child: const SearchScreen(),
       ),
     ),
   ],

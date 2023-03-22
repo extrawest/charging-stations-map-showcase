@@ -1,26 +1,18 @@
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fpdart/fpdart.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import '../../../common/failure/failure.dart';
-import '../models/geolocation_permission.dart';
+import '../../geolocation/geolocation.dart';
 import '../repositories/stations_repository.dart';
-import '../services/geolocation_service.dart';
 import 'maps_state.dart';
 
 class MapsCubit extends Cubit<MapsState> {
   MapsCubit({
     required StationRepository stationRepository,
-    required GeolocationService geolocationService,
+    required LatLng? location,
   })  : _stationRepository = stationRepository,
-        _geolocationService = geolocationService,
-        super(MapsState.initial());
+        super(MapsState.initial(location: location));
 
   final StationRepository _stationRepository;
-  final GeolocationService _geolocationService;
 
   Future<void> loadStations() async {
     emit(state.copyWith(isLoading: true));
@@ -38,11 +30,11 @@ class MapsCubit extends Cubit<MapsState> {
   Future<void> loadClusterItems() async {
     emit(state.copyWith(isLocationLoading: true));
 
-    await requestGeolocatorPermission();
+    // await requestGeolocatorPermission();
 
     emit(state.copyWith(isLocationLoading: false));
 
-    if (state.permission != GeolocationPermission.allowed) {
+    if (state.location == null) {
       return emit(
         state.copyWith(
           clusterItems: state.stations
@@ -52,81 +44,18 @@ class MapsCubit extends Cubit<MapsState> {
       );
     }
 
-    emit(state.copyWith(isLoading: true));
-
-    final locationResult = await _geolocationService.getCurrentPosition();
-    emit(
-      locationResult.match(
-        (failure) => state.copyWith(failure: failure),
-        (myPosition) {
-          final clusterItems = state.stations
-              .map(
-                (station) => station.clusterItem(
-                  distance: _geolocationService.calculateDistance(
-                    station.position,
-                    myPosition,
-                  ),
-                ),
-              )
-              .toList();
-
-          return state.copyWith(clusterItems: clusterItems);
-        },
-      ),
-    );
-
-    emit(state.copyWith(isLoading: false));
-  }
-
-  Future<void> requestGeolocatorPermission() async {
-    final isServiceEnabledResult =
-        await _geolocationService.checkIfGeolocationServiceEnabled();
-
-    final newState = await isServiceEnabledResult
-        .bindFuture(requestPermissionIfEnabled)
-        .match(
-          (failure) => state.copyWith(failure: failure),
-          (permission) => state.copyWith(permission: permission),
+    final clusterItems = state.stations
+        .map(
+          (station) => station.clusterItem(
+            distance: GeolocationService.calculateDistance(
+              station.position,
+              state.location!,
+            ),
+          ),
         )
-        .run();
+        .toList();
 
-    emit(newState);
-  }
-
-  Future<Either<Failure, GeolocationPermission>> requestPermissionIfEnabled(
-    bool isEnabled,
-  ) async {
-    if (!isEnabled) {
-      return const Left(GeolocationServiceDisabledFailure());
-    }
-    final permissionResult =
-        await _geolocationService.requestGeolocationPermission();
-
-    return permissionResult;
-  }
-
-  Future<void> locate({
-    required ValueSetter<LatLng> onLocate,
-  }) async {
-    emit(state.copyWith(isLocationLoading: true));
-
-    await requestGeolocatorPermission();
-
-    final locationResult = await _geolocationService.getCurrentPosition();
-
-    locationResult.match(
-      (failure) => emit(state.copyWith(failure: failure)),
-      onLocate,
-    );
-
-    emit(state.copyWith(isLocationLoading: false));
-  }
-
-  Future<void> openLocationSettings() async {
-    final openSettingsResult = await _geolocationService.openLocationSettings();
-    openSettingsResult.mapLeft(
-      (failure) => emit(state.copyWith(failure: failure)),
-    );
+    emit(state.copyWith(clusterItems: clusterItems));
   }
 
   void setMapType(MapType mapType) {

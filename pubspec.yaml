@@ -70,6 +70,7 @@ flutter:
     - assets/images/station_details/
     - assets/images/charging/
     - assets/images/app_bar/
+    - assets/images/search/
     - assets/i18n/
 
 flutter_gen:

@@ -20,7 +20,6 @@ mixin _$MapsState {
   bool get isLocationLoading => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
   List<StationModel> get stations => throw _privateConstructorUsedError;
-  GeolocationPermission get permission => throw _privateConstructorUsedError;
   LatLng? get location => throw _privateConstructorUsedError;
   MapType get mapType => throw _privateConstructorUsedError;
   List<StationClusterItem> get clusterItems =>
@@ -41,7 +40,6 @@ abstract class $MapsStateCopyWith<$Res> {
       bool isLocationLoading,
       Failure? failure,
       List<StationModel> stations,
-      GeolocationPermission permission,
       LatLng? location,
       MapType mapType,
       List<StationClusterItem> clusterItems});
@@ -64,7 +62,6 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
     Object? isLocationLoading = null,
     Object? failure = freezed,
     Object? stations = null,
-    Object? permission = null,
     Object? location = freezed,
     Object? mapType = null,
     Object? clusterItems = null,
@@ -86,10 +83,6 @@ class _$MapsStateCopyWithImpl<$Res, $Val extends MapsState>
           ? _value.stations
           : stations // ignore: cast_nullable_to_non_nullable
               as List<StationModel>,
-      permission: null == permission
-          ? _value.permission
-          : permission // ignore: cast_nullable_to_non_nullable
-              as GeolocationPermission,
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -118,7 +111,6 @@ abstract class _$$_MapsStateCopyWith<$Res> implements $MapsStateCopyWith<$Res> {
       bool isLocationLoading,
       Failure? failure,
       List<StationModel> stations,
-      GeolocationPermission permission,
       LatLng? location,
       MapType mapType,
       List<StationClusterItem> clusterItems});
@@ -139,7 +131,6 @@ class __$$_MapsStateCopyWithImpl<$Res>
     Object? isLocationLoading = null,
     Object? failure = freezed,
     Object? stations = null,
-    Object? permission = null,
     Object? location = freezed,
     Object? mapType = null,
     Object? clusterItems = null,
@@ -161,10 +152,6 @@ class __$$_MapsStateCopyWithImpl<$Res>
           ? _value._stations
           : stations // ignore: cast_nullable_to_non_nullable
               as List<StationModel>,
-      permission: null == permission
-          ? _value.permission
-          : permission // ignore: cast_nullable_to_non_nullable
-              as GeolocationPermission,
       location: freezed == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
@@ -189,7 +176,6 @@ class _$_MapsState extends _MapsState {
       required this.isLocationLoading,
       required this.failure,
       required final List<StationModel> stations,
-      required this.permission,
       required this.location,
       required this.mapType,
       required final List<StationClusterItem> clusterItems})
@@ -212,8 +198,6 @@ class _$_MapsState extends _MapsState {
   }
 
   @override
-  final GeolocationPermission permission;
-  @override
   final LatLng? location;
   @override
   final MapType mapType;
@@ -227,7 +211,7 @@ class _$_MapsState extends _MapsState {
 
   @override
   String toString() {
-    return 'MapsState(isLoading: $isLoading, isLocationLoading: $isLocationLoading, failure: $failure, stations: $stations, permission: $permission, location: $location, mapType: $mapType, clusterItems: $clusterItems)';
+    return 'MapsState(isLoading: $isLoading, isLocationLoading: $isLocationLoading, failure: $failure, stations: $stations, location: $location, mapType: $mapType, clusterItems: $clusterItems)';
   }
 
   @override
@@ -241,8 +225,6 @@ class _$_MapsState extends _MapsState {
                 other.isLocationLoading == isLocationLoading) &&
             (identical(other.failure, failure) || other.failure == failure) &&
             const DeepCollectionEquality().equals(other._stations, _stations) &&
-            (identical(other.permission, permission) ||
-                other.permission == permission) &&
             (identical(other.location, location) ||
                 other.location == location) &&
             (identical(other.mapType, mapType) || other.mapType == mapType) &&
@@ -257,7 +239,6 @@ class _$_MapsState extends _MapsState {
       isLocationLoading,
       failure,
       const DeepCollectionEquality().hash(_stations),
-      permission,
       location,
       mapType,
       const DeepCollectionEquality().hash(_clusterItems));
@@ -275,7 +256,6 @@ abstract class _MapsState extends MapsState {
       required final bool isLocationLoading,
       required final Failure? failure,
       required final List<StationModel> stations,
-      required final GeolocationPermission permission,
       required final LatLng? location,
       required final MapType mapType,
       required final List<StationClusterItem> clusterItems}) = _$_MapsState;
@@ -289,8 +269,6 @@ abstract class _MapsState extends MapsState {
   Failure? get failure;
   @override
   List<StationModel> get stations;
-  @override
-  GeolocationPermission get permission;
   @override
   LatLng? get location;
   @override

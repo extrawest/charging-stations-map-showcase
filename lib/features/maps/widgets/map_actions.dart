@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../dashboard/widgets/bottom_navigation_bar.dart';
-import '../bloc/maps_cubit.dart';
-import '../bloc/maps_state.dart';
+import '../../geolocation/geolocation.dart';
 import 'map_action_button.dart';
 import 'maps_setting_bottom_sheet.dart';
 
@@ -26,11 +25,13 @@ class MapActions extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          BlocBuilder<MapsCubit, MapsState>(
+          BlocBuilder<GeolocationCubit, GeolocationState>(
             builder: (context, state) => MapActionButton.location(
-              isLoading: state.isLocationLoading,
+              isLoading: state.isLoading,
               onPressed: () {
-                context.read<MapsCubit>().locate(onLocate: onCameraMove);
+                if (state.position != null) {
+                  onCameraMove(state.position!);
+                }
               },
             ),
           ),

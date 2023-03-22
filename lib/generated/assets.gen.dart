@@ -34,6 +34,7 @@ class $AssetsImagesGen {
   $AssetsImagesMapActionsGen get mapActions =>
       const $AssetsImagesMapActionsGen();
   $AssetsImagesMapTypesGen get mapTypes => const $AssetsImagesMapTypesGen();
+  $AssetsImagesSearchGen get search => const $AssetsImagesSearchGen();
   $AssetsImagesStationDetailsGen get stationDetails =>
       const $AssetsImagesStationDetailsGen();
 }
@@ -114,6 +115,21 @@ class $AssetsImagesMapTypesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [normal, satellite];
+}
+
+class $AssetsImagesSearchGen {
+  const $AssetsImagesSearchGen();
+
+  /// File path: assets/images/search/prefix.svg
+  SvgGenImage get prefix =>
+      const SvgGenImage('assets/images/search/prefix.svg');
+
+  /// File path: assets/images/search/suffix.svg
+  SvgGenImage get suffix =>
+      const SvgGenImage('assets/images/search/suffix.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [prefix, suffix];
 }
 
 class $AssetsImagesStationDetailsGen {
