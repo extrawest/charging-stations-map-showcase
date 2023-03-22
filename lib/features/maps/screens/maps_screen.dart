@@ -128,11 +128,9 @@ class __MapsPageState extends State<_MapsPage> {
         const Positioned.fill(
           child: Align(
             alignment: Alignment.topCenter,
-            child: SafeArea(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
-                child: SearchField.disabled(),
-              ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              child: SearchField.disabled(),
             ),
           ),
         ),
