@@ -1,23 +1,41 @@
 {
   "bottom_nav_bar": {
-    "map": "MAP",
-    "favourites": "FAVOURITES",
-    "account": "ACCOUNT"
+    "map": "МАПА",
+    "favourites": "УЛЮБЛЕНЕ",
+    "account": "АККАУНТ"
   },
   "button": {
-    "apply": "Apply"
+    "apply": "Застосувати"
   },
   "map_type": {
-    "normal": "Normal",
-    "satellite": "Satellite"
+    "normal": "Звичвйна",
+    "satellite": "Супутник"
   },
   "station_detals": {
-    "connectors": "Connectors",
-    "coordinates": "Coordinates",
-    "status": "Status: {}",
-    "price_per_kwh": "$ {} per kWh",
+    "connectors": "Роз'єми",
+    "coordinates": "Координати",
+    "status": "Статус: {}",
+    "price_per_kwh": "$ {} за kWh",
     "kWh": "{} kWh",
-    "charge": "Charge",
-    "in_use": "In Use"
+    "charge": "Зарядити",
+    "in_use": "В Вживанні"
+  },
+  "wallet": {
+    "title": "Гаманець",
+    "balance": "Баланс",
+    "history": "Історія"
+  },
+  "charging": {
+    "title": "Сеанс зарядки",
+    "cost": "Ціна:",
+    "delivered": "Доставлено",
+    "starting_time": "Початковий час",
+    "speed": "Швидкість зарядки",
+    "amperage": "Сила струму",
+    "voltage": "Напруга",
+    "station_name": "Назва станції",
+    "tariff": "Тариф",
+    "coonrinated": "Координати",
+    "start_charging": "Почати зарядку"
   }
 }

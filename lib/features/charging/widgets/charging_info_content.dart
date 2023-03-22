@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:maps_app/features/charging/widgets/charging_cost.dart';
+import 'package:maps_app/generated/locale_keys.g.dart';
 
+import 'charging_cost.dart';
 import 'charhing_info_item.dart';
 import 'charrging_station_tile.dart';
 import 'start_charging_button.dart';
@@ -13,32 +15,32 @@ class ChargingInfoContent extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
-        children: const [
-          ChargingCost(),
-          SizedBox(height: 10),
-          StartChargingButton(),
-          SizedBox(height: 34),
+        children: [
+          const ChargingCost(),
+          const SizedBox(height: 10),
+          const StartChargingButton(),
+          const SizedBox(height: 34),
           ChargingInfoItem(
-            name: 'Starting time',
+            name: LocaleKeys.charging_starting_time.tr(),
             value: '21/07/21 17:46',
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           ChargingInfoItem(
-            name: 'Charging speed',
+            name: LocaleKeys.charging_speed.tr(),
             value: '50 kWh',
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           ChargingInfoItem(
-            name: 'Amperage',
+            name: LocaleKeys.charging_amperage.tr(),
             value: '16 A',
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           ChargingInfoItem(
-            name: 'Voltage',
+            name: LocaleKeys.charging_voltage.tr(),
             value: '150 A',
           ),
-          SizedBox(height: 16),
-          ChargingStationTile(),
+          const SizedBox(height: 16),
+          const ChargingStationTile(),
         ],
       ),
     );

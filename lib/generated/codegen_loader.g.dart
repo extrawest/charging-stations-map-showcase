@@ -16,25 +16,43 @@ class CodegenLoader extends AssetLoader{
 
   static const Map<String,dynamic> uk_UA = {
   "bottom_nav_bar": {
-    "map": "MAP",
-    "favourites": "FAVOURITES",
-    "account": "ACCOUNT"
+    "map": "МАПА",
+    "favourites": "УЛЮБЛЕНЕ",
+    "account": "АККАУНТ"
   },
   "button": {
-    "apply": "Apply"
+    "apply": "Застосувати"
   },
   "map_type": {
-    "normal": "Normal",
-    "satellite": "Satellite"
+    "normal": "Звичвйна",
+    "satellite": "Супутник"
   },
   "station_detals": {
-    "connectors": "Connectors",
-    "coordinates": "Coordinates",
-    "status": "Status: {}",
-    "price_per_kwh": "$ {} per kWh",
+    "connectors": "Роз'єми",
+    "coordinates": "Координати",
+    "status": "Статус: {}",
+    "price_per_kwh": "$ {} за kWh",
     "kWh": "{} kWh",
-    "charge": "Charge",
-    "in_use": "In Use"
+    "charge": "Зарядити",
+    "in_use": "В Вживанні"
+  },
+  "wallet": {
+    "title": "Гаманець",
+    "balance": "Баланс",
+    "history": "Історія"
+  },
+  "charging": {
+    "title": "Сеанс зарядки",
+    "cost": "Ціна:",
+    "delivered": "Доставлено",
+    "starting_time": "Початковий час",
+    "speed": "Швидкість зарядки",
+    "amperage": "Сила струму",
+    "voltage": "Напруга",
+    "station_name": "Назва станції",
+    "tariff": "Тариф",
+    "coonrinated": "Координати",
+    "start_charging": "Почати зарядку"
   }
 };
 static const Map<String,dynamic> en_US = {
@@ -58,6 +76,24 @@ static const Map<String,dynamic> en_US = {
     "kWh": "{} kWh",
     "charge": "Charge",
     "in_use": "In Use"
+  },
+  "wallet": {
+    "title": "Wallet",
+    "balance": "Balance",
+    "history": "History"
+  },
+  "charging": {
+    "title": "Charging session",
+    "cost": "Cost:",
+    "delivered": "Delivered",
+    "starting_time": "Starting time",
+    "speed": "Charging speed",
+    "amperage": "Amperage",
+    "voltage": "Voltage",
+    "station_name": "Station name",
+    "tariff": "Tariff",
+    "coonrinated": "Coordinates",
+    "start_charging": "Start charging"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"uk_UA": uk_UA, "en_US": en_US};

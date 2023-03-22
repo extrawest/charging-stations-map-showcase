@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:maps_app/generated/locale_keys.g.dart';
 
 import '../../../../features/theme/styles/app_colors.dart';
 import '../../../generated/assets.gen.dart';
@@ -20,11 +22,11 @@ class ChargingStationTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Station name',
+                LocaleKeys.charging_station_name.tr(),
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               Text(
-                'Tariff',
+                LocaleKeys.charging_tariff.tr(),
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
@@ -57,7 +59,7 @@ class ChargingStationTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Coordinates',
+                    LocaleKeys.charging_coonrinated.tr(),
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium

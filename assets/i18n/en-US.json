@@ -19,5 +19,23 @@
     "kWh": "{} kWh",
     "charge": "Charge",
     "in_use": "In Use"
+  },
+  "wallet": {
+    "title": "Wallet",
+    "balance": "Balance",
+    "history": "History"
+  },
+  "charging": {
+    "title": "Charging session",
+    "cost": "Cost:",
+    "delivered": "Delivered",
+    "starting_time": "Starting time",
+    "speed": "Charging speed",
+    "amperage": "Amperage",
+    "voltage": "Voltage",
+    "station_name": "Station name",
+    "tariff": "Tariff",
+    "coonrinated": "Coordinates",
+    "start_charging": "Start charging"
   }
 }

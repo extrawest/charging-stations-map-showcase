@@ -18,5 +18,21 @@ abstract class  LocaleKeys {
   static const station_detals_charge = 'station_detals.charge';
   static const station_detals_in_use = 'station_detals.in_use';
   static const station_detals = 'station_detals';
+  static const wallet_title = 'wallet.title';
+  static const wallet_balance = 'wallet.balance';
+  static const wallet_history = 'wallet.history';
+  static const wallet = 'wallet';
+  static const charging_title = 'charging.title';
+  static const charging_cost = 'charging.cost';
+  static const charging_delivered = 'charging.delivered';
+  static const charging_starting_time = 'charging.starting_time';
+  static const charging_speed = 'charging.speed';
+  static const charging_amperage = 'charging.amperage';
+  static const charging_voltage = 'charging.voltage';
+  static const charging_station_name = 'charging.station_name';
+  static const charging_tariff = 'charging.tariff';
+  static const charging_coonrinated = 'charging.coonrinated';
+  static const charging_start_charging = 'charging.start_charging';
+  static const charging = 'charging';
 
 }

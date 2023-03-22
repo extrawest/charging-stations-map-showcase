@@ -1,38 +1,15 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:maps_app/features/theme/styles/app_colors.dart';
-import 'package:maps_app/features/wallet/widgets/wallet_history_list.dart';
+import 'package:maps_app/generated/locale_keys.g.dart';
 
+import '../../theme/styles/app_colors.dart';
 import '../bloc/wallet_cubit.dart';
 import '../bloc/wallet_state.dart';
+import '../widgets/wallet_history_list.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider<WalletCubit>(
-      create: (context) => WalletCubit(
-        walletRepository: context.read(),
-      ),
-      child: const _WalletPage(),
-    );
-  }
-}
-
-class _WalletPage extends StatefulWidget {
-  const _WalletPage();
-
-  @override
-  State<_WalletPage> createState() => __WalletPageState();
-}
-
-class __WalletPageState extends State<_WalletPage> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<WalletCubit>().loadWalletModel();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +18,17 @@ class __WalletPageState extends State<_WalletPage> {
       body: BlocBuilder<WalletCubit, WalletState>(
         builder: (context, state) => CustomScrollView(
           slivers: [
-            const SliverAppBar(
+            SliverAppBar(
               expandedHeight: 80,
               automaticallyImplyLeading: false,
               floating: true,
-              backgroundColor: Color(0xffDDEAF3),
+              backgroundColor: const Color(0xffDDEAF3),
               title: Text(
-                'Wallet',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                LocaleKeys.wallet_title.tr(),
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             SliverPersistentHeader(
@@ -123,7 +103,7 @@ class BalanceLabelDelagate extends SliverPersistentHeaderDelegate {
         children: [
           const SizedBox(height: 20),
           Text(
-            'Balance',
+            LocaleKeys.wallet_balance.tr(),
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.grey,
                 ),

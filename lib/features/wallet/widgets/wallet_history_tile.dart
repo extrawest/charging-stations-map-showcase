@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:maps_app/features/theme/styles/app_colors.dart';
-import 'package:maps_app/features/wallet/models/wallet_history_model.dart';
+import '../../theme/styles/app_colors.dart';
+import '../models/wallet_history_model.dart';
 
 class WalletHistoryTile extends StatelessWidget {
   const WalletHistoryTile({
@@ -32,7 +32,7 @@ class WalletHistoryTile extends StatelessWidget {
                 ),
               ),
               Text(
-                DateFormat('yyyy MMMM dd, hh:mm', 'en').format(
+                DateFormat('yyyy MMMM dd, hh:mm').format(
                   walletHistoryModel.datetimeStarted,
                 ),
                 style: Theme.of(context)

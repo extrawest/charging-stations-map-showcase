@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:maps_app/generated/locale_keys.g.dart';
 
 import '../../../generated/assets.gen.dart';
 import '../../theme/styles/app_colors.dart';
@@ -26,7 +28,7 @@ class ChargingIndicatorContent extends StatelessWidget {
           style: Theme.of(context).textTheme.titleLarge,
         ),
         Text(
-          'Delivered',
+          LocaleKeys.charging_delivered.tr(),
           style: Theme.of(context)
               .textTheme
               .bodyMedium

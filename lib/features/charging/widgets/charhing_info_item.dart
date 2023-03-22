@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maps_app/features/theme/styles/app_colors.dart';
+import '../../../features/theme/styles/app_colors.dart';
 
 class ChargingInfoItem extends StatelessWidget {
   const ChargingInfoItem({

@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:maps_app/features/wallet/models/wallet_history_model.dart';
+import 'package:maps_app/generated/locale_keys.g.dart';
 
+import '../models/wallet_history_model.dart';
 import 'wallet_history_tile.dart';
 
 class WalletHistoryList extends StatelessWidget {
@@ -25,7 +27,7 @@ class WalletHistoryList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'History',
+              LocaleKeys.wallet_history.tr(),
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
