@@ -5,6 +5,7 @@ import '../../../generated/assets.gen.dart';
 import '../../theme/styles/app_colors.dart';
 import '../bloc/search_cubit.dart';
 import '../bloc/search_state.dart';
+import 'empty_state.dart';
 
 class SearchResultList extends StatelessWidget {
   const SearchResultList({super.key});
@@ -16,13 +17,7 @@ class SearchResultList extends StatelessWidget {
         return const Center(child: CircularProgressIndicator());
       }
       if (state.isEmpty) {
-        return Padding(
-          padding: const EdgeInsets.only(top: 48),
-          child: Text(
-            'Sorry, no results found',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-        );
+        return const EmptyState();
       }
 
       return ListView(

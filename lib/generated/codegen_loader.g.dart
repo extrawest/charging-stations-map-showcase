@@ -53,6 +53,10 @@ class CodegenLoader extends AssetLoader{
     "tariff": "Тариф",
     "coonrinated": "Координати",
     "start_charging": "Почати зарядку"
+  },
+  "search": {
+    "no_results": "Вибачте, результатів не знайдено",
+    "hint": "Почніть писати тут"
   }
 };
 static const Map<String,dynamic> en_US = {
@@ -94,6 +98,10 @@ static const Map<String,dynamic> en_US = {
     "tariff": "Tariff",
     "coonrinated": "Coordinates",
     "start_charging": "Start charging"
+  },
+  "search": {
+    "no_results": "Sorry, no results found",
+    "hint": "Type here"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"uk_UA": uk_UA, "en_US": en_US};

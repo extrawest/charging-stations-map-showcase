@@ -37,5 +37,9 @@
     "tariff": "Tariff",
     "coonrinated": "Coordinates",
     "start_charging": "Start charging"
+  },
+  "search": {
+    "no_results": "Sorry, no results found",
+    "hint": "Type here"
   }
 }

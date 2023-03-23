@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:maps_app/generated/locale_keys.g.dart';
 
 import '../../../common/router.dart';
 import '../../theme/styles/app_colors.dart';
@@ -53,31 +55,28 @@ class _SearchFieldState extends State<SearchField> {
 
   @override
   Widget build(BuildContext context) {
-    return Hero(
-      tag: 'tag',
-      child: GestureDetector(
-        onTap: () => widget._onPressed?.call(context),
-        child: TextField(
-          onChanged: widget.onChanged,
-          enabled: widget._isEnabled,
-          cursorColor: AppColors.textGrey,
-          controller: _controller,
-          decoration: InputDecoration(
-            contentPadding: const EdgeInsets.all(14),
-            hintText: 'Type here',
-            hintStyle: Theme.of(context)
-                .textTheme
-                .titleSmall
-                ?.copyWith(color: AppColors.textGrey),
-            filled: true,
-            fillColor: Theme.of(context).primaryColor,
-            border: _border,
-            focusedBorder: _border,
-            disabledBorder: _border,
-            enabledBorder: _border,
-            prefixIcon: widget._prefix,
-            suffixIcon: const SearchSuffix(),
-          ),
+    return GestureDetector(
+      onTap: () => widget._onPressed?.call(context),
+      child: TextField(
+        onChanged: widget.onChanged,
+        enabled: widget._isEnabled,
+        cursorColor: AppColors.textGrey,
+        controller: _controller,
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.all(14),
+          hintText: LocaleKeys.search_hint.tr(),
+          hintStyle: Theme.of(context)
+              .textTheme
+              .titleSmall
+              ?.copyWith(color: AppColors.textGrey),
+          filled: true,
+          fillColor: Theme.of(context).primaryColor,
+          border: _border,
+          focusedBorder: _border,
+          disabledBorder: _border,
+          enabledBorder: _border,
+          prefixIcon: widget._prefix,
+          suffixIcon: const SearchSuffix(),
         ),
       ),
     );

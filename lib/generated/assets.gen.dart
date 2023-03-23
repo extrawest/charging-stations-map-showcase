@@ -120,6 +120,10 @@ class $AssetsImagesMapTypesGen {
 class $AssetsImagesSearchGen {
   const $AssetsImagesSearchGen();
 
+  /// File path: assets/images/search/empty_state.png
+  AssetGenImage get emptyState =>
+      const AssetGenImage('assets/images/search/empty_state.png');
+
   /// File path: assets/images/search/prefix.svg
   SvgGenImage get prefix =>
       const SvgGenImage('assets/images/search/prefix.svg');
@@ -129,7 +133,7 @@ class $AssetsImagesSearchGen {
       const SvgGenImage('assets/images/search/suffix.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [prefix, suffix];
+  List<dynamic> get values => [emptyState, prefix, suffix];
 }
 
 class $AssetsImagesStationDetailsGen {

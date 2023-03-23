@@ -34,5 +34,8 @@ abstract class  LocaleKeys {
   static const charging_coonrinated = 'charging.coonrinated';
   static const charging_start_charging = 'charging.start_charging';
   static const charging = 'charging';
+  static const search_no_results = 'search.no_results';
+  static const search_hint = 'search.hint';
+  static const search = 'search';
 
 }

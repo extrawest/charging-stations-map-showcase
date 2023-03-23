@@ -129,7 +129,7 @@ class __MapsPageState extends State<_MapsPage> {
           child: Align(
             alignment: Alignment.topCenter,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 48),
               child: SearchField.disabled(),
             ),
           ),

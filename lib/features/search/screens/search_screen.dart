@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:maps_app/features/search/widgets/search_result_list.dart';
 
 import '../../geolocation/geolocation.dart';
 import '../bloc/search_cubit.dart';
 import '../widgets/search_field.dart';
+import '../widgets/search_result_list.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
@@ -45,14 +45,13 @@ class __SearchPageState extends State<_SearchPage> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            SafeArea(
-              bottom: false,
+            Padding(
+              padding: const EdgeInsets.only(top: 48),
               child: SearchField.enabled(
                 onChanged: (query) =>
                     context.read<SearchCubit>().search(query: query),
               ),
             ),
-            // const SizedBox(height: 25),
             const Expanded(child: SearchResultList()),
           ],
         ),
