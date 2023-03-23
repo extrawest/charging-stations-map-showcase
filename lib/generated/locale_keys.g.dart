@@ -37,5 +37,14 @@ abstract class  LocaleKeys {
   static const search_no_results = 'search.no_results';
   static const search_hint = 'search.hint';
   static const search = 'search';
+  static const profile_title = 'profile.title';
+  static const profile_save = 'profile.save';
+  static const profile_sign_up = 'profile.sign_up';
+  static const profile_sign_up_google = 'profile.sign_up_google';
+  static const profile_logout = 'profile.logout';
+  static const profile_field_name = 'profile.field.name';
+  static const profile_field_email = 'profile.field.email';
+  static const profile_field = 'profile.field';
+  static const profile = 'profile';
 
 }

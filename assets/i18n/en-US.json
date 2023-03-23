@@ -41,5 +41,16 @@
   "search": {
     "no_results": "Sorry, no results found",
     "hint": "Type here"
+  },
+  "profile": {
+    "title": "Profile",
+    "save": "Save",
+    "sign_up": "Sign Up",
+    "sign_up_google": "Sign Up with Google",
+    "logout": "Log out",
+    "field": {
+      "name": "Name",
+      "email": "Email"
+    }
   }
 }

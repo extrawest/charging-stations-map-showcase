@@ -28,7 +28,7 @@ class CodegenLoader extends AssetLoader{
     "satellite": "Супутник"
   },
   "station_detals": {
-    "connectors": "Роз'єми",
+    "connectors": "Розʼєми",
     "coordinates": "Координати",
     "status": "Статус: {}",
     "price_per_kwh": "$ {} за kWh",
@@ -57,6 +57,17 @@ class CodegenLoader extends AssetLoader{
   "search": {
     "no_results": "Вибачте, результатів не знайдено",
     "hint": "Почніть писати тут"
+  },
+  "profile": {
+    "title": "Профіль",
+    "save": "Зберегти",
+    "sign_up": "Зареєструватися",
+    "sign_up_google": "Зареєструватися із Google",
+    "logout": "Вийти",
+    "field": {
+      "name": "Імʼя",
+      "email": "Електрона пошта"
+    }
   }
 };
 static const Map<String,dynamic> en_US = {
@@ -102,6 +113,17 @@ static const Map<String,dynamic> en_US = {
   "search": {
     "no_results": "Sorry, no results found",
     "hint": "Type here"
+  },
+  "profile": {
+    "title": "Profile",
+    "save": "Save",
+    "sign_up": "Sign Up",
+    "sign_up_google": "Sign Up with Google",
+    "logout": "Log out",
+    "field": {
+      "name": "Name",
+      "email": "Email"
+    }
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"uk_UA": uk_UA, "en_US": en_US};

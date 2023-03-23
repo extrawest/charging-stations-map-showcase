@@ -34,6 +34,7 @@ class $AssetsImagesGen {
   $AssetsImagesMapActionsGen get mapActions =>
       const $AssetsImagesMapActionsGen();
   $AssetsImagesMapTypesGen get mapTypes => const $AssetsImagesMapTypesGen();
+  $AssetsImagesProfileGen get profile => const $AssetsImagesProfileGen();
   $AssetsImagesSearchGen get search => const $AssetsImagesSearchGen();
   $AssetsImagesStationDetailsGen get stationDetails =>
       const $AssetsImagesStationDetailsGen();
@@ -115,6 +116,26 @@ class $AssetsImagesMapTypesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [normal, satellite];
+}
+
+class $AssetsImagesProfileGen {
+  const $AssetsImagesProfileGen();
+
+  /// File path: assets/images/profile/email.svg
+  SvgGenImage get email => const SvgGenImage('assets/images/profile/email.svg');
+
+  /// File path: assets/images/profile/google.png
+  AssetGenImage get google =>
+      const AssetGenImage('assets/images/profile/google.png');
+
+  /// File path: assets/images/profile/name.svg
+  SvgGenImage get name => const SvgGenImage('assets/images/profile/name.svg');
+
+  /// File path: assets/images/profile/photo.svg
+  SvgGenImage get photo => const SvgGenImage('assets/images/profile/photo.svg');
+
+  /// List of all assets
+  List<dynamic> get values => [email, google, name, photo];
 }
 
 class $AssetsImagesSearchGen {

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -19,15 +20,17 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="A new Flutter project with BLoC state management solution">
+  <meta name="google-signin-client_id content=".apps.googleusercontent.com">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="maps_app">
+  
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>maps_app</title>
   <link rel="manifest" href="manifest.json">
@@ -39,22 +42,38 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxRvi4_4hyAw49PObPVtOq9iPqdvCFWKw"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 
 </head>
+
 <body>
-  <script>
-    window.addEventListener('load', function(ev) {
+  <script type="module">
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         }
-      }).then(function(engineInitializer) {
+      }).then(function (engineInitializer) {
         return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
+      }).then(function (appRunner) {
         return appRunner.runApp();
       });
     });
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB8ZeSiSnJDkn32L1Ty_pkyjESkBDvbQfg",
+      authDomain: "maps-app-5d8d8.firebaseapp.com",
+      projectId: "maps-app-5d8d8",
+      storageBucket: "maps-app-5d8d8.appspot.com",
+      messagingSenderId: "499519537662",
+      appId: "1:499519537662:web:0a919906bb1bc13df400af",
+      measurementId: "G-HWM7KHWC8K"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
   </script>
 </body>
+
 </html>

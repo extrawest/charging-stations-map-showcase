@@ -46,6 +46,9 @@ dependencies:
   share_plus: ^6.3.1
   image_picker: ^0.8.7
   geolocator: ^9.0.2
+  google_sign_in: ^6.0.2
+  firebase_auth: ^4.3.0
+  firebase_core: ^2.8.0
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +74,7 @@ flutter:
     - assets/images/charging/
     - assets/images/app_bar/
     - assets/images/search/
+    - assets/images/profile/
     - assets/i18n/
 
 flutter_gen:

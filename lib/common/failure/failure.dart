@@ -31,3 +31,9 @@ class GeolocationFailure extends Failure {
     required super.message,
   });
 }
+
+class AuthenticationFailure extends Failure {
+  const AuthenticationFailure({
+    required super.message,
+  });
+}

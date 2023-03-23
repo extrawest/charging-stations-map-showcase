@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import '../../features/profile/services/auth_service.dart';
 
 import '../../common/di/injector_module.dart';
 import '../../features/features.dart';
@@ -28,6 +31,12 @@ class GlobalRepositoryProvider extends StatelessWidget {
         ),
         RepositoryProvider<GeolocationService>(
           create: (context) => GeolocationServiceImpl(),
+        ),
+        RepositoryProvider<AuthService>(
+          create: (context) => FirebaseAuthService(
+            googleSignIn: InjectorModule.locator(),
+            firebaseAuth: InjectorModule.locator(),
+          ),
         )
       ],
       child: child,
