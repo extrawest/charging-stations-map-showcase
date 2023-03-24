@@ -13,7 +13,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) => state.when(
-        authenticated: (email, username, avatarUrl) => SignedProfileScreen(
+        authenticated: (email, _, username, avatarUrl) => SignedProfileScreen(
           email: email,
           username: username,
           avatarUrl: avatarUrl,

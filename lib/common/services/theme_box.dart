@@ -13,6 +13,9 @@ class HiveBoxBootsrapper {
 
   static Future<void> init() async {
     await Hive.initFlutter();
+    Hive.registerAdapter<FavouritesHistoryModel>(
+      FavouritesHistoryModelAdapter(),
+    );
     await Hive.openBox<ThemeModeValue>(themeBoxName);
     await Hive.openBox<FavouritesHistoryModel>(favouritesBoxName);
   }

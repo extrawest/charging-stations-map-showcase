@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$UserModel {
   String get email => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
   String? get avatarUrl => throw _privateConstructorUsedError;
 
@@ -30,7 +31,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({String email, String? username, String? avatarUrl});
+  $Res call({String email, String id, String? username, String? avatarUrl});
 }
 
 /// @nodoc
@@ -47,6 +48,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @override
   $Res call({
     Object? email = null,
+    Object? id = null,
     Object? username = freezed,
     Object? avatarUrl = freezed,
   }) {
@@ -54,6 +56,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       username: freezed == username
           ? _value.username
@@ -74,7 +80,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       __$$_UserModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, String? username, String? avatarUrl});
+  $Res call({String email, String id, String? username, String? avatarUrl});
 }
 
 /// @nodoc
@@ -89,6 +95,7 @@ class __$$_UserModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? email = null,
+    Object? id = null,
     Object? username = freezed,
     Object? avatarUrl = freezed,
   }) {
@@ -96,6 +103,10 @@ class __$$_UserModelCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       username: freezed == username
           ? _value.username
@@ -113,10 +124,15 @@ class __$$_UserModelCopyWithImpl<$Res>
 
 class _$_UserModel implements _UserModel {
   const _$_UserModel(
-      {required this.email, required this.username, required this.avatarUrl});
+      {required this.email,
+      required this.id,
+      required this.username,
+      required this.avatarUrl});
 
   @override
   final String email;
+  @override
+  final String id;
   @override
   final String? username;
   @override
@@ -124,7 +140,7 @@ class _$_UserModel implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(email: $email, username: $username, avatarUrl: $avatarUrl)';
+    return 'UserModel(email: $email, id: $id, username: $username, avatarUrl: $avatarUrl)';
   }
 
   @override
@@ -133,6 +149,7 @@ class _$_UserModel implements _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$_UserModel &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.avatarUrl, avatarUrl) ||
@@ -140,7 +157,7 @@ class _$_UserModel implements _UserModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, username, avatarUrl);
+  int get hashCode => Object.hash(runtimeType, email, id, username, avatarUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -152,11 +169,14 @@ class _$_UserModel implements _UserModel {
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {required final String email,
+      required final String id,
       required final String? username,
       required final String? avatarUrl}) = _$_UserModel;
 
   @override
   String get email;
+  @override
+  String get id;
   @override
   String? get username;
   @override

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../common/widgets/page_widget.dart';
 
 import '../features/features.dart';
 
@@ -9,6 +8,7 @@ const String walletRoute = '/wallet';
 const String chargingRoute = '/charging';
 const String searchRoute = '/search';
 const String profileRoute = '/profile';
+const String favouritesRoute = '/favourites';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey(debugLabel: 'root');
@@ -24,7 +24,13 @@ final goRouter = GoRouter(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) => DashboardScreen(
         key: state.pageKey,
-        pages: const [homeRoute, '/test2', '', walletRoute, profileRoute],
+        pages: const [
+          homeRoute,
+          favouritesRoute,
+          '',
+          walletRoute,
+          profileRoute
+        ],
         child: child,
       ),
       routes: [
@@ -36,10 +42,10 @@ final goRouter = GoRouter(
           ),
         ),
         GoRoute(
-          path: '/test2',
+          path: favouritesRoute,
           pageBuilder: (context, state) => _TransitionPage(
             key: state.pageKey,
-            child: const PageWidget(),
+            child: const FavouritesScreen(),
           ),
         ),
         GoRoute(

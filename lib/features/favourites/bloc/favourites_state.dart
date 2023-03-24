@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../common/failure/failure.dart';
-import '../models/favourite_station_model.dart';
+import '../../maps/maps.dart';
 
 part 'favourites_state.freezed.dart';
 
@@ -10,7 +10,7 @@ class FavouritesState with _$FavouritesState {
   const factory FavouritesState({
     required bool isLoading,
     required Failure? failure,
-    required List<FavouriteStationModel> stations,
+    required List<StationModel> stations,
   }) = _FavouritesState;
 
   factory FavouritesState.initial() => const FavouritesState(

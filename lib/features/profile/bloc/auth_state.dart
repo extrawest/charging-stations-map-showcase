@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:maps_app/features/profile/models/user_model.dart';
 
 import '../../../common/failure/failure.dart';
+import '../models/user_model.dart';
 
 part 'auth_state.freezed.dart';
 
@@ -9,6 +9,7 @@ part 'auth_state.freezed.dart';
 class AuthState with _$AuthState {
   const factory AuthState.authenticated({
     required String email,
+    required String id,
     required String? username,
     required String? avatarUrl,
   }) = AuthStateAuthenticated;
@@ -21,5 +22,6 @@ class AuthState with _$AuthState {
         email: user.email,
         username: user.username,
         avatarUrl: user.avatarUrl,
+        id: user.id,
       );
 }

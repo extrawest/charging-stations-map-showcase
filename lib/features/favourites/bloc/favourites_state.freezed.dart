@@ -18,8 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FavouritesState {
   bool get isLoading => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
-  List<FavouriteStationModel> get stations =>
-      throw _privateConstructorUsedError;
+  List<StationModel> get stations => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FavouritesStateCopyWith<FavouritesState> get copyWith =>
@@ -32,8 +31,7 @@ abstract class $FavouritesStateCopyWith<$Res> {
           FavouritesState value, $Res Function(FavouritesState) then) =
       _$FavouritesStateCopyWithImpl<$Res, FavouritesState>;
   @useResult
-  $Res call(
-      {bool isLoading, Failure? failure, List<FavouriteStationModel> stations});
+  $Res call({bool isLoading, Failure? failure, List<StationModel> stations});
 }
 
 /// @nodoc
@@ -65,7 +63,7 @@ class _$FavouritesStateCopyWithImpl<$Res, $Val extends FavouritesState>
       stations: null == stations
           ? _value.stations
           : stations // ignore: cast_nullable_to_non_nullable
-              as List<FavouriteStationModel>,
+              as List<StationModel>,
     ) as $Val);
   }
 }
@@ -78,8 +76,7 @@ abstract class _$$_FavouritesStateCopyWith<$Res>
       __$$_FavouritesStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool isLoading, Failure? failure, List<FavouriteStationModel> stations});
+  $Res call({bool isLoading, Failure? failure, List<StationModel> stations});
 }
 
 /// @nodoc
@@ -109,7 +106,7 @@ class __$$_FavouritesStateCopyWithImpl<$Res>
       stations: null == stations
           ? _value._stations
           : stations // ignore: cast_nullable_to_non_nullable
-              as List<FavouriteStationModel>,
+              as List<StationModel>,
     ));
   }
 }
@@ -120,16 +117,16 @@ class _$_FavouritesState implements _FavouritesState {
   const _$_FavouritesState(
       {required this.isLoading,
       required this.failure,
-      required final List<FavouriteStationModel> stations})
+      required final List<StationModel> stations})
       : _stations = stations;
 
   @override
   final bool isLoading;
   @override
   final Failure? failure;
-  final List<FavouriteStationModel> _stations;
+  final List<StationModel> _stations;
   @override
-  List<FavouriteStationModel> get stations {
+  List<StationModel> get stations {
     if (_stations is EqualUnmodifiableListView) return _stations;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_stations);
@@ -164,17 +161,16 @@ class _$_FavouritesState implements _FavouritesState {
 
 abstract class _FavouritesState implements FavouritesState {
   const factory _FavouritesState(
-          {required final bool isLoading,
-          required final Failure? failure,
-          required final List<FavouriteStationModel> stations}) =
-      _$_FavouritesState;
+      {required final bool isLoading,
+      required final Failure? failure,
+      required final List<StationModel> stations}) = _$_FavouritesState;
 
   @override
   bool get isLoading;
   @override
   Failure? get failure;
   @override
-  List<FavouriteStationModel> get stations;
+  List<StationModel> get stations;
   @override
   @JsonKey(ignore: true)
   _$$_FavouritesStateCopyWith<_$_FavouritesState> get copyWith =>

@@ -16,6 +16,7 @@ class StationModel with _$StationModel {
     required String chargePointId,
     required double longitude,
     required double latitude,
+    @Default(false) bool isFavourite,
     @JsonKey(defaultValue: StationStatus.empty) required StationStatus status,
   }) = _StationModel;
 

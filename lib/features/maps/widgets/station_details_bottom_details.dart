@@ -1,24 +1,32 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:maps_app/generated/locale_keys.g.dart';
-import '../models/connector_model.dart';
-import '../models/connector_status.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:maps_app/common/router.dart';
+import 'package:maps_app/common/services/services.dart';
+import 'package:maps_app/features/features.dart';
+import '../../../common/utils/mocks.dart';
+import '../../../common/widgets/favourite_button.dart';
+import '../../../common/widgets/station_details_header.dart';
+import '../../../common/widgets/station_location_section.dart';
+import '../../../generated/locale_keys.g.dart';
+import '../../favourites/favourites.dart';
 import '../models/station_model.dart';
 import 'connector_tile.dart';
-import 'distance_to_station.dart';
 import 'empty_image.dart';
-import 'station_details_coordinates.dart';
-import 'station_details_header.dart';
 
 class StationDetailsBottomSheet extends StatelessWidget {
   const StationDetailsBottomSheet({
     super.key,
     required this.station,
     required this.distance,
+    required this.onFavouritePresed,
   });
 
   final StationModel station;
   final double? distance;
+  final ValueSetter<bool> onFavouritePresed;
 
   static Future<void> show(
     BuildContext context, {
@@ -29,13 +37,32 @@ class StationDetailsBottomSheet extends StatelessWidget {
       context: context,
       useRootNavigator: true,
       isScrollControlled: true,
-      builder: (_) => Wrap(
-        children: [
-          StationDetailsBottomSheet(
-            station: station,
-            distance: distance,
-          ),
-        ],
+      builder: (_) => BlocBuilder<AuthCubit, AuthState>(
+        bloc: context.read<AuthCubit>(),
+        builder: (context, state) => Wrap(
+          children: [
+            StationDetailsBottomSheet(
+              station: station,
+              distance: distance,
+              onFavouritePresed: (isFavourite) => state.map(
+                authenticated: (user) async {
+                  final repo = HiveFavouriteStationsRepository(
+                    box: Hive.box(HiveBoxBootsrapper.favouritesBoxName),
+                    userId: user.id,
+                  );
+                  if (isFavourite) {
+                    await repo.addToFavourites(stationId: station.stationId);
+                  } else {
+                    await repo.removeFromFavourites(
+                      stationId: station.stationId,
+                    );
+                  }
+                },
+                unauthenticated: (_) => context.push(favouritesRoute),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -48,17 +75,24 @@ class StationDetailsBottomSheet extends StatelessWidget {
         children: [
           const _Bar(),
           const SizedBox(height: 16),
-          StationDetailsHeader(
-            name: station.chargePointId,
-            status: station.status,
-          ),
-          const SizedBox(height: 25),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              StationDetailsCoordinated(coordinates: station.position),
-              if (distance != null) DistanceToStation(distance: distance!),
+              StationHeader.details(
+                context,
+                name: station.stationId,
+                status: station.status,
+              ),
+              FavouriteButton(
+                onPressed: () => onFavouritePresed(true),
+                isSelected: false,
+              ),
             ],
+          ),
+          const SizedBox(height: 25),
+          StationLocationSection(
+            distance: distance,
+            position: station.position,
           ),
           const SizedBox(height: 25),
           const EmptyImage(),
@@ -73,7 +107,7 @@ class StationDetailsBottomSheet extends StatelessWidget {
                   ?.copyWith(fontWeight: FontWeight.w600),
             ),
           ),
-          ..._mockConnectors.map(
+          ...mockConnectors.map(
             (connectorModel) => Padding(
               padding: const EdgeInsets.only(top: 8),
               child: ConnectorTile(connectorModel: connectorModel),
@@ -101,24 +135,3 @@ class _Bar extends StatelessWidget {
     );
   }
 }
-
-const _mockConnectors = [
-  ConnectorModel(
-    name: 'Type 2(AC)',
-    price: 3.00,
-    capacity: 22,
-    status: ConnectorStatus.available,
-  ),
-  ConnectorModel(
-    name: 'CHAdeMO',
-    price: 5.00,
-    capacity: 200,
-    status: ConnectorStatus.inUse,
-  ),
-  ConnectorModel(
-    name: 'Type 2(AC)',
-    price: 3.00,
-    capacity: 22,
-    status: ConnectorStatus.inUse,
-  )
-];

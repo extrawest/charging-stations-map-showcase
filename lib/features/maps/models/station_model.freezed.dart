@@ -25,6 +25,7 @@ mixin _$StationModel {
   String get chargePointId => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
   double get latitude => throw _privateConstructorUsedError;
+  bool get isFavourite => throw _privateConstructorUsedError;
   @JsonKey(defaultValue: StationStatus.empty)
   StationStatus get status => throw _privateConstructorUsedError;
 
@@ -46,6 +47,7 @@ abstract class $StationModelCopyWith<$Res> {
       String chargePointId,
       double longitude,
       double latitude,
+      bool isFavourite,
       @JsonKey(defaultValue: StationStatus.empty) StationStatus status});
 }
 
@@ -67,6 +69,7 @@ class _$StationModelCopyWithImpl<$Res, $Val extends StationModel>
     Object? chargePointId = null,
     Object? longitude = null,
     Object? latitude = null,
+    Object? isFavourite = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
@@ -90,6 +93,10 @@ class _$StationModelCopyWithImpl<$Res, $Val extends StationModel>
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as double,
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -112,6 +119,7 @@ abstract class _$$_StationModelCopyWith<$Res>
       String chargePointId,
       double longitude,
       double latitude,
+      bool isFavourite,
       @JsonKey(defaultValue: StationStatus.empty) StationStatus status});
 }
 
@@ -131,6 +139,7 @@ class __$$_StationModelCopyWithImpl<$Res>
     Object? chargePointId = null,
     Object? longitude = null,
     Object? latitude = null,
+    Object? isFavourite = null,
     Object? status = null,
   }) {
     return _then(_$_StationModel(
@@ -154,6 +163,10 @@ class __$$_StationModelCopyWithImpl<$Res>
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as double,
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -171,6 +184,7 @@ class _$_StationModel extends _StationModel {
       required this.chargePointId,
       required this.longitude,
       required this.latitude,
+      this.isFavourite = false,
       @JsonKey(defaultValue: StationStatus.empty) required this.status})
       : super._();
 
@@ -188,12 +202,15 @@ class _$_StationModel extends _StationModel {
   @override
   final double latitude;
   @override
+  @JsonKey()
+  final bool isFavourite;
+  @override
   @JsonKey(defaultValue: StationStatus.empty)
   final StationStatus status;
 
   @override
   String toString() {
-    return 'StationModel(stationId: $stationId, tenantId: $tenantId, chargePointId: $chargePointId, longitude: $longitude, latitude: $latitude, status: $status)';
+    return 'StationModel(stationId: $stationId, tenantId: $tenantId, chargePointId: $chargePointId, longitude: $longitude, latitude: $latitude, isFavourite: $isFavourite, status: $status)';
   }
 
   @override
@@ -211,13 +228,15 @@ class _$_StationModel extends _StationModel {
                 other.longitude == longitude) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
+            (identical(other.isFavourite, isFavourite) ||
+                other.isFavourite == isFavourite) &&
             (identical(other.status, status) || other.status == status));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, stationId, tenantId,
-      chargePointId, longitude, latitude, status);
+      chargePointId, longitude, latitude, isFavourite, status);
 
   @JsonKey(ignore: true)
   @override
@@ -240,6 +259,7 @@ abstract class _StationModel extends StationModel {
       required final String chargePointId,
       required final double longitude,
       required final double latitude,
+      final bool isFavourite,
       @JsonKey(defaultValue: StationStatus.empty)
           required final StationStatus status}) = _$_StationModel;
   const _StationModel._() : super._();
@@ -257,6 +277,8 @@ abstract class _StationModel extends StationModel {
   double get longitude;
   @override
   double get latitude;
+  @override
+  bool get isFavourite;
   @override
   @JsonKey(defaultValue: StationStatus.empty)
   StationStatus get status;

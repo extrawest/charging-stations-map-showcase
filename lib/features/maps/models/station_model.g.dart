@@ -13,6 +13,7 @@ _$_StationModel _$$_StationModelFromJson(Map<String, dynamic> json) =>
       chargePointId: json['chargePointId'] as String,
       longitude: (json['longitude'] as num).toDouble(),
       latitude: (json['latitude'] as num).toDouble(),
+      isFavourite: json['isFavourite'] as bool? ?? false,
       status: $enumDecodeNullable(_$StationStatusEnumMap, json['status']) ??
           StationStatus.empty,
     );
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$_StationModelToJson(_$_StationModel instance) =>
       'chargePointId': instance.chargePointId,
       'longitude': instance.longitude,
       'latitude': instance.latitude,
+      'isFavourite': instance.isFavourite,
       'status': _$StationStatusEnumMap[instance.status]!,
     };
 

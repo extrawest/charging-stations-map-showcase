@@ -1,13 +1,20 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:equatable/equatable.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../maps/maps.dart';
+part 'favourite_station_model.g.dart';
 
-part 'favourite_station_model.freezed.dart';
+@HiveType(typeId: 0)
+class FavouritesHistoryModel extends Equatable {
+  const FavouritesHistoryModel({
+    required this.stationIds,
+  });
 
-@freezed
-class FavouritesHistoryModel with _$FavouritesHistoryModel {
-  const factory FavouritesHistoryModel({
-    required List<StationModel> stations,
-  }) = _FavouritesHistoryModell;
+  @HiveField(0)
+  final List<String> stationIds;
+
+  FavouritesHistoryModel map(List<String> Function(List<String>) appFunc) =>
+      FavouritesHistoryModel(stationIds: appFunc(stationIds));
+
+  @override
+  List<Object?> get props => [stationIds];
 }

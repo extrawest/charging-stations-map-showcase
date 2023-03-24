@@ -31,6 +31,8 @@ class $AssetsImagesGen {
   $AssetsImagesBottomNavBarGen get bottomNavBar =>
       const $AssetsImagesBottomNavBarGen();
   $AssetsImagesChargingGen get charging => const $AssetsImagesChargingGen();
+  $AssetsImagesFavouritesGen get favourites =>
+      const $AssetsImagesFavouritesGen();
   $AssetsImagesMapActionsGen get mapActions =>
       const $AssetsImagesMapActionsGen();
   $AssetsImagesMapTypesGen get mapTypes => const $AssetsImagesMapTypesGen();
@@ -86,6 +88,21 @@ class $AssetsImagesChargingGen {
 
   /// List of all assets
   List<SvgGenImage> get values => [charge];
+}
+
+class $AssetsImagesFavouritesGen {
+  const $AssetsImagesFavouritesGen();
+
+  /// File path: assets/images/favourites/star_filled.svg
+  SvgGenImage get starFilled =>
+      const SvgGenImage('assets/images/favourites/star_filled.svg');
+
+  /// File path: assets/images/favourites/star_outlined.svg
+  SvgGenImage get starOutlined =>
+      const SvgGenImage('assets/images/favourites/star_outlined.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [starFilled, starOutlined];
 }
 
 class $AssetsImagesMapActionsGen {

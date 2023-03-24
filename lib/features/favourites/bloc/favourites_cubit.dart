@@ -1,35 +1,61 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:maps_app/features/features.dart';
+import 'package:fpdart/fpdart.dart';
+import '../../../common/failure/failure.dart';
 
+import '../../maps/maps.dart';
+import '../repositories/favourite_stations_repository.dart';
 import 'favourites_state.dart';
 
 class FavouritesCubit extends Cubit<FavouritesState> {
   FavouritesCubit({
     required FavouriteStationsRepository favouriteStationsRepository,
+    required StationRepository stationRepository,
   })  : _favouriteStationsRepository = favouriteStationsRepository,
+        _stationRepository = stationRepository,
         super(FavouritesState.initial());
 
   final FavouriteStationsRepository _favouriteStationsRepository;
+  final StationRepository _stationRepository;
 
   Future<void> loadFavouritesStations() async {
     emit(state.copyWith(isLoading: true));
-    final stationsResult =
+    final favouritesResult =
         await _favouriteStationsRepository.retreiveFavourites();
-    emit(
-      stationsResult.match(
-        (failure) => state.copyWith(failure: failure),
-        (stations) => state.copyWith(stations: stations),
-      ),
-    );
+
+    final newState = await favouritesResult
+        .bindFuture(loadStationsAndFilterFavourites)
+        .match(
+          (failure) => state.copyWith(failure: failure),
+          (stations) => state.copyWith(stations: stations),
+        )
+        .run();
+
+    emit(newState);
+
     emit(state.copyWith(isLoading: false));
+  }
+
+  Future<Either<Failure, List<StationModel>>> loadStationsAndFilterFavourites(
+      List<String> favourites) async {
+    if (favourites.isEmpty) {
+      return const Right([]);
+    }
+
+    final stationsResult = await _stationRepository.retrieveStations();
+    return stationsResult.map(
+      (stations) => stations
+          .where((station) => favourites.contains(station.stationId))
+          .map((station) => station.copyWith(isFavourite: true))
+          .toList(),
+    );
   }
 
   Future<void> removeFromFavourites(String stationId) async {
     final updatedFavourites = state.stations
         .map(
-          (favourote) => favourote.station.stationId == stationId
-              ? favourote.copyWith(isFavourite: false)
-              : favourote,
+          (station) => station.stationId == stationId
+              ? station.copyWith(isFavourite: false)
+              : station,
         )
         .toList();
 
@@ -47,12 +73,12 @@ class FavouritesCubit extends Cubit<FavouritesState> {
     emit(state.copyWith(isLoading: false));
   }
 
-  Future<void> addToFavourites(StationModel station) async {
+  Future<void> addToFavourites(String stationId) async {
     final updatedFavourites = state.stations
         .map(
-          (favourote) => favourote.station.stationId == station.stationId
-              ? favourote.copyWith(isFavourite: true)
-              : favourote,
+          (station) => station.stationId == stationId
+              ? station.copyWith(isFavourite: true)
+              : station,
         )
         .toList();
 
@@ -61,7 +87,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
     emit(state.copyWith(isLoading: true));
 
     final removeResult = await _favouriteStationsRepository.addToFavourites(
-      station: station,
+      stationId: stationId,
     );
 
     removeResult.mapLeft((failure) => state.copyWith(failure: failure));

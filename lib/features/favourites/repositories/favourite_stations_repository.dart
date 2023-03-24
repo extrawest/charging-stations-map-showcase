@@ -2,13 +2,12 @@ import 'package:fpdart/fpdart.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../common/failure/failure.dart';
-import '../../maps/maps.dart';
 import '../models/favourite_station_model.dart';
 
 abstract class FavouriteStationsRepository {
-  Future<Either<Failure, List<StationModel>>> retreiveFavourites();
+  Future<Either<Failure, List<String>>> retreiveFavourites();
   Future<Either<Failure, void>> addToFavourites({
-    required StationModel station,
+    required String stationId,
   });
 
   Future<Either<Failure, void>> removeFromFavourites({
@@ -27,14 +26,14 @@ class HiveFavouriteStationsRepository implements FavouriteStationsRepository {
 
   @override
   Future<Either<Failure, void>> addToFavourites({
-    required StationModel station,
+    required String stationId,
   }) async {
     try {
       FavouritesHistoryModel? favourites;
       favourites = box.get(userId);
-      favourites ??= const FavouritesHistoryModel(stations: []);
-      final newFavourites = favourites.copyWith(
-        stations: favourites.stations..add(station),
+      favourites ??= const FavouritesHistoryModel(stationIds: []);
+      final newFavourites = favourites.map(
+        (stationIds) => [...stationIds, stationId]..toSet().toList(),
       );
       await box.put(userId, newFavourites);
 
@@ -53,10 +52,8 @@ class HiveFavouriteStationsRepository implements FavouriteStationsRepository {
       if (favourites == null) {
         return const Right(null);
       }
-      final newFavourites = favourites.copyWith(
-        stations: favourites.stations
-          ..removeWhere((station) => station.stationId == stationId),
-      );
+      final newFavourites =
+          favourites.map((stationIds) => stationIds..remove(stationId));
       await box.put(userId, newFavourites);
 
       return const Right(null);
@@ -66,13 +63,13 @@ class HiveFavouriteStationsRepository implements FavouriteStationsRepository {
   }
 
   @override
-  Future<Either<Failure, List<StationModel>>> retreiveFavourites() async {
+  Future<Either<Failure, List<String>>> retreiveFavourites() async {
     try {
       final favourites = box.get(userId);
       if (favourites == null) {
         return const Right([]);
       }
-      return Right(favourites.stations);
+      return Right(favourites.stationIds);
     } catch (error) {
       return Left(LocalStorageFailure(message: error.toString()));
     }

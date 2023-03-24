@@ -18,21 +18,24 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String? username, String? avatarUrl)
+    required TResult Function(
+            String email, String id, String? username, String? avatarUrl)
         authenticated,
     required TResult Function(Failure? failure) unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String? username, String? avatarUrl)?
+    TResult? Function(
+            String email, String id, String? username, String? avatarUrl)?
         authenticated,
     TResult? Function(Failure? failure)? unauthenticated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String? username, String? avatarUrl)?
+    TResult Function(
+            String email, String id, String? username, String? avatarUrl)?
         authenticated,
     TResult Function(Failure? failure)? unauthenticated,
     required TResult orElse(),
@@ -82,7 +85,7 @@ abstract class _$$AuthStateAuthenticatedCopyWith<$Res> {
           $Res Function(_$AuthStateAuthenticated) then) =
       __$$AuthStateAuthenticatedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String? username, String? avatarUrl});
+  $Res call({String email, String id, String? username, String? avatarUrl});
 }
 
 /// @nodoc
@@ -97,6 +100,7 @@ class __$$AuthStateAuthenticatedCopyWithImpl<$Res>
   @override
   $Res call({
     Object? email = null,
+    Object? id = null,
     Object? username = freezed,
     Object? avatarUrl = freezed,
   }) {
@@ -104,6 +108,10 @@ class __$$AuthStateAuthenticatedCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as String,
       username: freezed == username
           ? _value.username
@@ -121,10 +129,15 @@ class __$$AuthStateAuthenticatedCopyWithImpl<$Res>
 
 class _$AuthStateAuthenticated implements AuthStateAuthenticated {
   const _$AuthStateAuthenticated(
-      {required this.email, required this.username, required this.avatarUrl});
+      {required this.email,
+      required this.id,
+      required this.username,
+      required this.avatarUrl});
 
   @override
   final String email;
+  @override
+  final String id;
   @override
   final String? username;
   @override
@@ -132,7 +145,7 @@ class _$AuthStateAuthenticated implements AuthStateAuthenticated {
 
   @override
   String toString() {
-    return 'AuthState.authenticated(email: $email, username: $username, avatarUrl: $avatarUrl)';
+    return 'AuthState.authenticated(email: $email, id: $id, username: $username, avatarUrl: $avatarUrl)';
   }
 
   @override
@@ -141,6 +154,7 @@ class _$AuthStateAuthenticated implements AuthStateAuthenticated {
         (other.runtimeType == runtimeType &&
             other is _$AuthStateAuthenticated &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.avatarUrl, avatarUrl) ||
@@ -148,7 +162,7 @@ class _$AuthStateAuthenticated implements AuthStateAuthenticated {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, username, avatarUrl);
+  int get hashCode => Object.hash(runtimeType, email, id, username, avatarUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -160,33 +174,36 @@ class _$AuthStateAuthenticated implements AuthStateAuthenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String? username, String? avatarUrl)
+    required TResult Function(
+            String email, String id, String? username, String? avatarUrl)
         authenticated,
     required TResult Function(Failure? failure) unauthenticated,
   }) {
-    return authenticated(email, username, avatarUrl);
+    return authenticated(email, id, username, avatarUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String? username, String? avatarUrl)?
+    TResult? Function(
+            String email, String id, String? username, String? avatarUrl)?
         authenticated,
     TResult? Function(Failure? failure)? unauthenticated,
   }) {
-    return authenticated?.call(email, username, avatarUrl);
+    return authenticated?.call(email, id, username, avatarUrl);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String? username, String? avatarUrl)?
+    TResult Function(
+            String email, String id, String? username, String? avatarUrl)?
         authenticated,
     TResult Function(Failure? failure)? unauthenticated,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
-      return authenticated(email, username, avatarUrl);
+      return authenticated(email, id, username, avatarUrl);
     }
     return orElse();
   }
@@ -226,10 +243,12 @@ class _$AuthStateAuthenticated implements AuthStateAuthenticated {
 abstract class AuthStateAuthenticated implements AuthState {
   const factory AuthStateAuthenticated(
       {required final String email,
+      required final String id,
       required final String? username,
       required final String? avatarUrl}) = _$AuthStateAuthenticated;
 
   String get email;
+  String get id;
   String? get username;
   String? get avatarUrl;
   @JsonKey(ignore: true)
@@ -303,7 +322,8 @@ class _$AuthStateUnauthenticated implements AuthStateUnauthenticated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email, String? username, String? avatarUrl)
+    required TResult Function(
+            String email, String id, String? username, String? avatarUrl)
         authenticated,
     required TResult Function(Failure? failure) unauthenticated,
   }) {
@@ -313,7 +333,8 @@ class _$AuthStateUnauthenticated implements AuthStateUnauthenticated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String email, String? username, String? avatarUrl)?
+    TResult? Function(
+            String email, String id, String? username, String? avatarUrl)?
         authenticated,
     TResult? Function(Failure? failure)? unauthenticated,
   }) {
@@ -323,7 +344,8 @@ class _$AuthStateUnauthenticated implements AuthStateUnauthenticated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email, String? username, String? avatarUrl)?
+    TResult Function(
+            String email, String id, String? username, String? avatarUrl)?
         authenticated,
     TResult Function(Failure? failure)? unauthenticated,
     required TResult orElse(),

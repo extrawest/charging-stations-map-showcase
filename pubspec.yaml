@@ -27,8 +27,8 @@ dependencies:
   cupertino_icons: ^1.0.5
   easy_localization: ^3.0.1
   url_strategy: ^0.2.0
-  hive: ^3.0.0-dev
-  hive_flutter: ^2.0.0-dev
+  hive: 
+  hive_flutter: 
   google_fonts: ^4.0.3
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
@@ -60,6 +60,7 @@ dev_dependencies:
   json_serializable: ^6.6.1
   build_runner: ^2.3.3
   flutter_gen_runner: ^5.2.0
+  hive_generator: 
 
 flutter:
   uses-material-design: true
@@ -75,6 +76,7 @@ flutter:
     - assets/images/app_bar/
     - assets/images/search/
     - assets/images/profile/
+    - assets/images/favourites/
     - assets/i18n/
 
 flutter_gen:
