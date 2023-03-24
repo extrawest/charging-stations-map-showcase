@@ -13,23 +13,25 @@ part 'theme_event.dart';
 part 'theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  final Box _themeBox;
+  final Box<ThemeModeValue> _themeBox;
 
   ThemeBloc(this._themeBox) : super(ThemeState.initial()) {
     on<SetTheme>((SetTheme event, Emitter<ThemeState> emit) async {
       await _themeBox.put(
-          ThemeBox.themeModeKey, EnumToString().parse(event.themeMode));
+        HiveBoxBootsrapper.themeModeKey,
+        EnumToString().parse(event.themeMode),
+      );
       emit(state.copyWith(themeMode: event.themeMode));
     });
 
     on<InitTheme>((InitTheme event, Emitter<ThemeState> emit) async {
       ThemeMode? themeMode = EnumToString().fromString(
         ThemeMode.values,
-        _themeBox.get(ThemeBox.themeModeKey),
+        _themeBox.get(HiveBoxBootsrapper.themeModeKey),
       );
       themeMode ??= ThemeMode.system;
       await _themeBox.put(
-          ThemeBox.themeModeKey, EnumToString().parse(themeMode));
+          HiveBoxBootsrapper.themeModeKey, EnumToString().parse(themeMode));
       emit(state.copyWith(themeMode: themeMode));
     });
   }

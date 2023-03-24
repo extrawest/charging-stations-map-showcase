@@ -23,17 +23,16 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
   ]);
 
-  final themeBox = await ThemeBox.init();
+  await HiveBoxBootsrapper.init();
 
   runApp(
     EasyLocalization(
       path: AppLocalization.translationsFolderPath,
       supportedLocales: AppLocalization.supportedLocales,
       fallbackLocale: AppLocalization.englishLocale,
-      child: GlobalRepositoryProvider(
+      child: const GlobalRepositoryProvider(
         child: GlobalBlocProvider(
-          themeBox: themeBox,
-          child: const App(),
+          child: App(),
         ),
       ),
     ),

@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import '../../features/profile/services/auth_service.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import '../../common/services/theme_box.dart';
 
-import '../../common/di/injector_module.dart';
 import '../../features/features.dart';
+import '../di/injector_module.dart';
 
 class GlobalRepositoryProvider extends StatelessWidget {
   const GlobalRepositoryProvider({
@@ -37,7 +36,7 @@ class GlobalRepositoryProvider extends StatelessWidget {
             googleSignIn: InjectorModule.locator(),
             firebaseAuth: InjectorModule.locator(),
           ),
-        )
+        ),
       ],
       child: child,
     );

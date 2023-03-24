@@ -37,3 +37,9 @@ class AuthenticationFailure extends Failure {
     required super.message,
   });
 }
+
+class LocalStorageFailure extends Failure {
+  const LocalStorageFailure({
+    required super.message,
+  });
+}
