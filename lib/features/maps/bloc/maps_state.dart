@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../common/failure/failure.dart';
-import '../../geolocation/models/geolocation_permission.dart';
 import '../models/station_cluster_item.dart';
 import '../models/station_model.dart';
 

@@ -2,11 +2,11 @@
 
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../features/features.dart';
+import '../../features/maps/maps.dart';
+import '../../features/wallet/wallet.dart';
 import '../../network/dio_client_bootstraper.dart';
 import '../services/google_sign_in_bootstraper.dart';
 

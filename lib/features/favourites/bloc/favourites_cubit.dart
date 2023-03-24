@@ -10,6 +10,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
   FavouritesCubit({
     required FavouriteStationsRepository favouriteStationsRepository,
     required StationRepository stationRepository,
+    required this.userId,
   })  : _favouriteStationsRepository = favouriteStationsRepository,
         _stationRepository = stationRepository,
         super(FavouritesState.initial());
@@ -17,10 +18,14 @@ class FavouritesCubit extends Cubit<FavouritesState> {
   final FavouriteStationsRepository _favouriteStationsRepository;
   final StationRepository _stationRepository;
 
+  final String userId;
+
   Future<void> loadFavouritesStations() async {
     emit(state.copyWith(isLoading: true));
     final favouritesResult =
-        await _favouriteStationsRepository.retreiveFavourites();
+        await _favouriteStationsRepository.retreiveFavourites(
+      userId: userId,
+    );
 
     final newState = await favouritesResult
         .bindFuture(loadStationsAndFilterFavourites)
@@ -65,6 +70,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
 
     final removeResult =
         await _favouriteStationsRepository.removeFromFavourites(
+      userId: userId,
       stationId: stationId,
     );
 
@@ -87,6 +93,7 @@ class FavouritesCubit extends Cubit<FavouritesState> {
     emit(state.copyWith(isLoading: true));
 
     final removeResult = await _favouriteStationsRepository.addToFavourites(
+      userId: userId,
       stationId: stationId,
     );
 

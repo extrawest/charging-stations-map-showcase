@@ -1,5 +1,4 @@
 import '../../features/maps/maps.dart';
-import '../../features/maps/models/connector_status.dart';
 
 const mockConnectors = [
   ConnectorModel(

@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:maps_app/generated/locale_keys.g.dart';
 import '../../../features/theme/styles/app_colors.dart';
 import '../../../generated/assets.gen.dart';
-import '../models/connector_model.dart';
-import '../models/connector_status.dart';
+import '../../maps/maps.dart';
 
 class ConnectorTile extends StatelessWidget {
   const ConnectorTile({

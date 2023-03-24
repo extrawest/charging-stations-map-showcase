@@ -85,7 +85,7 @@ class ChargingStationTile extends StatelessWidget {
 }
 
 class _TypeButton extends StatelessWidget {
-  const _TypeButton({super.key});
+  const _TypeButton();
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +97,7 @@ class _TypeButton extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Assets.images.stationDetails.connector.svg(
-            color: const Color(0xff778290),
-          ),
+          Assets.images.stationDetails.connector.svg(),
           const SizedBox(width: 8),
           Text(
             'Type 2 ',

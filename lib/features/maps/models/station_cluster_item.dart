@@ -5,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'station_model.dart';
 import 'station_status.dart';
 
+// ignore: must_be_immutable
 class StationClusterItem extends Equatable with ClusterItem {
   StationClusterItem({
     required this.station,

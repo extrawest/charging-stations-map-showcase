@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../features/features.dart';
+import '../features/charging/charging.dart';
+import '../features/dashboard/dashboard.dart';
+import '../features/favourites/favourites.dart';
+import '../features/maps/maps.dart';
+import '../features/profile/profile.dart';
+import '../features/search/search.dart';
+import '../features/wallet/wallet.dart';
 
 const String homeRoute = '/home';
 const String walletRoute = '/wallet';

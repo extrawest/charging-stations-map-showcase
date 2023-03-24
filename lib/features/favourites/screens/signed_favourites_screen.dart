@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive/hive.dart';
-import 'package:maps_app/features/dashboard/widgets/bottom_navigation_bar.dart';
 
-import '../../../common/services/services.dart';
 import '../../../common/utils/mocks.dart';
-import '../../maps/maps.dart';
 import '../bloc/favourites_cubit.dart';
 import '../bloc/favourites_state.dart';
-import '../repositories/favourite_stations_repository.dart';
 import '../widgets/favourite_station_tile.dart';
 
 class SignedFavouritesScreen extends StatelessWidget {
@@ -21,18 +16,13 @@ class SignedFavouritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider<FavouriteStationsRepository>(
-      create: (context) => HiveFavouriteStationsRepository(
+    return BlocProvider<FavouritesCubit>(
+      create: (context) => FavouritesCubit(
         userId: userId,
-        box: Hive.box(HiveBoxBootsrapper.favouritesBoxName),
+        favouriteStationsRepository: context.read(),
+        stationRepository: context.read(),
       ),
-      child: BlocProvider<FavouritesCubit>(
-        create: (context) => FavouritesCubit(
-          favouriteStationsRepository: context.read(),
-          stationRepository: context.read(),
-        ),
-        child: const _SignedFavouritesPage(),
-      ),
+      child: const _SignedFavouritesPage(),
     );
   }
 }
@@ -55,6 +45,7 @@ class __SignedFavouritesPageState extends State<_SignedFavouritesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
         title: Text(
           'Favourites',

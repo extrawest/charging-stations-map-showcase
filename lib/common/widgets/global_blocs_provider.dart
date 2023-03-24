@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:maps_app/common/di/injector_module.dart';
-import 'package:maps_app/common/services/theme_box.dart';
 
+import '../../common/services/theme_box.dart';
 import '../../features/geolocation/geolocation.dart';
 import '../../features/profile/profile.dart';
 import '../../features/theme/theme.dart';

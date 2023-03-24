@@ -20,7 +20,9 @@ class GeolocationCubit extends Cubit<GeolocationState> {
   }
 
   Future<void> loadPosition() async {
-    if (state.permission.isDenied) return;
+    if (state.permission.isDenied) {
+      return;
+    }
     emit(state.copyWith(isLoading: true));
     final geopositionResult = await _geolocationService.getCurrentPosition();
     emit(

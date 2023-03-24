@@ -5,27 +5,30 @@ import '../../../common/failure/failure.dart';
 import '../models/favourite_station_model.dart';
 
 abstract class FavouriteStationsRepository {
-  Future<Either<Failure, List<String>>> retreiveFavourites();
+  Future<Either<Failure, List<String>>> retreiveFavourites({
+    required String userId,
+  });
   Future<Either<Failure, void>> addToFavourites({
+    required String userId,
     required String stationId,
   });
 
   Future<Either<Failure, void>> removeFromFavourites({
+    required String userId,
     required String stationId,
   });
 }
 
 class HiveFavouriteStationsRepository implements FavouriteStationsRepository {
   final Box<FavouritesHistoryModel> box;
-  final String userId;
 
   HiveFavouriteStationsRepository({
     required this.box,
-    required this.userId,
   });
 
   @override
   Future<Either<Failure, void>> addToFavourites({
+    required String userId,
     required String stationId,
   }) async {
     try {
@@ -45,6 +48,7 @@ class HiveFavouriteStationsRepository implements FavouriteStationsRepository {
 
   @override
   Future<Either<Failure, void>> removeFromFavourites({
+    required String userId,
     required String stationId,
   }) async {
     try {
@@ -63,7 +67,9 @@ class HiveFavouriteStationsRepository implements FavouriteStationsRepository {
   }
 
   @override
-  Future<Either<Failure, List<String>>> retreiveFavourites() async {
+  Future<Either<Failure, List<String>>> retreiveFavourites({
+    required String userId,
+  }) async {
     try {
       final favourites = box.get(userId);
       if (favourites == null) {

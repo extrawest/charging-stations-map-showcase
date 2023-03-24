@@ -1,15 +1,13 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:maps_app/common/utils/mocks.dart';
-import 'package:maps_app/features/favourites/bloc/favourites_cubit.dart';
-import 'package:maps_app/features/favourites/widgets/favourite_connector_tile.dart';
 
+import '../../../common/utils/mocks.dart';
 import '../../../common/widgets/favourite_button.dart';
 import '../../../common/widgets/station_details_header.dart';
 import '../../../common/widgets/station_location_section.dart';
-
 import '../../maps/maps.dart';
+import '../bloc/favourites_cubit.dart';
+import 'favourite_connector_tile.dart';
 
 class FavouriteStationTile extends StatelessWidget {
   const FavouriteStationTile({

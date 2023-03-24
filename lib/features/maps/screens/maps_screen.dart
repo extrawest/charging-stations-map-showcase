@@ -6,13 +6,13 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../geolocation/geolocation.dart';
 import '../../search/widgets/search_field.dart';
+import '../../station_details/station_details.dart';
 import '../bloc/maps_cubit.dart';
 import '../bloc/maps_state.dart';
 import '../models/station_cluster_item.dart';
 import '../widgets/geolocation_permission_warning.dart';
 import '../widgets/map_actions.dart';
 import '../widgets/marker_builder.dart';
-import '../widgets/station_details_bottom_details.dart';
 
 class MapsScreen extends StatelessWidget {
   const MapsScreen({super.key});

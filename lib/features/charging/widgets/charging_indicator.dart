@@ -86,10 +86,10 @@ class GradientCircularProgressPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     size = Size.fromRadius(radius);
-    double offset = strokeWidth / 2;
-    Rect rect = Offset(offset, offset) &
+    final offset = strokeWidth / 2;
+    final rect = Offset(offset, offset) &
         Size(size.width - strokeWidth, size.height - strokeWidth);
-    var paint = Paint()
+    final paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth;
     paint.shader = SweepGradient(
