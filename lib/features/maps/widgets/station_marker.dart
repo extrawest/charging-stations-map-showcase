@@ -14,7 +14,7 @@ class StationMarker extends MarkerComponent {
   static Size get _size {
     const size = Size(30, 18);
     if (kIsWeb) {
-      return size / 3;
+      return size / 4;
     }
     return size;
   }

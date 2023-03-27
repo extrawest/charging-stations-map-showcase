@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:maps_app/features/dashboard/widgets/bottom_navigation_bar.dart';
 
 import '../../../generated/assets.gen.dart';
 import '../../../generated/locale_keys.g.dart';
@@ -33,30 +34,34 @@ class ChargingScreen extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(24),
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 15,
-                color: Colors.black.withOpacity(0.15),
-              )
-            ],
-          ),
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              SizedBox(height: 24),
-              ChargingIndicator(child: ChargingIndicatorContent()),
-              SizedBox(height: 15),
-              ChargingInfoContent(),
-              SizedBox(height: 24),
-            ],
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 15,
+                  color: Colors.black.withOpacity(0.15),
+                )
+              ],
+            ),
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                SizedBox(height: 24),
+                ChargingIndicator(child: ChargingIndicatorContent()),
+                SizedBox(height: 15),
+                ChargingInfoContent(),
+                SizedBox(height: 24),
+              ],
+            ),
           ),
-        ),
-      ),
+          const SizedBox(height: AppBottomNavigationBar.height),
+        ],
+      )),
     );
   }
 }

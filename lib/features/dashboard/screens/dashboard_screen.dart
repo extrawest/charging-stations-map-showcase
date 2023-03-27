@@ -2,23 +2,26 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:maps_app/common/router.dart';
-import 'package:maps_app/features/wallet/bloc/wallet_cubit.dart';
-import 'package:maps_app/features/wallet/bloc/wallet_state.dart';
+import '../../../common/router.dart';
 
 import '../../../generated/assets.gen.dart';
 import '../../../generated/locale_keys.g.dart';
+import '../../charging/charging.dart';
+import '../../favourites/favourites.dart';
+import '../../maps/maps.dart';
+import '../../profile/profile.dart';
+import '../../wallet/wallet.dart';
 import '../widgets/bottom_navigation_bar.dart';
 import '../widgets/navigation_floating_button.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({
     super.key,
-    required this.child,
+    required this.currentPage,
     required this.pages,
   });
 
-  final Widget child;
+  final String currentPage;
   final List<String> pages;
 
   @override
@@ -28,22 +31,32 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
-  int _index = 0;
+  int get currentIndex {
+    return widget.pages.indexOf('/${widget.currentPage}');
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<WalletCubit, WalletState>(
       builder: (context, state) => Scaffold(
         extendBody: true,
-        body: widget.child,
+        body: IndexedStack(
+          index: currentIndex,
+          children: const [
+            MapsScreen(),
+            FavouritesScreen(),
+            SizedBox(),
+            WalletScreen(),
+            ProfileScreen(),
+          ],
+        ),
         bottomNavigationBar: AppBottomNavigationBar(
           onIndexChanged: (index) {
             if (index != 2) {
-              setState(() => _index = index);
-              context.push(widget.pages[index]);
+              context.go('/dashboard${widget.pages[index]}');
             }
           },
-          selectedItemIndex: _index,
+          selectedItemIndex: currentIndex,
           items: _items(walletBalance: state.model?.balance),
         ),
         floatingActionButtonLocation:

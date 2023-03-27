@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../common/utils/mocks.dart';
 import '../bloc/favourites_cubit.dart';
@@ -39,6 +40,14 @@ class __SignedFavouritesPageState extends State<_SignedFavouritesPage> {
   void initState() {
     super.initState();
     context.read<FavouritesCubit>().loadFavouritesStations();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    GoRouter.of(context).addListener(() {
+      context.read<FavouritesCubit>().loadFavouritesStations();
+    });
   }
 
   @override

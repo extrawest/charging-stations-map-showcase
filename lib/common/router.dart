@@ -3,72 +3,42 @@ import 'package:go_router/go_router.dart';
 
 import '../features/charging/charging.dart';
 import '../features/dashboard/dashboard.dart';
-import '../features/favourites/favourites.dart';
-import '../features/maps/maps.dart';
-import '../features/profile/profile.dart';
 import '../features/search/search.dart';
-import '../features/wallet/wallet.dart';
 
+const String dahsboardRoute = '/dashboard/:screen';
 const String homeRoute = '/home';
 const String walletRoute = '/wallet';
-const String chargingRoute = '/charging';
-const String searchRoute = '/search';
 const String profileRoute = '/profile';
 const String favouritesRoute = '/favourites';
 
+const String chargingRoute = '/charging';
+const String searchRoute = '/search';
+
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey(debugLabel: 'root');
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey(debugLabel: 'shell');
 
 final goRouter = GoRouter(
-  initialLocation: homeRoute,
+  initialLocation: '/dashboard/home',
   navigatorKey: _rootNavigatorKey,
   debugLogDiagnostics: true,
   routes: [
-    ShellRoute(
-      navigatorKey: _shellNavigatorKey,
-      builder: (context, state, child) => DashboardScreen(
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: dahsboardRoute,
+      pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        pages: const [
-          homeRoute,
-          favouritesRoute,
-          '',
-          walletRoute,
-          profileRoute
-        ],
-        child: child,
+        child: DashboardScreen(
+          key: state.pageKey,
+          currentPage: state.params['screen']!,
+          pages: const [
+            homeRoute,
+            favouritesRoute,
+            '',
+            walletRoute,
+            profileRoute
+          ],
+        ),
       ),
-      routes: [
-        GoRoute(
-          path: homeRoute,
-          pageBuilder: (context, state) => _TransitionPage(
-            key: state.pageKey,
-            child: const MapsScreen(),
-          ),
-        ),
-        GoRoute(
-          path: favouritesRoute,
-          pageBuilder: (context, state) => _TransitionPage(
-            key: state.pageKey,
-            child: const FavouritesScreen(),
-          ),
-        ),
-        GoRoute(
-          path: walletRoute,
-          pageBuilder: (context, state) => _TransitionPage(
-            key: state.pageKey,
-            child: const WalletScreen(),
-          ),
-        ),
-        GoRoute(
-          path: profileRoute,
-          pageBuilder: (context, state) => _TransitionPage(
-            key: state.pageKey,
-            child: const ProfileScreen(),
-          ),
-        ),
-      ],
     ),
     GoRoute(
       parentNavigatorKey: _rootNavigatorKey,

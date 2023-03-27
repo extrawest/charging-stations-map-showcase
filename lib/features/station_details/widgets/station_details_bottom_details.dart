@@ -40,7 +40,7 @@ class StationDetailsBottomSheet extends StatelessWidget {
                   distance: distance,
                   onOpenFavourites: () {
                     context.pop();
-                    context.push(favouritesRoute);
+                    context.push('/dashboard$favouritesRoute');
                   },
                 )..checkIfAddedToFavourite(),
             child: Wrap(
