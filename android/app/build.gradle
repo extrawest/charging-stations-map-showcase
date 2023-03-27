@@ -81,7 +81,9 @@ android {
         }
     }
 
+
     defaultConfig {
+        multiDexEnabled true
         applicationId "tsurkan.maps.app"
         minSdkVersion 20
         targetSdkVersion flutter.targetSdkVersion
@@ -112,4 +114,5 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:support-annotations:28.0.0'
+    implementation 'com.android.support:multidex:1.0.3'
 }
