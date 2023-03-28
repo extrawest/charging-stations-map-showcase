@@ -15,7 +15,7 @@ class StationModel with _$StationModel {
     required double longitude,
     required double latitude,
     @Default(false) bool isFavourite,
-    @Default(StationStatus.empty) required StationStatus status,
+    @Default(StationStatus.empty) StationStatus status,
   }) = _StationModel;
 
   const StationModel._();

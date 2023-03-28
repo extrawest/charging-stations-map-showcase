@@ -184,7 +184,7 @@ class _$_StationModel extends _StationModel {
       required this.longitude,
       required this.latitude,
       this.isFavourite = false,
-      required this.status = StationStatus.empty})
+      this.status = StationStatus.empty})
       : super._();
 
   factory _$_StationModel.fromJson(Map<String, dynamic> json) =>
@@ -259,7 +259,7 @@ abstract class _StationModel extends StationModel {
       required final double longitude,
       required final double latitude,
       final bool isFavourite,
-      required final StationStatus status}) = _$_StationModel;
+      final StationStatus status}) = _$_StationModel;
   const _StationModel._() : super._();
 
   factory _StationModel.fromJson(Map<String, dynamic> json) =

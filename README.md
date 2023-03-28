@@ -2,8 +2,7 @@
 
 Flutter training project for managing charging stations with maps
 
-[
-![Maintanence](https://img.shields.io/badge/Maintenance-yes%3F-blue.svg)]()
+[![Maintanence](https://img.shields.io/badge/Maintenance-yes%3F-blue.svg)]()
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)]()
 ![GitHub release](https://img.shields.io/badge/release-v1.0.0-blue)
 ![Supported Programs](https://img.shields.io/badge/Platform-Android%20|%20iOS%20|%20Web%20%20-blue.svg?logo=flutter)
@@ -11,7 +10,7 @@ Flutter training project for managing charging stations with maps
 
 ## Project info 
 
-- This project is an app that provides service for managing charging station woth maps
+- This project is an app that provides service for managing charging station with maps
 - The app runs on Android, iOS and Web.
 - The app is built using Flutter 3.3 and Dart.
 - The app is built using the MVVM architecture.

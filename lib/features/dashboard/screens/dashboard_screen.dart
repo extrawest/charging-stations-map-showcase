@@ -12,6 +12,7 @@ import '../../maps/maps.dart';
 import '../../profile/profile.dart';
 import '../../wallet/wallet.dart';
 import '../widgets/bottom_navigation_bar.dart';
+import '../widgets/made_by_extrawest_tile.dart';
 import '../widgets/navigation_floating_button.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -38,34 +39,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<WalletCubit, WalletState>(
-      builder: (context, state) => Scaffold(
-        extendBody: true,
-        body: IndexedStack(
-          index: currentIndex,
-          children: const [
-            MapsScreen(),
-            FavouritesScreen(),
-            SizedBox(),
-            WalletScreen(),
-            ProfileScreen(),
-          ],
-        ),
-        bottomNavigationBar: AppBottomNavigationBar(
-          onIndexChanged: (index) {
-            if (index != 2) {
-              context.go('/dashboard${widget.pages[index]}');
-            }
-          },
-          selectedItemIndex: currentIndex,
-          items: _items(walletBalance: state.model?.balance),
-        ),
-        floatingActionButtonLocation:
-            FloatingActionButtonLocation.miniCenterDocked,
-        floatingActionButton: NavigationFloatingButton(
-          onPressed: () {
-            context.push(chargingRoute);
-          },
-        ),
+      builder: (context, state) => Stack(
+        alignment: Alignment.center,
+        children: [
+          Scaffold(
+            extendBody: true,
+            body: IndexedStack(
+              index: currentIndex,
+              children: const [
+                MapsScreen(),
+                FavouritesScreen(),
+                SizedBox(),
+                WalletScreen(),
+                ProfileScreen(),
+              ],
+            ),
+            bottomNavigationBar: AppBottomNavigationBar(
+              onIndexChanged: (index) {
+                if (index != 2) {
+                  context.go('/dashboard${widget.pages[index]}');
+                }
+              },
+              selectedItemIndex: currentIndex,
+              items: _items(walletBalance: state.model?.balance),
+            ),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.miniCenterDocked,
+            floatingActionButton: NavigationFloatingButton(
+              onPressed: () {
+                context.push(chargingRoute);
+              },
+            ),
+          ),
+          const Positioned(
+            bottom: 10,
+            child: MadeByExtrawestTile(),
+          ),
+        ],
       ),
     );
   }
