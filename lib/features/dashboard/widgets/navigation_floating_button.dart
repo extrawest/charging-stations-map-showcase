@@ -9,10 +9,12 @@ class NavigationFloatingButton extends StatelessWidget {
 
   final VoidCallback onPressed;
 
+  static const double size = 68;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox.square(
-      dimension: 68,
+      dimension: size,
       child: FloatingActionButton(
         onPressed: onPressed,
         child: Opacity(
