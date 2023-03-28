@@ -14,9 +14,9 @@ import '../../network/remove_data_from_get_request_interceptor.dart';
 part '../services/google_sign_in_bootstraper.dart';
 part '../../network/dio_client_bootstraper.dart';
 
-abstract class InjectorModule {
+class InjectorModule {
   static final GetIt locator = GetIt.asNewInstance();
-  static Future<void> inject() async {
+  Future<void> inject() async {
     final dioClient = await _DioClienBootstraper().inializeDioClient();
     locator.registerSingleton<Dio>(dioClient);
 

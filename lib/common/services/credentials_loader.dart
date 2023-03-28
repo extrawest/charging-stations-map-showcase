@@ -3,8 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../utils/logger.dart';
+import 'logger_bootstrapper.dart';
 
 part 'credentials_loader.freezed.dart';
 part 'credentials_loader.g.dart';

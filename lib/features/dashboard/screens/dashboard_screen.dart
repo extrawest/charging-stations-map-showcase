@@ -6,7 +6,6 @@ import '../../../common/router.dart';
 
 import '../../../generated/assets.gen.dart';
 import '../../../generated/locale_keys.g.dart';
-import '../../charging/charging.dart';
 import '../../favourites/favourites.dart';
 import '../../maps/maps.dart';
 import '../../profile/profile.dart';

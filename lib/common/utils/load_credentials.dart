@@ -1,7 +1,7 @@
-import 'package:maps_app/common/configuration/configuration.dart';
+import '../configuration/configuration.dart';
 import '../services/credentials_loader.dart';
+import '../services/logger_bootstrapper.dart';
 import 'get_flavor.dart';
-import 'logger.dart';
 
 Future<Credentials> loadCredentials() async {
   try {

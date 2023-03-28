@@ -11,7 +11,7 @@ class HiveBoxBootsrapper {
 
   static const String favouritesBoxName = 'favourites';
 
-  static Future<void> init() async {
+  Future<void> init() async {
     await Hive.initFlutter();
     Hive.registerAdapter<FavouritesHistoryModel>(
       FavouritesHistoryModelAdapter(),
