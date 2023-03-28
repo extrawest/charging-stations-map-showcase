@@ -2,22 +2,26 @@
 
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../common/utils/load_credentials.dart';
 import '../../features/maps/maps.dart';
 import '../../features/wallet/wallet.dart';
-import '../../network/dio_client_bootstraper.dart';
-import '../services/google_sign_in_bootstraper.dart';
+import '../../network/remove_data_from_get_request_interceptor.dart';
+
+part '../services/google_sign_in_bootstraper.dart';
+part '../../network/dio_client_bootstraper.dart';
 
 abstract class InjectorModule {
   static final GetIt locator = GetIt.asNewInstance();
   static Future<void> inject() async {
-    final dioClient = await DioClienBootstraper.inializeDioClient();
+    final dioClient = await _DioClienBootstraper().inializeDioClient();
     locator.registerSingleton<Dio>(dioClient);
 
     final googleSignIn =
-        await GoogleSignInBootstraper.intitializeGoogleSignIn();
+        await _GoogleSignInBootstraper().intitializeGoogleSignIn();
     locator.registerSingleton<GoogleSignIn>(googleSignIn);
 
     locator.registerSingleton<FirebaseAuth>(FirebaseAuth.instance);

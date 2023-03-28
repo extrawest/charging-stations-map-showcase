@@ -2,6 +2,21 @@
 
 Flutter training project for managing charging stations with maps
 
+[
+![Maintanence](https://img.shields.io/badge/Maintenance-yes%3F-blue.svg)]()
+[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)]()
+![GitHub release](https://img.shields.io/badge/release-v1.0.0-blue)
+![Supported Programs](https://img.shields.io/badge/Platform-Android%20|%20iOS%20|%20Web%20%20-blue.svg?logo=flutter)
+[![View DEMO](https://img.shields.io/badge/VIEW-DEMO-lightgreen.svg)]()
+
+## Project info 
+
+- This project is an app that provides service for managing charging station woth maps
+- The app runs on Android, iOS and Web.
+- The app is built using Flutter 3.3 and Dart.
+- The app is built using the MVVM architecture.
+- The app is built using the BLoC pattern.
+
 ## Get Started
 
 ### 1. Fetch packages
@@ -36,7 +51,23 @@ flutter pub run build_runner build --delete-conflicting-outputs
 flutter run --dart-define MAP_API_KEY=your_api_key_here --flavor=your_flavor_here
 ```
 
+## CREATE CREDENTIALS FILES FOR DEVELOPMENT AND PRODUCTION MODE
 
+Create `config_dev.json` and `config_prod.json` inside the `assets` folder.
+Do not add these files to GIT!
+Files should have the following structure:
+
+```json
+{
+  "appName": "",
+  "apiDomain": "",
+  "googleClientIdWeb": "",
+}
+```
+Where:
+- Value for `appName` should be according to your project
+- Value for `apiDomain`, can be obtained on the backend
+- Value for `googleClientIdWeb`, can be obtained on Firebase Console
 
 ## Run the app in development or production mode
 

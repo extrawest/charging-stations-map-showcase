@@ -14,7 +14,7 @@ class WalletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffDDEAF3),
+      backgroundColor: AppColors.blueGrey,
       body: BlocBuilder<WalletCubit, WalletState>(
         builder: (context, state) => CustomScrollView(
           slivers: [
@@ -22,7 +22,7 @@ class WalletScreen extends StatelessWidget {
               expandedHeight: 80,
               automaticallyImplyLeading: false,
               floating: true,
-              backgroundColor: const Color(0xffDDEAF3),
+              backgroundColor: AppColors.blueGrey,
               title: Text(
                 LocaleKeys.wallet_title.tr(),
                 style: const TextStyle(

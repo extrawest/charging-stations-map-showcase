@@ -1,5 +1,3 @@
-// ignore_for_file: invalid_annotation_target
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../models/station_cluster_item.dart';
@@ -17,7 +15,7 @@ class StationModel with _$StationModel {
     required double longitude,
     required double latitude,
     @Default(false) bool isFavourite,
-    @JsonKey(defaultValue: StationStatus.empty) required StationStatus status,
+    @Default(StationStatus.empty) required StationStatus status,
   }) = _StationModel;
 
   const StationModel._();

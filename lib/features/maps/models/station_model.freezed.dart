@@ -26,7 +26,6 @@ mixin _$StationModel {
   double get longitude => throw _privateConstructorUsedError;
   double get latitude => throw _privateConstructorUsedError;
   bool get isFavourite => throw _privateConstructorUsedError;
-  @JsonKey(defaultValue: StationStatus.empty)
   StationStatus get status => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +47,7 @@ abstract class $StationModelCopyWith<$Res> {
       double longitude,
       double latitude,
       bool isFavourite,
-      @JsonKey(defaultValue: StationStatus.empty) StationStatus status});
+      StationStatus status});
 }
 
 /// @nodoc
@@ -120,7 +119,7 @@ abstract class _$$_StationModelCopyWith<$Res>
       double longitude,
       double latitude,
       bool isFavourite,
-      @JsonKey(defaultValue: StationStatus.empty) StationStatus status});
+      StationStatus status});
 }
 
 /// @nodoc
@@ -185,7 +184,7 @@ class _$_StationModel extends _StationModel {
       required this.longitude,
       required this.latitude,
       this.isFavourite = false,
-      @JsonKey(defaultValue: StationStatus.empty) required this.status})
+      required this.status = StationStatus.empty})
       : super._();
 
   factory _$_StationModel.fromJson(Map<String, dynamic> json) =>
@@ -205,7 +204,7 @@ class _$_StationModel extends _StationModel {
   @JsonKey()
   final bool isFavourite;
   @override
-  @JsonKey(defaultValue: StationStatus.empty)
+  @JsonKey()
   final StationStatus status;
 
   @override
@@ -260,8 +259,7 @@ abstract class _StationModel extends StationModel {
       required final double longitude,
       required final double latitude,
       final bool isFavourite,
-      @JsonKey(defaultValue: StationStatus.empty)
-          required final StationStatus status}) = _$_StationModel;
+      required final StationStatus status}) = _$_StationModel;
   const _StationModel._() : super._();
 
   factory _StationModel.fromJson(Map<String, dynamic> json) =
@@ -280,7 +278,6 @@ abstract class _StationModel extends StationModel {
   @override
   bool get isFavourite;
   @override
-  @JsonKey(defaultValue: StationStatus.empty)
   StationStatus get status;
   @override
   @JsonKey(ignore: true)
