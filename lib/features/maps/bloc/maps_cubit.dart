@@ -61,4 +61,9 @@ class MapsCubit extends Cubit<MapsState> {
   void setMapType(MapType mapType) {
     emit(state.copyWith(mapType: mapType));
   }
+
+  void setLocation(LatLng? location) {
+    emit(state.copyWith(location: location));
+    loadClusterItems();
+  }
 }

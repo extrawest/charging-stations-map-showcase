@@ -21,7 +21,6 @@ class MapsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GeolocationCubit, GeolocationState>(
       builder: (context, state) => BlocProvider(
-        key: ValueKey(state),
         create: (context) => MapsCubit(
           stationRepository: context.read(),
           location: state.position,
@@ -57,24 +56,29 @@ class __MapsPageState extends State<_MapsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocConsumer<MapsCubit, MapsState>(
-        listener: (context, state) async {
-          _clusterManager?.setItems(state.clusterItems);
-        },
-        builder: (context, state) {
-          if (state.isLoading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (state.failure != null) {
-            return Center(child: Text(state.failure!.message!));
-          }
-          return _buildMap(
-            state.clusterItems,
-            state.stations.firstOrNull?.position,
-            state.mapType,
-          );
-        },
+    return BlocListener<GeolocationCubit, GeolocationState>(
+      listener: (context, state) {
+        context.read<MapsCubit>().setLocation(state.position);
+      },
+      child: Scaffold(
+        body: BlocConsumer<MapsCubit, MapsState>(
+          listener: (context, state) async {
+            _clusterManager?.setItems(state.clusterItems);
+          },
+          builder: (context, state) {
+            if (state.isLoading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state.failure != null) {
+              return Center(child: Text(state.failure!.message!));
+            }
+            return _buildMap(
+              state.clusterItems,
+              state.stations.firstOrNull?.position,
+              state.mapType,
+            );
+          },
+        ),
       ),
     );
   }

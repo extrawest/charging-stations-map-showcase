@@ -29,7 +29,7 @@ class SearchField extends StatefulWidget {
   final bool _isEnabled;
 
   static void _goToSearchPage(BuildContext context) {
-    context.go(searchRoute);
+    context.push(searchRoute);
   }
 
   @override
