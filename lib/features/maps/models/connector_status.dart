@@ -1,0 +1,4 @@
+enum ConnectorStatus {
+  inUse,
+  available,
+}

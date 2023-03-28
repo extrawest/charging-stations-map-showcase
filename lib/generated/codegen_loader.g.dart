@@ -15,54 +15,116 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> uk_UA = {
-  "app_bar": {
-    "title": "Вітаємо домашньому екрані!"
+  "bottom_nav_bar": {
+    "map": "МАПА",
+    "favourites": "УЛЮБЛЕНЕ",
+    "account": "АККАУНТ"
   },
   "button": {
-    "cancel": "Відміна"
+    "apply": "Застосувати"
   },
-  "language": {
-    "english": "Англійська",
-    "ukrainian": "Українська"
+  "map_type": {
+    "normal": "Звичвйна",
+    "satellite": "Супутник"
   },
-  "theme": {
-    "change_theme": "Змінити тему"
+  "station_detals": {
+    "connectors": "Розʼєми",
+    "coordinates": "Координати",
+    "status": "Статус: {}",
+    "price_per_kwh": "$ {} за kWh",
+    "kWh": "{} kWh",
+    "charge": "Зарядити",
+    "in_use": "В Вживанні"
   },
-  "plural": {
-    "zero": "Будь ласка, почніть натискати кнопку '+'",
-    "one": "Ви натиснули кнопку один раз",
-    "other": "Ви натиснули кнопку {} раз."
+  "wallet": {
+    "title": "Гаманець",
+    "balance": "Баланс",
+    "history": "Історія"
   },
-  "fetch_posts": "Оновити пости",
-  "system": "системна",
-  "light": "світла",
-  "dark": "темна",
-  "resolution_aware_img": "Приклад використання зображення, яке враховує роздільну здатність екрану"
+  "charging": {
+    "title": "Сеанс зарядки",
+    "cost": "Ціна:",
+    "delivered": "Доставлено",
+    "starting_time": "Початковий час",
+    "speed": "Швидкість зарядки",
+    "amperage": "Сила струму",
+    "voltage": "Напруга",
+    "station_name": "Назва станції",
+    "tariff": "Тариф",
+    "coonrinated": "Координати",
+    "start_charging": "Почати зарядку"
+  },
+  "search": {
+    "no_results": "Вибачте, результатів не знайдено",
+    "hint": "Почніть писати тут"
+  },
+  "profile": {
+    "title": "Профіль",
+    "save": "Зберегти",
+    "sign_up": "Зареєструватися",
+    "sign_up_google": "Зареєструватися із Google",
+    "logout": "Вийти",
+    "field": {
+      "name": "Імʼя",
+      "email": "Електрона пошта"
+    }
+  }
 };
 static const Map<String,dynamic> en_US = {
-  "app_bar": {
-    "title": "Welcome to the home page"
+  "bottom_nav_bar": {
+    "map": "MAP",
+    "favourites": "FAVOURITES",
+    "account": "ACCOUNT"
   },
   "button": {
-    "cancel": "Cancel"
+    "apply": "Apply"
   },
-  "language": {
-    "english": "English",
-    "ukrainian": "Ukrainian"
+  "map_type": {
+    "normal": "Normal",
+    "satellite": "Satellite"
   },
-  "theme": {
-    "change_theme": "Change theme"
+  "station_detals": {
+    "connectors": "Connectors",
+    "coordinates": "Coordinates",
+    "status": "Status: {}",
+    "price_per_kwh": "$ {} per kWh",
+    "kWh": "{} kWh",
+    "charge": "Charge",
+    "in_use": "In Use"
   },
-  "plural": {
-    "zero": "Please start pushing the 'plus' button.",
-    "one": "You have pushed the button one time.",
-    "other": "You have pushed the button {} times."
+  "wallet": {
+    "title": "Wallet",
+    "balance": "Balance",
+    "history": "History"
   },
-  "fetch_posts": "Fetch posts",
-  "system": "system",
-  "light": "light",
-  "dark": "dark",
-  "resolution_aware_img": "Example of resolution-aware image usage"
+  "charging": {
+    "title": "Charging session",
+    "cost": "Cost:",
+    "delivered": "Delivered",
+    "starting_time": "Starting time",
+    "speed": "Charging speed",
+    "amperage": "Amperage",
+    "voltage": "Voltage",
+    "station_name": "Station name",
+    "tariff": "Tariff",
+    "coonrinated": "Coordinates",
+    "start_charging": "Start charging"
+  },
+  "search": {
+    "no_results": "Sorry, no results found",
+    "hint": "Type here"
+  },
+  "profile": {
+    "title": "Profile",
+    "save": "Save",
+    "sign_up": "Sign Up",
+    "sign_up_google": "Sign Up with Google",
+    "logout": "Log out",
+    "field": {
+      "name": "Name",
+      "email": "Email"
+    }
+  }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"uk_UA": uk_UA, "en_US": en_US};
 }

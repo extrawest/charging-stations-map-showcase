@@ -1,26 +1,56 @@
 {
-  "app_bar": {
-    "title": "Вітаємо домашньому екрані!"
+  "bottom_nav_bar": {
+    "map": "МАПА",
+    "favourites": "УЛЮБЛЕНЕ",
+    "account": "АККАУНТ"
   },
   "button": {
-    "cancel": "Відміна"
+    "apply": "Застосувати"
   },
-  "language": {
-    "english": "Англійська",
-    "ukrainian": "Українська"
+  "map_type": {
+    "normal": "Звичвйна",
+    "satellite": "Супутник"
   },
-  "theme": {
-    "change_theme": "Змінити тему"
+  "station_detals": {
+    "connectors": "Розʼєми",
+    "coordinates": "Координати",
+    "status": "Статус: {}",
+    "price_per_kwh": "$ {} за kWh",
+    "kWh": "{} kWh",
+    "charge": "Зарядити",
+    "in_use": "В Вживанні"
   },
-  "plural": {
-    "zero": "Будь ласка, почніть натискати кнопку '+'",
-    "one": "Ви натиснули кнопку один раз",
-    "other": "Ви натиснули кнопку {} раз."
+  "wallet": {
+    "title": "Гаманець",
+    "balance": "Баланс",
+    "history": "Історія"
   },
-  "fetch_posts": "Оновити пости",
-
-  "system": "системна",
-  "light": "світла",
-  "dark": "темна",
-  "resolution_aware_img": "Приклад використання зображення, яке враховує роздільну здатність екрану"
+  "charging": {
+    "title": "Сеанс зарядки",
+    "cost": "Ціна:",
+    "delivered": "Доставлено",
+    "starting_time": "Початковий час",
+    "speed": "Швидкість зарядки",
+    "amperage": "Сила струму",
+    "voltage": "Напруга",
+    "station_name": "Назва станції",
+    "tariff": "Тариф",
+    "coonrinated": "Координати",
+    "start_charging": "Почати зарядку"
+  },
+  "search": {
+    "no_results": "Вибачте, результатів не знайдено",
+    "hint": "Почніть писати тут"
+  },
+  "profile": {
+    "title": "Профіль",
+    "save": "Зберегти",
+    "sign_up": "Зареєструватися",
+    "sign_up_google": "Зареєструватися із Google",
+    "logout": "Вийти",
+    "field": {
+      "name": "Імʼя",
+      "email": "Електрона пошта"
+    }
+  }
 }

@@ -2,11 +2,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_project_starter/common/services/database_boxes.dart';
-import 'package:flutter_bloc_project_starter/common/utils/app_utils.dart';
-import 'package:flutter_bloc_project_starter/generated/locale_keys.g.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../common/services/services.dart';
+import '../../../common/utils/utils.dart';
 import '../theme_info.dart';
 
 part 'theme_event.dart';
@@ -14,23 +13,25 @@ part 'theme_event.dart';
 part 'theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
-  final Box _themeBox;
+  final Box<ThemeModeValue> _themeBox;
 
   ThemeBloc(this._themeBox) : super(ThemeState.initial()) {
     on<SetTheme>((SetTheme event, Emitter<ThemeState> emit) async {
       await _themeBox.put(
-          ThemeBox.themeModeKey, EnumToString().parse(event.themeMode));
+        HiveBoxBootsrapper.themeModeKey,
+        EnumToString().parse(event.themeMode),
+      );
       emit(state.copyWith(themeMode: event.themeMode));
     });
 
     on<InitTheme>((InitTheme event, Emitter<ThemeState> emit) async {
       ThemeMode? themeMode = EnumToString().fromString(
         ThemeMode.values,
-        _themeBox.get(ThemeBox.themeModeKey),
+        _themeBox.get(HiveBoxBootsrapper.themeModeKey),
       );
       themeMode ??= ThemeMode.system;
       await _themeBox.put(
-          ThemeBox.themeModeKey, EnumToString().parse(themeMode));
+          HiveBoxBootsrapper.themeModeKey, EnumToString().parse(themeMode));
       emit(state.copyWith(themeMode: themeMode));
     });
   }
@@ -48,17 +49,6 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
       case ThemeMode.system:
         add(const SetTheme(ThemeMode.light));
         break;
-    }
-  }
-
-  String get themeLabel {
-    switch (state.themeMode) {
-      case ThemeMode.light:
-        return LocaleKeys.light;
-      case ThemeMode.dark:
-        return LocaleKeys.dark;
-      case ThemeMode.system:
-        return LocaleKeys.system;
     }
   }
 }

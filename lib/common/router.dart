@@ -1,55 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'screens/error_screen.dart';
-import 'screens/home_screen.dart';
-import 'screens/pages_list_screen.dart';
-import 'widgets/page_widget.dart';
+import '../features/charging/charging.dart';
+import '../features/dashboard/dashboard.dart';
+import '../features/search/search.dart';
 
-/* * * * * * * * * * * *
-*
-* /home
-* /pages
-*     /pages/1
-*     /pages/2
-*     ...
-*     /pages/test
-*
-* * * * * * * * * * * */
+const String dahsboardRoute = '/dashboard/:screen';
 const String homeRoute = '/home';
-const String pagesRoute = '/pages';
-const String pagesDynamicRoute = ':id';
-const String firstPageRoute = '/pages/1';
+const String walletRoute = '/wallet';
+const String profileRoute = '/profile';
+const String favouritesRoute = '/favourites';
+
+const String chargingRoute = '/charging';
+const String searchRoute = '/search';
+
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+    GlobalKey(debugLabel: 'root');
 
 final goRouter = GoRouter(
-  initialLocation: homeRoute,
-  errorBuilder: (context, state) => ErrorScreen(state.error),
+  initialLocation: '/dashboard/home',
+  navigatorKey: _rootNavigatorKey,
+  debugLogDiagnostics: true,
   routes: [
     GoRoute(
-      path: homeRoute,
+      parentNavigatorKey: _rootNavigatorKey,
+      path: dahsboardRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child: const HomeScreen(),
+        child: DashboardScreen(
+          key: state.pageKey,
+          currentPage: state.params['screen']!,
+          pages: const [
+            homeRoute,
+            favouritesRoute,
+            '',
+            walletRoute,
+            profileRoute
+          ],
+        ),
       ),
     ),
     GoRoute(
-      path: pagesRoute,
+      parentNavigatorKey: _rootNavigatorKey,
+      path: chargingRoute,
       pageBuilder: (context, state) => _TransitionPage(
         key: state.pageKey,
-        child: const PagesListScreen(),
+        child: const ChargingScreen(),
       ),
-      routes: <RouteBase>[
-        GoRoute(
-          path: pagesDynamicRoute,
-          // builder: (BuildContext context, GoRouterState state) {
-          //   return const PageWidget();
-          // },
-          pageBuilder: (context, state) => _TransitionPage(
-            key: state.pageKey,
-            child: const PageWidget(),
-          ),
-        ),
-      ],
+    ),
+    GoRoute(
+      parentNavigatorKey: _rootNavigatorKey,
+      path: searchRoute,
+      pageBuilder: (context, state) => _TransitionPage(
+        key: state.pageKey,
+        child: const SearchScreen(),
+      ),
     ),
   ],
 );
@@ -61,7 +66,5 @@ class _TransitionPage extends CustomTransitionPage {
           child: child,
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               FadeTransition(opacity: animation, child: child),
-              // create your own or use an existing one
-              // ScaleTransition(scale: animation, child: child),
         );
 }

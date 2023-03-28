@@ -1,26 +1,56 @@
 {
-  "app_bar": {
-    "title": "Welcome to the home page"
+  "bottom_nav_bar": {
+    "map": "MAP",
+    "favourites": "FAVOURITES",
+    "account": "ACCOUNT"
   },
   "button": {
-    "cancel": "Cancel"
+    "apply": "Apply"
   },
-  "language": {
-    "english": "English",
-    "ukrainian": "Ukrainian"
+  "map_type": {
+    "normal": "Normal",
+    "satellite": "Satellite"
   },
-  "theme": {
-    "change_theme": "Change theme"
+  "station_detals": {
+    "connectors": "Connectors",
+    "coordinates": "Coordinates",
+    "status": "Status: {}",
+    "price_per_kwh": "$ {} per kWh",
+    "kWh": "{} kWh",
+    "charge": "Charge",
+    "in_use": "In Use"
   },
-  "plural": {
-    "zero": "Please start pushing the 'plus' button.",
-    "one": "You have pushed the button one time.",
-    "other": "You have pushed the button {} times."
+  "wallet": {
+    "title": "Wallet",
+    "balance": "Balance",
+    "history": "History"
   },
-  "fetch_posts": "Fetch posts",
-
-  "system": "system",
-  "light": "light",
-  "dark": "dark",
-  "resolution_aware_img": "Example of resolution-aware image usage"
+  "charging": {
+    "title": "Charging session",
+    "cost": "Cost:",
+    "delivered": "Delivered",
+    "starting_time": "Starting time",
+    "speed": "Charging speed",
+    "amperage": "Amperage",
+    "voltage": "Voltage",
+    "station_name": "Station name",
+    "tariff": "Tariff",
+    "coonrinated": "Coordinates",
+    "start_charging": "Start charging"
+  },
+  "search": {
+    "no_results": "Sorry, no results found",
+    "hint": "Type here"
+  },
+  "profile": {
+    "title": "Profile",
+    "save": "Save",
+    "sign_up": "Sign Up",
+    "sign_up_google": "Sign Up with Google",
+    "logout": "Log out",
+    "field": {
+      "name": "Name",
+      "email": "Email"
+    }
+  }
 }

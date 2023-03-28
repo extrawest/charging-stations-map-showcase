@@ -1,10 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_project_starter/common/services/database_boxes.dart';
-import 'package:flutter_bloc_project_starter/common/utils/app_utils.dart';
-import 'package:flutter_bloc_project_starter/features/theme/theme.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:maps_app/common/services/services.dart';
+import 'package:maps_app/common/utils/utils.dart';
+import 'package:maps_app/features/theme/theme.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
@@ -14,7 +14,7 @@ import 'theme_bloc_test.mocks.dart';
   Box,
 ])
 void main() {
-  final box = MockBox();
+  final box = MockBox<String?>();
 
   const themeMode = ThemeMode.dark;
   const setThemeEvent = SetTheme(themeMode);
@@ -28,14 +28,14 @@ void main() {
       AND proper state is emmitted''',
       setUp: () {
         when(
-          box.put(ThemeBox.themeModeKey, themeModeString),
+          box.put(HiveBoxBootsrapper.themeModeKey, themeModeString),
         ).thenAnswer(
           (_) => Future.value(null),
         );
       },
       build: () => ThemeBloc(box),
       verify: (_) => verify(
-        box.put(ThemeBox.themeModeKey, themeModeString),
+        box.put(HiveBoxBootsrapper.themeModeKey, themeModeString),
       ).called(1),
       act: (bloc) => bloc.add(setThemeEvent),
       expect: () => [
@@ -49,16 +49,16 @@ void main() {
       AND proper state is emmitted''',
       setUp: () {
         when(
-          box.get(ThemeBox.themeModeKey),
+          box.get(HiveBoxBootsrapper.themeModeKey),
         ).thenReturn(EnumToString().parse(themeMode));
         when(
-          box.put(ThemeBox.themeModeKey, themeModeString),
+          box.put(HiveBoxBootsrapper.themeModeKey, themeModeString),
         ).thenAnswer(
           (_) => Future.value(null),
         );
       },
       build: () => ThemeBloc(box),
-      verify: (_) => verify(box.get(ThemeBox.themeModeKey)).called(1),
+      verify: (_) => verify(box.get(HiveBoxBootsrapper.themeModeKey)).called(1),
       act: (bloc) => bloc.add(initThemeEvent),
       expect: () => [
         ThemeState.initial().copyWith(themeMode: themeMode),

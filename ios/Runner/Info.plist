@@ -56,5 +56,29 @@
 		<string>en</string>
 		<string>ua</string>
 	</array>
+	<key>NSLocationUsageDescription</key>
+	<string></string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string></string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tsurkan.maps.app</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.499519537662-3j0384aiapeeb8kp1ckg5kkl22fos0iu</string>
+			</array>
+		</dict>
+		
+	</array>
 </dict>
 </plist>
