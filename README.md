@@ -6,7 +6,7 @@ Flutter training project for managing charging stations with maps
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)]()
 ![GitHub release](https://img.shields.io/badge/release-v1.0.0-blue)
 ![Supported Programs](https://img.shields.io/badge/Platform-Android%20|%20iOS%20|%20Web%20%20-blue.svg?logo=flutter)
-[![View DEMO](https://img.shields.io/badge/VIEW-DEMO-lightgreen.svg)]()
+[![View DEMO](https://img.shields.io/badge/VIEW-DEMO-lightgreen.svg)](https://maps-app-5d8d8.web.app/)
 
 ## Project info 
 
