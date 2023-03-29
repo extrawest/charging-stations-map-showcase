@@ -16,6 +16,10 @@ Flutter training project for managing charging stations with maps
 - The app is built using the MVVM architecture.
 - The app is built using the BLoC pattern.
 
+## Demo
+
+https://user-images.githubusercontent.com/126390137/228471762-4cab6391-af5f-4d95-8199-f73401c6d0de.mov
+
 ## Get Started
 
 ### 1. Fetch packages
@@ -69,6 +73,7 @@ Where:
 - Value for `googleClientIdWeb`, can be obtained on Firebase Console
 
 ## Run the app in development or production mode
+
 
 App supports 2 flavors: `dev` and `prod`.
 
