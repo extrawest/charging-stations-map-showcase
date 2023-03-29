@@ -18,7 +18,10 @@ Flutter training project for managing charging stations with maps
 
 ## Demo
 
-https://user-images.githubusercontent.com/126390137/228471762-4cab6391-af5f-4d95-8199-f73401c6d0de.mov
+
+https://user-images.githubusercontent.com/126390137/228479696-943365fd-de5f-440e-a64e-6c7794eaf945.mp4
+
+
 
 ## Get Started
 
