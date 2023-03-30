@@ -1,6 +1,4 @@
-# Maps App
-
-Flutter training project for managing charging stations with maps
+# Flutter Charging Stations Map App
 
 [![Maintanence](https://img.shields.io/badge/Maintenance-yes%3F-blue.svg)]()
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)]()
@@ -12,12 +10,12 @@ Flutter training project for managing charging stations with maps
 
 - This project is an app that provides service for managing charging station with maps
 - The app runs on Android, iOS and Web.
-- The app is built using Flutter 3.3 and Dart.
+- The app is built using latest Flutter and Dart versions.
 - The app is built using the MVVM architecture.
 - The app is built using the BLoC pattern.
 
 ## Demo
-
+https://maps-app-5d8d8.web.app/ 
 
 https://user-images.githubusercontent.com/126390137/228479696-943365fd-de5f-440e-a64e-6c7794eaf945.mp4
 
@@ -85,7 +83,7 @@ In order to run in production mode provide an additional `--flavor=prod` argumen
 command:
 
 ```shell
-flutter run --falvor=prod
+flutter run --flavor=prod
 ```
 
 Important! To create the production build of the app you should also provider an
@@ -94,3 +92,7 @@ additional `--flavor=prod` argument:
 ```shell
 flutter build ipa --flavor=prod
 ```
+
+Developed by **Maksym Tsurkan**
+
+[Extrawest.com](https://www.extrawest.com), 2023
